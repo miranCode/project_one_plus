@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	ex03
+	수정하기
 	<a href="/sample/ex03?title=test&dueDate=2018/01/01">값</a>
 	<br />
 	
