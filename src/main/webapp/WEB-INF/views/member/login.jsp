@@ -1,50 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% 
     request.setAttribute("bodyClass", "member login"); 
 %>
 <jsp:include page="../inc/header.jsp" />
-                <!-- #content øµø™ Ω√¿€ -->
+                <!-- #content ÏòÅÏó≠ ÏãúÏûë -->
                 <div id="content">  
                     <div id="login">    
-                        <h3>∑Œ±◊¿Œ</h3>
+                        <h3>Î°úÍ∑∏Ïù∏</h3>
                         <form action="..." method="post">
                             <div>
-                                <label for="userId">æ∆¿Ãµ</label>
+                                <label for="userId">ÏïÑÏù¥Îîî</label>
                                 <div class="input-box">
-                                    <input type="text" id="userId" placeholder="æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ¡÷ººø‰."  />
+                                    <input type="text" id="userId" placeholder="ÏïÑÏù¥ÎîîÎ•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî."  />
                                 </div>
                             </div>
                             <div>
-                                <label for="userPass">∫Òπ–π¯»£</label>
+                                <label for="userPass">ÎπÑÎ∞ÄÎ≤àÌò∏</label>
                                 <div class="input-box">
-                                    <input type="password" id="userPass" placeholder="∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ ¡÷ººø‰." />
+                                    <input type="password" id="userPass" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏Î•º ÏûÖÎ†•Ìï¥ Ï£ºÏÑ∏Ïöî." />
                                 </div>
                             </div>
                             <div class="btn-box">
-                                <button id="login_btn" type="button">∑Œ±◊¿Œ</button>
+                                <button id="login_btn" type="button">Î°úÍ∑∏Ïù∏</button>
                             </div>
                             <div class="checkbox-area flex ju-between al-center">
                                 <div>
                                     <input type="checkbox" id="auto_login"  />
-                                    <label for="auto_login">¿⁄µø ∑Œ±◊¿Œ</label>
+                                    <label for="auto_login">ÏûêÎèô Î°úÍ∑∏Ïù∏</label>
                                 </div>
                                 <ul class="flex">
                                     <li>
-                                        <a href="./join.html">»∏ø¯∞°¿‘</a>
+                                        <a href="./join.html">ÌöåÏõêÍ∞ÄÏûÖ</a>
                                     </li>
                                     <li>
-                                        <a onclick="findInfo('findId')">æ∆¿Ãµ √£±‚</a>
+                                        <a onclick="findInfo('findId')">ÏïÑÏù¥Îîî Ï∞æÍ∏∞</a>
                                     </li>
                                     <li>
-                                        <a onclick="findInfo('findPw')">∫Òπ–π¯»£ √£±‚</a>
+                                        <a onclick="findInfo('findPw')">ÎπÑÎ∞ÄÎ≤àÌò∏ Ï∞æÍ∏∞</a>
                                     </li>
                                 </ul>
                             </div>
                             
                             <div class="sns-area sns-login">
-                                <p><span>SNS ∞£∆Ì ∑Œ±◊¿Œ</span></p>
+                                <p><span>SNS Í∞ÑÌé∏ Î°úÍ∑∏Ïù∏</span></p>
                                 <ul class="">
                                     <li>
                                         <a href="" target="_blank" class="bg-kakao">
@@ -82,10 +82,10 @@
                                 </ul>
                             </div>
                             <div class="go_home flex ju-center">
-                                <a href="./main.html">Home¿∏∑Œ µπæ∆∞°±‚</a>
+                                <a href="./main.html">HomeÏúºÎ°ú ÎèåÏïÑÍ∞ÄÍ∏∞</a>
                             </div>
                         </form>
                     </div>  
                 </div>
-                <!-- #content øµø™ ≥° -->
+                <!-- #content ÏòÅÏó≠ ÎÅù -->
 <jsp:include page="../inc/footer.jsp" />
