@@ -9,6 +9,7 @@
                 <div id="content">  
                     <div id="login">    
                         <h3>비회원 조회</h3>
+                        <!-- 비회원 조회 -->
                         <form action="..." method="post">
                             <div>
                                 <div class="input-box">
@@ -29,7 +30,6 @@
                                 <button id="login_btn" type="button">조회</button>
                             </div>
                  
-                        
                             <div class="go_home flex ju-center">
                                 <a href="./main.html">Home으로 돌아가기</a>
                             </div>

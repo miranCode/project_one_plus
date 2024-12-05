@@ -49,7 +49,7 @@ public class MemberController {
 		}
 		return "login";
 	}
-	
+	// 비회원 조회 페이지 넘어가기
 	@GetMapping(value = "nonmemberlogin")
 	public String nonmemberlogin() {
 		return "member/nonmemberlogin";
