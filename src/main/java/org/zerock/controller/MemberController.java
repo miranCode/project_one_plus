@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.MemberMapper;
@@ -14,6 +15,7 @@ import org.zerock.mapper.MemberMapper;
 // 코드에 대한 추가적인 정보를 제공하거나 컴파일러나 런타임에서 특정 처리를 할 수 있게 도와줌
 
 @Controller
+@RequestMapping("/member/*") 
 public class MemberController {
 	
 	
@@ -27,7 +29,7 @@ public class MemberController {
 	
 	@GetMapping(value="/login")
 	public String loginGo() {
-		return "member/login";
+		return "login";
 	}
 	@PostMapping(value="/login")
 	//public String loginPro(@RequestParam String id, @RequestParam String pass) {
@@ -45,6 +47,6 @@ public class MemberController {
 			// 로그인 불가능 대상
 			// 다시 로그인 페이지로 이동 
 		}
-		return "member/login";
+		return "login";
 	}
 }
