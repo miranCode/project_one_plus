@@ -9,17 +9,17 @@
                 <div id="content">  
                     <div id="login">    
                         <h3>로그인</h3>
-                        <form action="..." method="post">
+                        <form action="/member/login" method="post">
                             <div>
                                 <label for="userId">아이디</label>
                                 <div class="input-box">
-                                    <input type="text" id="userId" placeholder="아이디를 입력해주세요."  />
+                                    <input type="text" id="userId" name="id" placeholder="아이디를 입력해주세요."  />
                                 </div>
                             </div>
                             <div>
                                 <label for="userPass">비밀번호</label>
                                 <div class="input-box">
-                                    <input type="password" id="userPass" placeholder="비밀번호를 입력해 주세요." />
+                                    <input type="password" id="userPass" name="pass" placeholder="비밀번호를 입력해 주세요." />
                                 </div>
                             </div>
                             <div class="btn-box">
@@ -32,7 +32,7 @@
                                 </div>
                                 <ul class="flex">
                                     <li>
-                                        <a href="./join.html">회원가입</a>
+                                        <a href="/member/join">회원가입</a>
                                     </li>
                                     <li>
                                         <a onclick="findInfo('findId')">아이디 찾기</a>
@@ -47,7 +47,7 @@
                                 <p><span>SNS 간편 로그인</span></p>
                                 <ul class="">
                                     <li>
-                                        <a href="" target="_blank" class="bg-kakao">
+                                        <a href="/kakao/login" target="_blank" class="bg-kakao">
                                             <div class="flex ju-between al-center">
                                                 <div class="icon kakao">
                                                     <i class="xi-kakaotalk"></i>
@@ -58,7 +58,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" target="_blank" class="bg-naver">
+                                        <a href="/naver/login" target="_blank" class="bg-naver">
                                             <div class="flex ju-between al-center">
                                                 <div class="icon naver">
                                                     <i class="xi-naver"></i>
@@ -69,12 +69,12 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" target="_blank" class="bg-facebook">
+                                        <a href="/google/login" target="_blank" class="bg-google">
                                             <div class="flex ju-between al-center">
-                                                <div class="icon facebook">
-                                                    <i class="xi-facebook"></i>
+                                                <div class="icon google">
+                                                    <i class="xi-google"></i>
                                                 </div>
-                                                <p>facebook  Login</p>
+                                                <p>google  Login</p>
                                                 <i class="xi-angle-right"></i>
                                             </div>
                                         </a>
@@ -88,7 +88,7 @@
                             </div>
                             </div>
                             <div class="go_home flex ju-center">
-                                <a href="./main.html">Home으로 돌아가기</a>
+                                <a href="/">Home으로 돌아가기</a>
                             </div>
                         </form>
                     </div>  

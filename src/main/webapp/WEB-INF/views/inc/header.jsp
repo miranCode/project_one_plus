@@ -60,15 +60,15 @@
                 <!-- 로고 및 유틸 영역 시작 -->
                 <div class="header-top">
                     <h1 class="logo">
-                        <a href="./main.html">
-                            골프용품점
+                        <a href="/">
+                           에러검열단
                         </a>
                     </h1>
                     <div class="utill">
                         <ul>
-                            <li><a href="./main.html">HOME</a></li>
-                            <li><a href="./login.html">LOGIN</a></li>
-                            <li><a href="./join.html">JOIN</a></li>
+                            <li><a href="/">HOME</a></li>
+                            <li><a href="/member/login">LOGIN</a></li>
+                            <li><a href="/member/join">JOIN</a></li>
                         </ul>
                     </div>
                 </div>

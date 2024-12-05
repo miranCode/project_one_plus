@@ -5,6 +5,7 @@
     request.setAttribute("bodyClass", "member join"); 
 %>
 <jsp:include page="../inc/header.jsp" />
+<script type="text/javascript" src="/resources/js/join.js"></script>
                 <!-- #content 영역 시작 -->
                 <div id="content">        
                     <h3>회원가입</h3>

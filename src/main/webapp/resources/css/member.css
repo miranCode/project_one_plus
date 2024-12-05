@@ -95,6 +95,23 @@ body.member form > div.checkbox-area ul li a:hover::after{width: 90%; background
 input[type=radio] + label{font-size: 12px; color: #999; margin-right: 20px;}
 
 
+/* sns 공통 스타일 */
+div.sns-area{}
+div.sns-area ul.list-type.type01 li{width: 15%;}
+div.sns-area ul.list-type.type01 li a{display: block;}
+.icon{position:relative; width:40px; height: 40px; aspect-ratio:1; border-radius:50%; background:#ddd;}
+.icon i{position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); color:#fff; font-size:3rem}
+.icon.kakao,
+.bg-kakao{background-color: #ffc000; }
+.icon.naver,
+.bg-naver{background-color:#0ac73e;}
+.icon.google,
+.bg-google{background-color: #fff; }
+.icon.google i{ background: linear-gradient(162deg, #EA4335 46%,#FBBC05 4%,#4285F4 60%,#34A853 43%);
+-webkit-background-clip: text;
+color: transparent; }
+a.bg-google{color:#222 !important; border:1px solid #ddd; }
+
 /* sns 로그인 */
 div.sns-area.sns-login{}
 div.sns-area.sns-login > p{position: relative; font-size: 12px; text-align: center;} 
