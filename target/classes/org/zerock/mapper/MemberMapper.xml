@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 해당 xml 파일을 mapper 로 활용 선언 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper namespace="패키지명과 인터페이스명"으로 연결  -->
+<mapper namespace="org.zerock.mapper.MemberMapper">
+	<select id="login" resultType="org.zerock.dto.MemberDTO">
+		<!-- select 결과를 resultType="org.zerock.dto.MemberDTO" 으로 보낸다  -->
+		<!-- ? 처리를 #{} 변경 -->
+    	select * from member where id=#{id} and password=#{password}
+	</select>
+</mapper>

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import url("./style.css?after");
+
+/* wrap */
+#wrap{position: relative;}
+
+/* header*/
+#header{}
+
+/* footer */
+#footer{}

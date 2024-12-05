@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@import url("./reset.css?after");
+
+
+html {width:100%; font-size:10px;}
+body{position: relative; max-width:1200px; min-width: 1200px; margin:0 auto 0; font-size:1.6rem; font-family: 'Pretendard', dotum, Helvetica, sans-serif; }
+
+button,
+a,
+select{cursor: pointer;}
+
+.img-box{position:relative; width:100%; overflow:hidden}
+.img-box img{display: block; object-fit: cover; width:100%; height:100%;}
+
+
+/* display:flex css */
+.flex{display:flex;}
+.flex.flex-wrap{flex-wrap:wrap;}
+.flex.ju-between{justify-content: space-between;}
+.flex.ju-center{justify-content: center;}
+.flex.ju-end{justify-content: end;}
+.flex.ju-around{justify-content: space-around;}
+.flex.ju-evenly{justify-content: space-evenly;}
+.flex.column{flex-direction: column}
+.flex.column-reverse{flex-direction: column-reverse}
+.flex.row{flex-direction: row}
+.flex.row-reverse{flex-direction: row-reverse}
+.flex.al-center{align-items: center;}
+.flex.al-start{align-items: start;}
+.flex.al-end{align-items: end;}
+
+/* 텍스트 공통 스타일 */
+.txt{}
+.txt.tit{font-size: 40px;}
+.txt.sub{font-size: 20px;}
+.txt-center{text-align: center;}
+.txt.bold{font-weight: 600;}
+.txt.bolder{font-weight: 900;}
+.cancle-txt{font-size: 12px; color: #999; text-decoration: line-through red;}
+.txt-info{font-size: 12px;}
+.txt-primary{color: rgb(73, 73, 238)}
+.txt-green{color: #0ac73e;}
+.txt-red{color: red;}
+
+
+/*...출력*/
+.ell {display:inline-block; max-width:97%; height: auto; overflow:hidden; text-overflow:ellipsis; vertical-align:middle; white-space:nowrap; word-wrap: break-word;  word-break: break-all;}
+.ell.row2 {max-height:4rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:2} /* height 값 조정 */
+.ell.row3 {max-height:6rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:3} /* height 값 조정 */
+.ell.row4 {max-height:8rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:4} /* height 값 조정 */
+
+
+/* 페이지내이션  */
+.pagination{margin-top: 50px;}
+.pagination ul li{width: 35px; height: 35px; box-sizing: border-box;; border: 1px solid #ddd; background: #fff; border-radius: 9px; margin-right: 5px;}
+.pagination ul li a{display: block; width: 100%; height: 100%; text-align: center; line-height: 35px; font-size: 12px; font-weight: 700;}
+
+.pagination ul li.on{ border-color: rgb(73, 73, 238);}
+.pagination ul li.on a{color: rgb(73, 73, 238);}
+.pagination ul li:last-child{margin-right: 0;}
+
+.pagination ul li:hover{background: rgb(73, 73, 238); border-color: rgb(73, 73, 238);}
+.pagination ul li:hover a{color: #fff;}
