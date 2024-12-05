@@ -13,15 +13,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>에러김열단-냉/난방 전력량 조회 및 sns로그인</title>
         <!-- css 불러오기 -->
         <link rel="stylesheet" type="text/css" href="/resources/css/layout.css?after" />
         <link rel="stylesheet" type="text/css" href="/resources/css/main.css?after" />
         <link rel="stylesheet" type="text/css" href="/resources/js/slick-1.8.1/slick/slick.css"/>
         <!-- // css 불러오기 -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"><!-- 아이콘 불러오기 -->
-        <!-- web font 불러오기 -->
-        <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css">
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
         <!-- 내부 링크 -->
         <script type="text/javascript" src="/resources/js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="/resources/js/slick-1.8.1/slick/slick.min.js"></script>

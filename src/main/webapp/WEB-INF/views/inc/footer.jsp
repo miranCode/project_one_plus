@@ -8,28 +8,8 @@
                     <a class="go_top">TOP</a>
                 </div>
                 <div class="footer-top flex ju-between al-center">
-                    <div class="left">
-                        <div class="f-notice">
-                            <dl class="flex al-center">
-                                <dt><a href="">Notice</a></dt>
-                                <dd>
-                                    <ul>
-                                        <li>
-                                            <a href="">All my friends are toxic, all ambitionless</a>
-                                        </li>
-                                    </ul>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
                     <div class="right">
                         <ul class="flex">
-                            <li>
-                                <a href="">회사소개</a>
-                            </li>
-                            <li>
-                                <a href="">인사말</a>
-                            </li>
                             <li class="on">
                                 <a href="">개인정보처리방침</a>
                             </li>
@@ -40,34 +20,6 @@
                     </div>
                 </div>
                 <div class="footer-info flex ju-between al-start">
-                    <div class="left">
-                        <ul class="flex">
-                            <li>
-                                <a href="">text</a>
-                                <ul>
-                                    <li>
-                                        <a href="">text</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">text</a>
-                                <ul>
-                                    <li>
-                                        <a href="">text</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">text</a>
-                                <ul>
-                                    <li>
-                                        <a href="">text</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="right">
                         <div>
                             <p>상담문의</p>
