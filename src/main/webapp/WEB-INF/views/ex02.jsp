@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-ex02
+수정하기
 <a href="/sample/ex02?name=AAA&age=10">값</a>
 </body>
 </html>
