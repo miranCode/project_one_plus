@@ -81,6 +81,12 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="sns-area sns-login">
+                            <p><span>비회원 조회</span></p>
+                            <div class="btn-box">
+                                <button id="login_btn" type="button">비회원 조회</button>
+                            </div>
+                            </div>
                             <div class="go_home flex ju-center">
                                 <a href="./main.html">Home으로 돌아가기</a>
                             </div>
