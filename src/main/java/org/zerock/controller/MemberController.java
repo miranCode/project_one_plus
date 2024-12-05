@@ -11,41 +11,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.MemberMapper;
 
-// "@" ¾î³ëÅ×ÀÌ¼Ç(Annotation)Àº ÁÖ·Î ÇÁ·Î±×·¡¹Ö ¾ð¾î¿¡¼­ ¸ÞÅ¸µ¥ÀÌÅÍ¸¦ Á¤ÀÇÇÏ°Å³ª, Æ¯Á¤ µ¿ÀÛÀ» ÁöÁ¤ÇÏ´Â µ¥ »ç¿ëµÇ´Â ÀÏÁ¾ÀÇ ÁÖ¼®
-// ÄÚµå¿¡ ´ëÇÑ Ãß°¡ÀûÀÎ Á¤º¸¸¦ Á¦°øÇÏ°Å³ª ÄÄÆÄÀÏ·¯³ª ·±Å¸ÀÓ¿¡¼­ Æ¯Á¤ Ã³¸®¸¦ ÇÒ ¼ö ÀÖ°Ô µµ¿ÍÁÜ
+// "@" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½(Annotation)ï¿½ï¿½ ï¿½Ö·ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½î¿¡ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½, Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½
+// ï¿½Úµå¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½Ó¿ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 @Controller
 @RequestMapping("/member/*") 
 public class MemberController {
 	
 	
-	// MemberMapper mm = new MemberMapper() µ¿ÀÏÇÑ °ÍÀÌÁö¸¸ 
-	// º»·¡ ÀÚ¹Ù¿¡¼­´Â ÀÎÅÍÆäÀÌ½º´Â new °¡ ¾ÈµÈ´Ù. 
-	// ÀÚ¹Ù ¹®¹ý°ú´Â ¾î±ß³² ½ºÇÁ¸µ¿¡¼­¸¸ °¡´É 
+	// MemberMapper mm = new MemberMapper() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¹Ù¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ new ï¿½ï¿½ ï¿½ÈµÈ´ï¿½. 
+	// ï¿½Ú¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ß³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	@Autowired
 	MemberMapper mm;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@GetMapping(value="/login")
+	@GetMapping(value="login")
 	public String loginGo() {
-		return "login";
+		return "member/login";
 	}
 	@PostMapping(value="/login")
 	//public String loginPro(@RequestParam String id, @RequestParam String pass) {
 	public String loginPro(MemberDTO mdto) {
-		// ¾ÆÀÌµð¿Í ºñ¹Ð¹øÈ£ Àû¿ë È®ÀÎ 
+		// ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ 
 		System.out.println(mdto);
 		MemberDTO login = mm.login(mdto);
 		if(login != null) {
-			// ·Î±×ÀÎ °¡´É ´ë»ó
-			// session¿¡ ÀúÀå ÈÄ 
+			// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+			// sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 			
-			// mainÀÌµ¿ 
+			// mainï¿½Ìµï¿½ 
 			return "index";
 		}else {
-			// ·Î±×ÀÎ ºÒ°¡´É ´ë»ó
-			// ´Ù½Ã ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿ 
+			// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+			// ï¿½Ù½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ 
 		}
 		return "login";
 	}
