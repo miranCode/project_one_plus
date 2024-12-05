@@ -1,1 +1,69 @@
 @charset "UTF-8";
+
+/* 게시판 */
+.page-tit{text-align: center; font-size: 40px;font-weight: 900; margin-top: 50px;}
+
+.list_board{margin-top: 50px;}
+.list-top{padding-bottom: 20px;}
+
+/* total 검색 영역  */
+.total{ font-size: 14px; color: #999; font-weight: 600;}
+.total span{color: #111;}
+.search-input{position: relative; padding-right: 40px; border: 1px solid #ddd; border-radius: 50px;}
+.search-input input{line-height: 40px; padding: 0 10px; border-radius: 50px;}
+.search-input button{position: absolute; top:0; right: 0; width: 40px; height: 40px; line-height: 40px; text-align: center;}
+
+/* 게시판 리스트 */
+ul.list_board_body{border-top: 1px solid #ddd; }
+ul.list_board_body li ul.row{display: flex; align-items: center;}
+ul.list_board_body li ul.row li{width: 8%; padding: 15px 0; font-size: 14px; box-sizing: border-box; text-align: center;}/*no*/
+ul.list_board_body li ul.row li:nth-child(2){
+    width: 45%; 
+    text-align: left; 
+    padding-left: 10px;
+    font-weight: 600;
+}/*제목*/
+ul.list_board_body li ul.row li:nth-child(3){width: 10%; }/*첨부파일*/
+ul.list_board_body li ul.row li:nth-child(4){width: 17%;}/*작성자*/
+ul.list_board_body li ul.row li:nth-child(5){width: 20%;}/*작성일*/
+
+
+ul.list_board_body li.list-header,
+ul.list_board_body li.list-body{width: 100%;}
+ul.list_board_body li.list-header{border-bottom: 1px solid #ddd; font-size: 14px; font-weight: 600; color: #666;}
+ul.list_board_body li.list-header ul.row li:nth-child(2){text-align: center;}
+
+ul.list_board_body > li.list-body > ul > li{border-bottom: 1px solid #ddd;}
+ul.list_board_body > li.list-body > ul > li > a{display: block;}
+ul.list_board_body > li.list-body > ul > li > a:hover ul li{color: rgb(73, 73, 238);}
+
+/* faq 스타일  */
+ul.list_board_body.faq_type > li{border-bottom: 1px solid #ddd; width: 100%;}
+ul.list_board_body.faq_type > li > button{position: relative;  width: 100%; text-align: left; padding: 20px 10px; box-sizing: border-box; font-size: 20px; font-weight: 800;}
+ul.list_board_body.faq_type > li > button .icon_box{position: absolute; top: 50%; right: 10px; transform: translateY(-50%); transition: all 0.5; font-size: 12px; color: #666; width: 35px; height: 35px; border:1px solid #666; text-align: center;  }
+ul.list_board_body.faq_type > li > button .icon_box i{line-height: 35px;}
+ul.list_board_body.faq_type > li > button span{display: block; font-size: 12px; color: #666; font-weight: 400;}
+ul.list_board_body.faq_type > li > div{padding: 10px; background: #f5f5f5; border-radius: 9px; margin-bottom: 10px;}
+
+
+ul.list_board_body.faq_type > li.on > button .icon_box{color: rgb(73, 73, 238); border-color: rgb(73, 73, 238);}
+ul.list_board_body.faq_type > li.on > button .icon_box i{transform: rotate(180deg);}
+
+/*...출력*/
+.ell {display:inline-block; max-width:97%; height: auto; overflow:hidden; text-overflow:ellipsis; vertical-align:middle; white-space:nowrap; word-wrap: break-word;  word-break: break-all;}
+.ell.row2 {max-height:4rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:2} /* height 값 조정 */
+.ell.row3 {max-height:6rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:3} /* height 값 조정 */
+.ell.row4 {max-height:8rem; display:-webkit-box; white-space:normal;word-break: normal;-webkit-box-orient:vertical;-webkit-line-clamp:4} /* height 값 조정 */
+
+
+/* 페이지내이션  */
+.pagination{margin-top: 50px;}
+.pagination ul li{width: 35px; height: 35px; box-sizing: border-box;; border: 1px solid #ddd; background: #fff; border-radius: 9px; margin-right: 5px;}
+.pagination ul li a{display: block; width: 100%; height: 100%; text-align: center; line-height: 35px; font-size: 12px; font-weight: 700;}
+
+.pagination ul li.on{ border-color: rgb(73, 73, 238);}
+.pagination ul li.on a{color: rgb(73, 73, 238);}
+.pagination ul li:last-child{margin-right: 0;}
+
+.pagination ul li:hover{background: rgb(73, 73, 238); border-color: rgb(73, 73, 238);}
+.pagination ul li:hover a{color: #fff;}
