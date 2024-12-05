@@ -1,29 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
-	<body>
-		Î°úÍ∑∏Ïù∏Ïù¥Îã§.
-		<form action="login" method="post">
-			<fieldset>
-				<div>
-					<label for="id">ÏïÑÏù¥Îîî</label>
-					<div>
-						<input type="text" name="id" id="id" />
-					</div>
-				</div>
-				<div>
-					<label for="password">ÎπÑÎ∞ÄÎ≤àÌò∏</label>
-					<div>
-						<input type="password" name="password" id="password" />
-					</div>
-				</div>
-				<button type="submit">Î°úÍ∑∏Ïù∏</button>
-			</fieldset>
-		</form>
-	</body>
-</html>
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<% 
+    request.setAttribute("bodyClass", "member login"); 
+%>
+<jsp:include page="../inc/header.jsp" />
+                <!-- #content øµø™ Ω√¿€ -->
+                <div id="content">  
+                    <div id="login">    
+                        <h3>∑Œ±◊¿Œ</h3>
+                        <form action="..." method="post">
+                            <div>
+                                <label for="userId">æ∆¿Ãµ</label>
+                                <div class="input-box">
+                                    <input type="text" id="userId" placeholder="æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ¡÷ººø‰."  />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="userPass">∫Òπ–π¯»£</label>
+                                <div class="input-box">
+                                    <input type="password" id="userPass" placeholder="∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ ¡÷ººø‰." />
+                                </div>
+                            </div>
+                            <div class="btn-box">
+                                <button id="login_btn" type="button">∑Œ±◊¿Œ</button>
+                            </div>
+                            <div class="checkbox-area flex ju-between al-center">
+                                <div>
+                                    <input type="checkbox" id="auto_login"  />
+                                    <label for="auto_login">¿⁄µø ∑Œ±◊¿Œ</label>
+                                </div>
+                                <ul class="flex">
+                                    <li>
+                                        <a href="./join.html">»∏ø¯∞°¿‘</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="findInfo('findId')">æ∆¿Ãµ √£±‚</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="findInfo('findPw')">∫Òπ–π¯»£ √£±‚</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="sns-area sns-login">
+                                <p><span>SNS ∞£∆Ì ∑Œ±◊¿Œ</span></p>
+                                <ul class="">
+                                    <li>
+                                        <a href="" target="_blank" class="bg-kakao">
+                                            <div class="flex ju-between al-center">
+                                                <div class="icon kakao">
+                                                    <i class="xi-kakaotalk"></i>
+                                                </div>
+                                                <p>kakao Login</p>
+                                                <i class="xi-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" target="_blank" class="bg-naver">
+                                            <div class="flex ju-between al-center">
+                                                <div class="icon naver">
+                                                    <i class="xi-naver"></i>
+                                                </div>
+                                                <p>naver  Login</p>
+                                                <i class="xi-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" target="_blank" class="bg-facebook">
+                                            <div class="flex ju-between al-center">
+                                                <div class="icon facebook">
+                                                    <i class="xi-facebook"></i>
+                                                </div>
+                                                <p>facebook  Login</p>
+                                                <i class="xi-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="go_home flex ju-center">
+                                <a href="./main.html">Home¿∏∑Œ µπæ∆∞°±‚</a>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+                <!-- #content øµø™ ≥° -->
+<jsp:include page="../inc/footer.jsp" />

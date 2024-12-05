@@ -1,12 +1,86 @@
 @charset "UTF-8";
 
 @import url("./style.css?after");
+@import url("./member.css?after");
+@import url("./qna_board.css?after");
+@import url("./checkpage.css?after");
 
-/* wrap */
+html {width:100%; font-size:10px;}
+body{position: relative; max-width:1200px; min-width: 1200px; margin:0 auto 0; font-size:1.6rem; font-family: 'Pretendard', dotum, Helvetica, sans-serif; }
+
+button,
+a,
+select{cursor: pointer;}
+
+.img-box{position:relative; width:100%; overflow:hidden}
+.img-box img{display: block; object-fit: cover; width:100%; height:100%;}
+
 #wrap{position: relative;}
 
-/* header*/
-#header{}
+/* header */
+#header{position: relative}
+div.header-top{position: relative; padding: 20px 0; box-sizing: border-box; }
+
+/* h1 로고 스타일  */
+.logo{width: 170px; height: 50px; margin: 0 auto;}
+.logo a{display: block; width: 100%; height: 100%; background: url("../img/logo.png") center center no-repeat; text-indent: -9999px;}
+
+/* 로그인 이동 스타일 */
+div.utill{display: flex; align-items: center; position: absolute; top: 50%; right: 10px; transform: translateY(-50%);}
+div.utill ul{display: flex;}
+div.utill ul li{position: relative; margin-right: 10px; padding-right: 10px;}
+div.utill ul li::after{content: ""; display: block; position: absolute; top:50%; right: 0; transform: translateY(-50%); width: 1px; height: 10px; background: #ddd;}
+div.utill ul li a{display: block; font-size: 12px; padding: 5px;} 
+div.utill ul li:last-of-type{margin-right: 0; padding-right: 0;}
+div.utill ul li:last-of-type::after{display: none;}
+div.utill ul li:hover{font-weight: 800;}
+
+/* gnb */
+#gnb{position: relative;}
+#gnb > ul{display: flex; }
+#gnb > ul > li{position: relative; width:calc(100%/5); } 
+#gnb > ul > li > a{display: block; text-align: center; height: 60px; line-height: 60px; border-bottom: 1px solid #ddd;}
+
+#gnb > ul > li > ul{
+    display: none;  
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+}
+#gnb > ul > li > ul > li > a{display: block; width: 100%; height: 100%; text-align: center; padding: 20px 0; border: 1px solid #ddd; border-top: 0;}
+
+#gnb ul li:hover > a{ font-weight: 800; text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);}
+#gnb ul li:hover > ul{display: block;}
+
+
+/* popup_layer */
+#popup_layer{position: fixed; top:0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); z-index: 300; display: none;}
+#popup_layer.open{display: block;}
+
+#popup_layer #find-box{position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); background: #fff; padding: 30px; border-radius: 9px;}
 
 /* footer */
-#footer{}
+#footer{margin-top: 100px;}
+#footer > div{border-top: 1px solid #ddd; }
+#footer .top-btn{position: fixed; bottom: 30px; right: 30px;  width: 60px; height: 60px; text-align: center; line-height: 60px; border-radius: 50%; border: 1px solid #ddd; overflow: hidden; box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);}
+#footer .top-btn a{display: block; width: 100%; height: 100%;}
+#footer .top-btn:hover{}
+#footer .footer-top{padding: 20px 0; }
+#footer .footer-top .left{width: 60%;}
+#footer .footer-top .left dl dt{width: 20%; font-weight: 800; font-size: 20px;}
+#footer .footer-top .left dl dd{width: 80%;}
+#footer .footer-top .right ul li a{display: block; padding: 0 0 0 15px; margin-left: 15px; border-left: 1px solid #ddd;}
+#footer .footer-top .right ul li:first-child a{border-left: 0;}
+#footer .footer-top .right ul li.on a{font-weight: 800;}
+#footer .footer-info{padding: 30px 0;}
+#footer .footer-info .left{}
+#footer .footer-info .left > ul > li{width: 300px;}
+#footer .footer-info .left > ul > li > a{font-weight: 800; font-size: 18px;;}
+#footer .footer-info .left > ul > li > ul > li > a{font-weight: 500; font-size: 14px; padding: 10px 0; }
+#footer .footer-info .right{position: relative;}
+#footer .footer-info .right p{ font-weight: 800;}
+#footer .footer-info .right a{display: block; width: auto; margin: 30px 0; padding: 15px; border: 1px solid #999; font-size: 20px; font-weight: 800; text-align: center;}
+#footer .footer-info .right ul li{font-size: 14px;}
