@@ -49,4 +49,9 @@ public class MemberController {
 		}
 		return "login";
 	}
+	
+	@GetMapping(value = "nonmemberlogin")
+	public String nonmemberlogin() {
+		return "member/nonmemberlogin";
+	}
 }
