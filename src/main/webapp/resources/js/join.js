@@ -273,8 +273,6 @@ $(document).ready(function(){
     let agreed02 = document.getElementsByName("ag_sevise");// 동의 2
     let agreed02R;
     
-    
-
     // 전체동의에 체크가 되면 동의는 전부 체크 되어야 한다. 
     agreedAll.addEventListener("change", function() {
         if(this.checked === true){
@@ -285,9 +283,15 @@ $(document).ready(function(){
             agreed02[0].checked = false;
         }                    
     });
-
-
-
+    
+    // 개별 체크박스 상태가 둘다 체크이면 전체 동의 체크, 아니면 전체 동의 해제
+    function updateAgreedAll() {
+    	const allCheck = agreed01[0].checked && agreed02[0].checked;
+    	agreedAll.checked = allCheck;
+    }
+    agreed01.forEach(radio =>radio.addEventListener("change", updateAgreedAll));
+    agreed02.forEach(radio =>radio.addEventListener("change", updateAgreedAll));
+    
     function validCheck(){
         if(idResult === true && pwResult === true && passcheckResult === true && nameResult === true && emailResult === true && phonResult === true && birthResult === true){
             alert("다 정상 입력")
