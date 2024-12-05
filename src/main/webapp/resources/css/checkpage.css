@@ -1,1 +1,19 @@
 @charset "UTF-8";
+#block_A{
+	width: 80%;
+	height: 35%;
+	margin: 20px;
+	background-color: #ddd;
+	border: 1px solid black;
+	border-radius: 7px;
+}
+#block_B{
+	width: 80%;
+	height: 35%;
+	margin: 20px;
+	margin-top: 40px;
+	background-color: #ddd;
+	border: 1px solid black;
+	border-radius: 7px;
+}
+#block_B

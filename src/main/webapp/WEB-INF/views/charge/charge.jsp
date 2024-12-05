@@ -1,99 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Л┌╛Л ╘К÷┴ Л║╟М ▄</title>
-</head>
-<body>
-	<jsp:include page="../inc/header.jsp" />
-	<jsp:include page="../inc/gnb.jsp" />
-	<div id="wrap">
-		<div id="smartView">
-			<h2>Л┼╓К╖┬М┼╦К╥╟</h2>
-			<div>
-				<a href=""></a>
-				<a href=""></a>
-				<a href=""></a>
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<% 
+    request.setAttribute("bodyClass", "charge"); 
+%>
+<jsp:include page="../inc/header.jsp" />
+		<div id="content">        
+            <h3>х╦©Ь╟║ют</h3>
+			<div id="smartView">
+				<h2>╫╨╦╤ф╝╨Д</h2>
+			</div>
+			<div id="block_A">
+				<div id="block_A_1">
+					<h3><!-- ╟М╟╢ юл╦╖ -->AAA ╢т</h3>
+					<p><!-- ©Д╠щ╦М -->AAA</p>
+				</div>
+				<div id="block_A_2">
+					<h3><!-- ╢Г©Ы ц╩╠╦©Д╠щ -->12©Ы ц╩╠╦©Д╠щ</h3>
+					<p><!-- ЁЁ╨н©╘╨н -->ЁЁ╨н©о╥А</p>
+					<div id="block_A_1_1">
+						<p class="this_charge"><!-- ©Д╠щ -->99900</p>
+					</div>
+				</div>
+			</div>
+			<div id="block_B">
+				<div id="block_B_1">
+					<div id="block_B_1_1">
+						<h5>цж╠ы 3╟Ё©Ы╟ё ©Д╠щ╠в╥║га</h5>
+						<p>3╟Ё©Ы фР╠у</p>
+						<div id="block_B_1_1_1"><!-- ╠в╥║га --></div>
+					</div>
+				</div>
+				<div id="block_B_2">
+					<div id="block_B_2_1">
+						<p>10©Ы ©Д╠щ</p>
+						<p></p>
+					</div>
+					<div id="block_B_2_2">
+						<p>11©Ы ©Д╠щ</p>
+						<p></p>
+					</div>
+					<div id="block_B_2_3">
+						<p>12©Ы ©Д╠щ</p>
+						<p></p>
+					</div>
+					<div id="block_B_2_4">
+						<p>10©Ы ╩Г©К╥╝</p>
+						<p></p>
+					</div>
+					<div id="block_B_2_5">
+						<p>11©Ы ╩Г©К╥╝</p>
+						<p></p>
+					</div>
+					<div id="block_B_2_6">
+						<p>12©Ы ╩Г©К╥╝</p>
+						<p></p>
+					</div>		
+				</div>
 			</div>
 		</div>
-		<div>
-			<div>К▀╧Л⌡■ Л▀╓Л▀°Й╟└ Л ■Й╦┬</div>
-			<div>
-				<p>Л▀╓Л▀°Й╟└ Л┌╛Л ╘К÷┴</p>
-				<p></p>
-			</div>
-			<div>
-				<p>Л≤┬Л┐│ Л┌╛Л ╘К÷┴</p>
-				<p></p>
-			</div>
-			<div>
-				<p>Л▀╓Л▀°Й╟└ Л ■Й╦┬</p>
-				<p></p>
-			</div>
-			<div>
-				<p>Л≤┬Л┐│ Л ■Й╦┬</p>
-				<p></p>
-			</div>
-		</div>
-		<div>
-			<div>К▀╧Л⌡■ Л▀╓Л▀°Й╟└ Л ■Й╦┬ Л═│Л ╘ Й╦╟Л╓─</div>
-			<table>
-				<tr>
-					<td>Л═│Л ╘Л═└Й╦╟Л ■Й╦┬</td>
-					<td>Й╦╟КЁ╦Л ■Й╦┬К▀╗Й╟─</td>
-					<td>Й╦╟КЁ╦Л ■Й╦┬</td>
-					<td>Л ■Й╦┬Л═│Л ╘Л═└К═╔</td>
-					<td>Л╣°К▄─Л┬≤Л ■Л═└К═╔</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-			<button type="button">Л≤┬Л┐│ Л ■Й╦┬К┌╢Л≈╜ КЁ╢Й╦╟</button>
-		</div>
-		<div>
-			<!-- Л▀°Й╟└К▄─КЁ└ Й╣╛К╤└(Й╥╦К·≤М■└) -->
-		</div>
-		<div>
-			<table>
-				<tr>
-					<th rowspan="2">Й╦╟КЁ╦Л ■Й╦┬(Л⌡░/kW)</th>
-					<td rowspan="3"></td>
-				</tr>
-				<tr>
-					<th colspan="4">Л═└К═╔К÷┴Л ■Й╦┬(Л⌡░/kWh)</th>
-					<th>Л▀°Й╟└К▄─</th>
-					<th>Й╡╫К╤─М∙≤</th>
-					<th>Л╓▒Й╟└К╤─М∙≤</th>
-					<th>Л╣°К▄─К╤─М∙≤</th>
-				</tr>
-				<tr>
-					<th>Л≈╛К╕└Л╡═(6~8Л⌡■)<th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th>К╢└ Й╟─Л²└Л╡═(3~5,9~10Л⌡■)</th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<th>Й╡╗Л ╦Л╡═(11~2Л⌡■)</th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<jsp:include page="../inc/footer.jsp" />
-</body>
-</html>
+<jsp:include page="../inc/footer.jsp" />
