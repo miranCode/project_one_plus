@@ -6,7 +6,7 @@
     request.setAttribute("bodyClass", "main"); 
 %>
 <jsp:include page="../inc/header.jsp" />
- <!-- #content 영역 시작 -->
+				 <!-- #content 영역 시작 -->
                 <p class="page-tit">공지사항</p>
                 <div id="content">        
                     <div class="list_board">
