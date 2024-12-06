@@ -11,5 +11,15 @@
 		<!-- select 결과를 resultType="org.zerock.dto.MemberDTO" 으로 보낸다  -->
 		<!-- ? 처리를 #{} 변경 -->
     	select * from member where id=#{id} and pw=#{pw}
+    	<!--  -->
+	</select>
+	
+	<select id="join" resultType="org.zerock.dto.MemberDTO">
+		insert into member values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, now());
+		<!-- 
+		insert into member values(
+			"apple8486","apple8486!","apple8486@naver.com","01048728486","김미란","1991-08-12", now()
+		);
+		 -->
 	</select>
 </mapper>

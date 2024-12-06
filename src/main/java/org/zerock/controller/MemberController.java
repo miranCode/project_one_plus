@@ -26,6 +26,7 @@ public class MemberController {
 	@Autowired
 	ChargeMapper cmapper;
 	
+	// 로그인
 	@GetMapping(value="login")
 	public String loginGo() {
 		return "member/login";
@@ -47,17 +48,27 @@ public class MemberController {
 		return "member/login";
 	}
 
+	
+	// 회원가입 
 	@GetMapping(value="join")
 	public String join() {
 		return "member/join";
 	}
 	
+	
 	@PostMapping("join")
-	public String loginPro(MemberDTO mdto){
+	public String joinPro(MemberDTO mdto){
+		
 		return "member/login";
 	}
 	
+	// 아이디 중복확인 
+	@PostMapping("idcheck")
+	public void idcheck() {
+		
+	}
 	
+	// 비회원 인증 
 	@GetMapping(value = "nonmemberlogin")
 	public String nonmemberlogin() {
 		return "member/nonmemberlogin";
@@ -65,25 +76,21 @@ public class MemberController {
 	
 	@PostMapping("nonmemberlogin")
 	public String nonmemberPro(HttpSession session, @RequestParam String name, @RequestParam String phone, @RequestParam String email) {
-	    // 폼 데이터 세션에 저장
 	    session.setAttribute("name", name);
 	    session.setAttribute("email", email);
 	    session.setAttribute("phone", phone);
 	    
-	    // 세션에서 값 가져오기 (디버깅용)
 	    System.out.println("name: " + name);
 	    System.out.println("email: " + email);
 	    System.out.println("phone: " + phone);
 	    
-	    // 리다이렉트
 	    return "redirect:/index";  // 처리 후 인덱스로 리다이렉트
 	}
 	
+	// 로그아웃, 세션 날리기 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 	    session.invalidate();
-	    
-	    // 로그아웃 후, 메인 페이지로 리다이렉트
 	    return "redirect:/index";
 	}
 	

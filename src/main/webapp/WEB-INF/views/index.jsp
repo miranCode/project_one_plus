@@ -1,76 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% 
     request.setAttribute("bodyClass", "main"); 
 %>
 <jsp:include page="./inc/header.jsp" />
 
-	<!-- #content ¿µ¿ª ½ÃÀÛ -->
+	<!-- #content ì˜ì—­ ì‹œìž‘ -->
 	<div id="content">  
 		<!-- box  -->
 		<div class="box section01">
 			<p style="filter:${empty name ? 'blur(5px)' : 'none'};">
 			
-				¾È³çÇÏ¼¼¿ä! ${name} °í°´´Ô
+				ì•ˆë…•í•˜ì„¸ìš”! ${name} ê³ ê°ë‹˜
 				<br />
-				(·Î±×ÀÎ½Ã, ÃÖ½Å ¹ßÇà ´Þ Ãâ·Â) Ã»±¸ ¿ä±Ý ¾È³»ÀÔ´Ï´Ù.
+				(ë¡œê·¸ì¸ì‹œ, ìµœì‹  ë°œí–‰ ë‹¬ ì¶œë ¥) ì²­êµ¬ ìš”ê¸ˆ ì•ˆë‚´ìž…ë‹ˆë‹¤.
 			</p>
 			<div style="filter:${empty name ? 'blur(5px)' : 'none'};">
 				<dl>
-					<dt>¿ä±Ý Ã»±¸ ±âÁØÀÏ</dt>
+					<dt>ìš”ê¸ˆ ì²­êµ¬ ê¸°ì¤€ì¼</dt>
 					<dd>00.00.00 - 00.00.00</dd>
 				</dl>
 				<dl>
-					<dt>´ç¿ù »ç¿ë Àü·Â·®</dt>
+					<dt>ë‹¹ì›” ì‚¬ìš© ì „ë ¥ëŸ‰</dt>
 					<dd class="bar-area">
 						<span class="stic" style="display:block; width:80%; height:15px; background:yellow; "></span>
 						<span class="stic-txt" style="left:80%;  ">50w</span>
 					</dd>
 				</dl>
 				<dl>
-					<dt>Ã»±¸ÀÏ / Ã»±¸ ºñ¿ë</dt>
-					<dd>00.00.00 / 000.000 ¿ø</dd>
+					<dt>ì²­êµ¬ì¼ / ì²­êµ¬ ë¹„ìš©</dt>
+					<dd>00.00.00 / 000.000 ì›</dd>
 				</dl>
 				<dl>
-					<dt>³³ºÎ±âÇÑ / ³³ºÎ¿©ºÎ</dt>
-					<dd>00.00.00 / ¹Ì³³</dd>
+					<dt>ë‚©ë¶€ê¸°í•œ / ë‚©ë¶€ì—¬ë¶€</dt>
+					<dd>00.00.00 / ë¯¸ë‚©</dd>
 				</dl>
 				<div class="btn-box">
-					<a href="" class="btn btn-bagic line">ÀÚ¼¼È÷ º¸±â</a>
+					<a href="" class="btn btn-bagic line">ìžì„¸ížˆ ë³´ê¸°</a>
 				</div>
 			</div>
 			<c:if test="${ empty name }">
 				<div class="blur">
-					<p>·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.</p>
+					<p>ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.</p>
 					<div class="btn-box">
-						<a href="/member/login" class="btn btn-bagic">·Î±×ÀÎ</a>
+						<a href="/member/login" class="btn btn-bagic">ë¡œê·¸ì¸</a>
 					</div>
 				</div>
 			</c:if>
 		</div>
 		<!-- // box  -->
 		<div class="section02">
-			<p>Àü·Â ¼ö±Þ ÇöÈ² <span>(00.00.00 ¿äÀÏ)</span></p>
+			<p>ì „ë ¥ ìˆ˜ê¸‰ í˜„í™© <span>(00.00.00 ìš”ì¼)</span></p>
 			<ul class="flex">
 				<li>
 					<i class="xi-lightning txt-yellow"></i>
 					<p>
-						°ø±Þ´É·Â
+						ê³µê¸‰ëŠ¥ë ¥
 						<span>103,751 MW</span>
 					</p>
 				</li>
 				<li>
 					<i class="xi-spinner-1 xi-spin txt-primary"></i>
 					<p>
-						ÇöÀçºÎÇÏ
+						í˜„ìž¬ë¶€í•˜
 						<span>71,696 MW</span>
 					</p>
 				</li>
 				<li>
 					<i class="xi-network-server txt-green"></i>
 					<p>
-						°ø±Þ¿¹ºñ
+						ê³µê¸‰ì˜ˆë¹„
 						<span>32,055 MW</span>
 					</p>
 				</li>
@@ -78,12 +78,12 @@
 					
 					<i class="xi-percent"></i>
 					<p>
-						¿¹ºñÀ²
+						ì˜ˆë¹„ìœ¨
 						<span>44.71%</span>
 					</p>
 				</li>
 			</ul>
 		</div>
 	</div>
-	<!-- #content ¿µ¿ª ³¡ -->
+	<!-- #content ì˜ì—­ ë -->
 <jsp:include page="./inc/footer.jsp" />

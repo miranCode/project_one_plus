@@ -10,12 +10,12 @@
                 <div id="content">        
                     <h3>회원가입</h3>
                     <div class="form-box">
-                        <form name="form1" onsubmit="return validCheck()">
+                        <form  action="/member/join" method="post" name="form1" onsubmit="return validCheck()">
                             <div>
                                 <label for="userid">아이디</label>
                                 <div class="input-box">
                                     <input type="text" id="userid" name="userid" value="" maxlength="16" placeholder="아이디를 입력해주세요." title="아이디" />
-                                    <button type="button" id="id_check" class="check_btn">중복확인</button>
+                                    <button type="button" id="id_check" class="check_btn" onclick="location.href='/member/idcheck'">중복확인</button>
                                 </div>
                             </div>
                             <div>
