@@ -1,7 +1,9 @@
 package org.zerock.mapper;
 
+import java.util.List;
+
 import org.zerock.dto.ChargeDTO;
 
 public interface ChargeMapper {
-	public ChargeDTO getData(ChargeDTO charge);
+	public List<ChargeDTO> getList();
 }
