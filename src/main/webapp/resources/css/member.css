@@ -96,9 +96,6 @@ input[type=radio] + label{font-size: 12px; color: #999; margin-right: 20px;}
 
 
 /* sns 공통 스타일 */
-div.sns-area{}
-div.sns-area ul.list-type.type01 li{width: 15%;}
-div.sns-area ul.list-type.type01 li a{display: block;}
 .icon{position:relative; width:40px; height: 40px; aspect-ratio:1; border-radius:50%; background:#ddd;}
 .icon i{position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); color:#fff; font-size:3rem}
 .icon.kakao,
@@ -110,7 +107,8 @@ div.sns-area ul.list-type.type01 li a{display: block;}
 .icon.google i{ background: linear-gradient(162deg, #EA4335 46%,#FBBC05 4%,#4285F4 60%,#34A853 43%);
 -webkit-background-clip: text;
 color: transparent; }
-a.bg-google{color:#222 !important; border:1px solid #ddd; }
+a.bg-google,
+button.bg-google{color:#222 !important; border:1px solid #ddd; }
 
 /* sns 로그인 */
 div.sns-area.sns-login{}
@@ -119,16 +117,20 @@ div.sns-area.sns-login > p span{display: inline-block; padding: 5px; background:
 div.sns-area.sns-login > p::before{position: absolute; top: 49%; left: 0; display: block; content: ""; width: 100%; height: 1px; background: #999; z-index: -1;}
 div.sns-area.sns-login ul li{margin-top: 10px;}
 /*div.sns-area.sns-login ul li:not(:first-child){margin-top: 10px;}*/
-div.sns-area.sns-login ul li a{position: relative; display: block; padding:0 10px; height: 45px; line-height: 45px; border-radius: 9px; color: #fff; overflow: hidden;}
-div.sns-area.sns-login ul li a i{width: 50px; text-align: center;}
-div.sns-area.sns-login ul li a .icon i{font-size: 28px;}
+div.sns-area.sns-login ul li a,
+div.sns-area.sns-login ul li button{width:100%; box-sizing:border-box; position: relative; display: block; padding:0 10px; height: 45px; line-height: 45px; border-radius: 9px; color: #fff; overflow: hidden;}
+div.sns-area.sns-login ul li a i,
+div.sns-area.sns-login ul li button i{width: 50px; text-align: center;}
+div.sns-area.sns-login ul li a .icon i,
+div.sns-area.sns-login ul li button .icon i{font-size: 28px;}
 
-div.sns-area.sns-login ul li a.bg-kakao,
-div.sns-area.sns-login ul li a.bg-kakao i{
+div.sns-area.sns-login ul li .bg-kakao,
+div.sns-area.sns-login ul li .bg-kakao i{
     color: #191919 !important;
 }
 
-div.sns-area.sns-login ul li a::after{
+div.sns-area.sns-login ul li a::after,
+div.sns-area.sns-login ul li button::after{
     position: absolute;
     content: '';
     top: calc(50% - 50px);
@@ -140,7 +142,8 @@ div.sns-area.sns-login ul li a::after{
     opacity: 0;
     transition: all 1s;
 }
-div.sns-area.sns-login ul li:hover a:after{
+div.sns-area.sns-login ul li:hover a:after,
+div.sns-area.sns-login ul li:hover button:after{
     opacity: 1;
     left: calc(100% + 50px);
 }

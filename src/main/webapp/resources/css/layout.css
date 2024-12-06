@@ -25,7 +25,7 @@ a:hover, a:focus, a:active {text-decoration:none;}
 div.header-top{position: relative; padding: 10px 0; box-sizing: border-box; border-bottom:1px solid #ddd;}
 
 /* h1 로고 스타일  */
-.logo{width: auto;display: inline-block;}
+.logo{width: auto; display: inline-block; margin-left:10px}
 .logo a{display: block; width: 100%; height: 100%; font-size:18px; font-weight:800; line-height:50px;}
 
 /* 로그인 이동 스타일 */

@@ -1,33 +1,39 @@
 
 $(document).ready(function(){
-	function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:8080/oauth',
-    });
-  }
+ 	// 카카오 SDK 초기화
+	Kakao.init('33d350ee39f14c5305f7873eeffc074c'); // 사용하려는 앱의 JavaScript 키 입력
 
-  // 아래는 데모를 위한 UI 코드입니다.
-  displayToken()
-  function displayToken() {
-    var token = getCookie('authorize-access-token');
-
-    if(token) {
-      Kakao.Auth.setAccessToken(token);
-      Kakao.Auth.getStatusInfo()
-        .then(function(res) {
-          if (res.status === 'connected') {
-            document.getElementById('token-result').innerText
-              = 'login success, token: ' + Kakao.Auth.getAccessToken();
-          }
-        })
-        .catch(function(err) {
-          Kakao.Auth.setAccessToken(null);
+    // 카카오 로그인 함수
+    function loginWithKakao() {
+    	console.log("작동여부확인");
+        Kakao.Auth.login({
+            success: function(authObj) {
+                // 로그인 성공 시, authObj에 토큰 정보가 포함됨
+                console.log('카카오 로그인 성공', authObj);
+                // 로그인 후 서버로 access token 전송
+                sendTokenToServer(authObj.access_token);
+            },
+            fail: function(err) {
+                console.error('카카오 로그인 실패', err);
+            }
         });
     }
-  }
 
-  function getCookie(name) {
-    var parts = document.cookie.split(name + '=');
-    if (parts.length === 2) { return parts[1].split(';')[0]; }
-  }
+    // 서버에 access token 전송
+    function sendTokenToServer(accessToken) {
+        fetch('http://localhost:8080/auth/kakao/callback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ access_token: accessToken }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('서버 응답:', data);
+        })
+        .catch(error => {
+            console.error('서버 오류:', error);
+        });
+    }
 })

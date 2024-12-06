@@ -5,11 +5,9 @@
     request.setAttribute("bodyClass", "member login"); 
 %>
 <jsp:include page="../inc/header.jsp" />
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
   integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
-<script>
-  Kakao.init('33d350ee39f14c5305f7873eeffc074c'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
 <script type="text/javascript" src="/resources/js/login.js"></script>
                 <!-- #content 영역 시작 -->
                 <div id="content">  
@@ -53,7 +51,7 @@
                                 <p><span>SNS 간편 로그인</span></p>
                                 <ul class="">
                                     <li>
-                                        <a id="kakao-login-btn" href="javascript:loginWithKakao()" class="bg-kakao">
+                                        <button type="button" id="kakao-login-btn" onclick="loginWithKakao()" class="bg-kakao">
                                             <div class="flex ju-between al-center">
                                                 <div class="icon kakao">
                                                     <i class="xi-kakaotalk"></i>
@@ -61,7 +59,7 @@
                                                 <p>kakao Login</p>
                                                 <i class="xi-angle-right"></i>
                                             </div>
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
                                         <a href="/naver/login" target="_blank" class="bg-naver">
