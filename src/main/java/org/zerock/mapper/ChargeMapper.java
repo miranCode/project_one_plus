@@ -6,4 +6,6 @@ import org.zerock.dto.ChargeDTO;
 
 public interface ChargeMapper {
 	public List<ChargeDTO> getList();
+	
+	public ChargeDTO getDetail(int code);
 }

@@ -2,26 +2,33 @@ package org.zerock.dto;
 
 public class ChargeDTO {
 //	Field
-	private int code;				// 번호
-	private String uname;				// 이름
-	private String email;				// 이메일
-	private String phone_num;			// 전화번호
-	private int billing_power;					// 요금적용전력
+	private int code;						// 번호
+	private String uname;					// 이름
+	private String email;					// PHONE NUMBER
+	private String phone_num;				// EMAIL
+	private int billing_power;				// 요금적용전력
 	private int power_factor;				// 지상역률
 	private String supply_voltage;			// 수전전압
 	private int use_quentity;				// 사용량
 	private int rdpower_factor;				// 잔상역률
 	private java.sql.Timestamp use_start;	// 사용시작일
-	private java.sql.Timestamp use_end;	// 사용종료일
-	private String already_paid;				// 납부여부
+	private java.sql.Timestamp use_end;		// 사용종료일
+	private String already_paid;			// 납부여부
 	private java.sql.Timestamp paid_day;	// 납부일
 	private java.sql.Timestamp dill_date;	// 청구일
 	private java.sql.Timestamp paid_limit;	// 납부기한
-	private String how_to_pay;			// 납부방식
+	private String how_to_pay;				// 납부방식
+	private int charge;						// 요금
 	
 //	Method
 	public int getCode() {
 		return code;
+	}
+	public int getCharge() {
+		return charge;
+	}
+	public void setCharge(int charge) {
+		this.charge = charge;
 	}
 	public void setCode(int code) {
 		this.code = code;
@@ -124,6 +131,7 @@ public class ChargeDTO {
 				+ supply_voltage + ", use_quentity=" + use_quentity + ", rdpower_factor=" + rdpower_factor
 				+ ", use_start=" + use_start + ", use_end=" + use_end + ", already_paid=" + already_paid + ", paid_day="
 				+ paid_day + ", dill_date=" + dill_date + ", paid_limit=" + paid_limit + ", how_to_pay=" + how_to_pay
-				+ "]";
+				+ ", charge=" + charge + "]";
 	}
+	
 }

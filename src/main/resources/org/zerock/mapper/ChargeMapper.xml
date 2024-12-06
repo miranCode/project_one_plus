@@ -6,6 +6,9 @@
 <mapper namespace="org.zerock.mapper.ChargeMapper">
 	<select id="getList" resultType="org.zerock.dto.ChargeDTO">
 <!--SELECT * FROM charge WHERE name=#{name} AND email=#{email} AND phone_num=#{phone_num};-->
-	SELECT * FROM charge WHERE code > 0
+	SELECT * FROM charge WHERE code > 0;
+	</select>
+	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">
+	SELECT * FROM charge WHERE code = #{code};
 	</select>
 </mapper>
