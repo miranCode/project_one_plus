@@ -6,7 +6,7 @@
 
 <select id="getList" resultType="org.zerock.dto.BoardVO">
 <![CDATA[
-	select * from board where idx > 0
+	select * from board where idx > 0 order by idx DESC
 ]]>
 </select>
 

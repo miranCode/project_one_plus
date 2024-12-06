@@ -6,41 +6,39 @@
     request.setAttribute("bodyClass", "main"); 
 %>
 <jsp:include page="../inc/header.jsp" />
-<%@ include file="../../../resources/css/write.css" %>
+<%-- <%@ include file="../../../resources/css/write.css" %> --%>
+<!-- <link href="../../../resources/css/write.css" type="text/css" rel="stylesheet" > -->
+ <div>
+ 	<div>
+ 		<h1>글쓰기</h1>
+ 	</div>
+ </div>
+<form name="writeFrm" method="post" enctype="multipart/form-data"
+	action="/qna/write">
+	<div>
+		<label>제목</label>
+		<input type="text" name="title" id="title" required>
+	</div>
+	<div>
+		<label>내용</label>
+		<textarea id="content" name="content" required></textarea>
+	</div>
+	<div>
+		<label>작성자</label>
+		<input type="text" name="name" id="name" required>
+	</div>
+	<div>
+		<label>email</label>
+		<input type="text" name="email" id="email" required>
+	</div>
+	<div>
+		<label>비밀번호</label>
+		<input type="password" name="pass" id="pass" required>
+	</div>
+	<button type="submit">작성</button>
+	<button type="button" onclick="location.href='/qna/List';">목록</button>
+</form>
 
-    <div id="write">
-        <header id="write1">
-            <div class="log">
-                <img src="<%= request.getContextPath() %>/image/google.jpg" width="100%" height="100">
-            </div>
-            <div class="editor">
-                <p>글 쓰 기</p>
-            </div>
-        </header>
-        <div id="write2">
-            <div>
-                <select name="category" id="category">
-                    <option value="tech">Technology</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="food">Food</option>
-                </select>
-            </div>
-            <div>
-                <button>첨부파일</button>
-            </div>
-        </div>
-        <div class="title">
-            <textarea id="textarea" rows="5" cols="100%"></textarea>
-        </div>
-        <textarea id="textarea" rows="20" cols="150"></textarea>
-    </div>
-
-
-    <div class="complete">
-        <button>작성 완료</button>
-    </div>
-
-
-
+<!-- // -->
     
-    <jsp:include page="../inc/footer.jsp" />
+<jsp:include page="../inc/footer.jsp" />
