@@ -28,6 +28,7 @@ public class ChargeController {
 //	public String GoList() {
 //		return "charge/list";
 //	}
+//	¼öÁ¤
 	@GetMapping("list")
 	public String list(Model model) {
 		System.out.println("list");
