@@ -1,61 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <% 
     request.setAttribute("bodyClass", "charge"); 
 %>
 <jsp:include page="../inc/header.jsp" />
 		<div id="content">        
-            <h3>х╦©Ь╟║ют</h3>
-			<div id="smartView">
-				<h2>╫╨╦╤ф╝╨Д</h2>
+			<div class="section01">
+				<div id="block_A">
+					<div>
+						<h3>${Detail.uname} К▀≤</h3>
+						<p>${Detail.supply_voltage}</p>
+					</div>
+					<div>
+						<h3><fmt:formatDate pattern="yy.MM" value="${Detail.use_start}"/>Л⌡■ Л ■Й╦┬</h3>
+						<p>${Detail.already_paid}</p>
+						<p>${Detail.charge}</p>
+					</div>
+				</div>
+				<div id="block_B">
+					<div>
+						<h5></h5>
+						<p>3Й╟°Л⌡■ М▐┴Й╥═Л ■Й╦┬: <!-- ${charge.charge / 3} --></p>
+						<div><!-- Й╥╦К·≤М■└ --></div>
+					</div>
+					<div class="">
+						<div class="">
+							<div>
+								<p>10Л⌡■ Л┌╛Л ╘К÷┴</p>
+								<p></p>
+							</div>
+							<div>
+								<p>10Л⌡■ Л ■Й╦┬</p>
+								<p></p>
+							</div>
+						</div>
+						<div class="">
+							<div>
+								<p>11Л⌡■ Л┌╛Л ╘К÷┴</p>
+								<p></p>
+							</div>
+									
+							<div>
+								<p>11Л⌡■ Л ■Й╦┬</p>
+								<p></p>
+							</div>
+						</div>
+						<div class="">
+							<div>
+								<p>12Л⌡■ Л┌╛Л ╘К÷┴</p>
+								<p></p>
+							</div>
+							<div>
+								<p>12Л⌡■ Л ■Й╦┬</p>
+								<p></p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div id="block_A">
-				<div id="block_A_1">
-					<h3><!-- ╟М╟╢ юл╦╖ -->AAA ╢т</h3>
-					<p><!-- ©Д╠щ╦М -->AAA</p>
+			<div id="block_C">
+				<div>
+					<h3>Л┐│Л└╦КЁ╢Й╦╟</h3>
+					<p>Л┬≤Л═└Л═└Л∙∙ : <c:out value="${Detail.supply_voltage}"/></p>
+					<p>Л ■Й╦┬Л═│Л ╘Л═└К═╔ : <c:out value="${Detail.billing_power}"/></p>
+					<p>Л┌╛Л ╘К÷┴ : <c:out value="${Detail.use_quentity}"/></p>
+					<p>Л┌╛Л ╘Й╦╟Й╟└ : <fmt:formatDate pattern="yyyy-MM-dd" value="${Detail.use_start}"/>
+							  ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${Detail.use_end}"/></p>
 				</div>
-				<div id="block_A_2">
-					<h3><!-- ╢Г©Ы ц╩╠╦©Д╠щ -->12©Ы ц╩╠╦©Д╠щ</h3>
-					<p><!-- ЁЁ╨н©╘╨н -->ЁЁ╨н©о╥А</p>
-					<div id="block_A_1_1">
-						<p class="this_charge"><!-- ©Д╠щ -->99900</p>
-					</div>
-				</div>
-			</div>
-			<div id="block_B">
-				<div id="block_B_1">
-					<div id="block_B_1_1">
-						<h5>цж╠ы 3╟Ё©Ы╟ё ©Д╠щ╠в╥║га</h5>
-						<p>3╟Ё©Ы фР╠у</p>
-						<div id="block_B_1_1_1"><!-- ╠в╥║га --></div>
-					</div>
-				</div>
-				<div id="block_B_2">
-					<div id="block_B_2_1">
-						<p>10©Ы ©Д╠щ</p>
-						<p></p>
-					</div>
-					<div id="block_B_2_2">
-						<p>11©Ы ©Д╠щ</p>
-						<p></p>
-					</div>
-					<div id="block_B_2_3">
-						<p>12©Ы ©Д╠щ</p>
-						<p></p>
-					</div>
-					<div id="block_B_2_4">
-						<p>10©Ы ╩Г©К╥╝</p>
-						<p></p>
-					</div>
-					<div id="block_B_2_5">
-						<p>11©Ы ╩Г©К╥╝</p>
-						<p></p>
-					</div>
-					<div id="block_B_2_6">
-						<p>12©Ы ╩Г©К╥╝</p>
-						<p></p>
-					</div>		
+				<div>
+					<h3>Л≈╜К╔═</h3>
+					<p>Л╖─Л┐│Л≈╜К╔═ : <c:out value="${Detail.power_factor}"/></p>
+					<p>Л·■Л┐│Л≈╜К╔═: <c:out value="${Detail.rdpower_factor}"/></p>
 				</div>
 			</div>
 		</div>

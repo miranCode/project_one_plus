@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.mapper.ChargeMapper;
 
 @Controller
@@ -19,10 +20,10 @@ public class ChargeController {
 //	public void charge(Model model) {
 //		model.addAttribute("charge", service.getcharge());
 //	}
-	@GetMapping(value="charge")
-	public String GoCharge() {
-		return "charge/charge";
-	}
+//	@GetMapping(value="charge")
+//	public String GoCharge() {
+//		return "charge/charge";
+//	}
 //	@GetMapping(value="list")
 //	public String GoList() {
 //		return "charge/list";
@@ -32,5 +33,11 @@ public class ChargeController {
 		System.out.println("list");
 		model.addAttribute("list", Mapper.getList());
 		return "charge/list";
+	}
+	
+	@GetMapping(value="charge")
+	public String Detail(@RequestParam("code") int code, Model model) {
+		model.addAttribute("Detail", Mapper.getDetail(code));
+		return "charge/charge";
 	}
 }

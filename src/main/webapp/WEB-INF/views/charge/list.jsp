@@ -8,7 +8,7 @@
 %>
 <jsp:include page="../inc/header.jsp" />
 				<!-- #content 영역 시작 -->
-                <p class="page-tit">공지사항</p>
+                <p class="page-tit">Data</p>
                 <div id="content">        
                     <div class="list_board">
                         <div class="list-top flex ju-between al-end">
@@ -25,20 +25,12 @@
                                 <ul class="row">
                                     <li>No</li>
                                     <li>이름</li>
-                                    <li>전화번호</li>
-                                    <li>이메일</li>
-                                    <li>요금적용전력</li>
-                                    <li>지상역률</li>
-                                    <li>수전전압</li>
                                     <li>사용량</li>
-                                    <li>잔상역률</li>
-                                    <li>사용시작일</li>
-                                    <li>사용종료일</li>
+                                    <li>사용기간</li>
                                     <li>납부여부</li>
                                     <li>납부일</li>
-                                    <li>청구일</li>
                                     <li>납부기한</li>
-                                    <li>납부방식</li>
+                                    <li>요금</li>
                                 </ul>
                             </li>
                             <li class="list-body">
@@ -46,24 +38,19 @@
                                     <!-- 반복 -->
                                     <c:forEach items="${list}" var="charge">
 					                   	<li>
-	                                        <ul class="row">
-		                                        <li><c:out value="${charge.code}"/></li>
-						                   		<li><c:out value="${charge.uname}"/></li>
-						                   		<li><c:out value="${charge.phone_num}"/></li>
-						                   		<li><c:out value="${charge.email}"/></li>
-						                   		<li><c:out value="${charge.billing_power}"/></li>
-						                   		<li><c:out value="${charge.power_factor}"/></li>
-						                   		<li><c:out value="${charge.supply_voltage}"/></li>
-						                   		<li><c:out value="${charge.use_quentity}"/></li>
-						                   		<li><c:out value="${charge.rdpower_factor}"/></li>
-						                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_start}"/></li>
-						                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_end}"/></li>
-						                   		<li><c:out value="${charge.already_paid}"/></li>
-						                   		<li><c:out value="${charge.paid_day}"/></li>
-						                   		<li><c:out value="${charge.dill_date}"/></li>
-						                   		<li><c:out value="${charge.paid_limit}"/></li>
-						                   		<li><c:out value="${charge.how_to_pay}"/></li>
-	                                        </ul>
+					                   		<a href="/charge/charge?code=${charge.code}">
+		                                        <ul class="row">
+			                                        <li><c:out value="${charge.code}"/></li>
+			                                        <li><c:out value="${charge.uname}"/></li>
+							                   		<li><c:out value="${charge.use_quentity}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_start}"/>
+							                   		 ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_end}"/></li>
+							                   		<li><c:out value="${charge.already_paid}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.paid_day}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.paid_limit}"/></li>
+							                   		<li><c:out value="${charge.charge}"/></li>
+		                                        </ul>
+	                                        </a>
 	                                    </li>
                   					</c:forEach>
                                     <!-- 반복 -->
