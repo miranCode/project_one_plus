@@ -88,7 +88,7 @@
                             <div class="sns-area sns-login">
                             <p><span>비회원 조회</span></p>
                             <div class="btn-box">
-                                <button id="login_btn" type="button">비회원 조회</button>
+                                <button id="login_btn" type="button" onclick="location.href='/member/nonmemberlogin'">비회원 조회</button>
                             </div>
                             </div>
                             <div class="go_home flex ju-center">

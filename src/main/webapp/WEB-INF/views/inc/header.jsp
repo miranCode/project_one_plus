@@ -25,7 +25,7 @@
         <script type="text/javascript" src="/resources/js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="/resources/js/slick-1.8.1/slick/slick.min.js"></script>
         <script> 
-            // 페이지가 로딩된 후 다시 불러온다. 그래서 제이쿼리는 위에 있어도 괜찮다. 
+            // 페이지가 로딩된 후 다시 불러온다. 그래서 제이쿼리는 위에  있어도 괜찮다. 
             $(document).ready(function(){ 
                 // 화면의 제일 위로 올라가기
                 $("a.go_top").click(function(){
@@ -66,8 +66,13 @@
                     <div class="utill">
                         <ul>
                             <li><a href="/">HOME</a></li>
-                            <li><a href="/member/login">LOGIN</a></li>
-                            <li><a href="/member/join">JOIN</a></li>
+                            <c:if test="${empty name}">
+	                            <li><a href="/member/login">LOGIN</a></li>
+	                            <li><a href="/member/join">JOIN</a></li>
+                            </c:if>
+                            <c:if test="${not empty name}">
+                            	<li><a href="/member/logout">LOGOUT</a></li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>

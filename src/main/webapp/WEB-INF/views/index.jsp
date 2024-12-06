@@ -10,13 +10,13 @@
 	<div id="content">  
 		<!-- box  -->
 		<div class="box section01">
-			<p style="filter:${empty id ? 'blur(5px)' : 'none'};">
+			<p style="filter:${empty name ? 'blur(5px)' : 'none'};">
 			
-				안녕하세요! ${uname} 고객님
+				안녕하세요! ${name} 고객님
 				<br />
 				(로그인시, 최신 발행 달 출력) 청구 요금 안내입니다.
 			</p>
-			<div style="filter:${empty id ? 'blur(5px)' : 'none'};">
+			<div style="filter:${empty name ? 'blur(5px)' : 'none'};">
 				<dl>
 					<dt>요금 청구 기준일</dt>
 					<dd>00.00.00 - 00.00.00</dd>
@@ -40,7 +40,7 @@
 					<a href="" class="btn btn-bagic line">자세히 보기</a>
 				</div>
 			</div>
-			<c:if test="${ empty id }">
+			<c:if test="${ empty name }">
 				<div class="blur">
 					<p>로그인이 필요합니다.</p>
 					<div class="btn-box">

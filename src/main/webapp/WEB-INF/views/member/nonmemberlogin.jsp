@@ -10,24 +10,24 @@
                     <div id="login">    
                         <h3>비회원 조회</h3>
                         <!-- 비회원 조회 -->
-                        <form action="..." method="post">
+                        <form action="/member/nonmemberlogin" method="post">
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userName" placeholder="이름"  />
+                                    <input type="text" id="userName" name="name" placeholder="이름"  />
                                 </div>
                             </div>
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userPhone" placeholder="휴대폰 번호(- 없이 입력)" />
+                                    <input type="text" id="userPhone" name="phone" placeholder="휴대폰 번호(- 없이 입력)" />
                                 </div>
                             </div>
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userEmail" placeholder="이메일" />
+                                    <input type="text" id="userEmail" name="email" placeholder="이메일" />
                                 </div>
                             </div>
                             <div class="btn-box">
-                                <button id="login_btn" type="button">조회</button>
+                                <button id="login_btn" type="submit">조회</button>
                             </div>
                  
                             <div class="go_home flex ju-center">
