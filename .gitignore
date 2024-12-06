@@ -1,0 +1,57 @@
+# Maven build directories
+/target/
+/.idea/
+/.vscode/
+
+# Gradle build directories
+/.gradle/
+/build/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Logs
+*.log
+logs/
+
+# Dependency directories
+/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Spring Boot specific
+spring-boot-devtools
+
+# JetBrains IDEs
+/.idea/
+
+# Temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Lombok
+/lombok.jar
+
+# Environment files
+.env
+
+# Maven wrapper
+.mvn/
+
+# Java compiled files
+*.class
+
+.factorypath

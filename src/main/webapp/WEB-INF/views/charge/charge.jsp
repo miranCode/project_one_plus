@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <% 
@@ -20,11 +20,7 @@
 					</div>
 				</div>
 				<div id="block_B">
-					<div>
-						<h5></h5>
-						<p>3개월 평균요금: <!-- ${charge.charge / 3} --></p>
-						<div><!-- 그래프 --></div>
-					</div>
+					<h5>최근 사용요금</h5>
 					<div class="">
 						<div class="">
 							<div>
@@ -56,6 +52,10 @@
 								<p>12월 요금</p>
 								<p></p>
 							</div>
+						</div>
+						<div>
+							<p>3개월 평균요금: <!-- ${charge.charge / 3} --></p>
+							<div><!-- 그래프 --></div>
 						</div>
 					</div>
 				</div>
