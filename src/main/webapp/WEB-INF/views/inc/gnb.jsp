@@ -4,16 +4,13 @@
                 <nav id="gnb">
                     <ul>
                         <li>
-                            <a href="javascript:alert('준비중입니다.')">요금조회</a>
+                            <a href="/charge/list">전력 사용량 및 요금 조회</a>
+                        </li>
+                        <li>
+                            <a href="/qna/List">문의</a>
                         </li>
                         <li>
                             <a href="javascript:alert('준비중입니다.')">?</a>
-                        </li>
-                        <li>
-                            <a href="javascript:alert('준비중입니다.')">?</a>
-                        </li>
-                        <li>
-                            <a href="./list.html">문의</a>
                         </li>
                     </ul>
                 </nav>

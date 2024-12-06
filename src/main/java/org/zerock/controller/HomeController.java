@@ -15,10 +15,15 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	 
 	@GetMapping(value="/") 
-	
 	public String home() {
 		return "index";
 	}	
+	
+	@GetMapping(value="/index") 
+	public String homeGo() {
+		return "index";
+	}	
+	
 	
 	
 }

@@ -26,13 +26,10 @@
                             <div>
                                 <a href="tel:">TEL : 010.0000.0000</a>
                             </div>
-                            <ul>
-                                <li>I need new friends, but it's not that quick and easy</li>
-                                <li>So rude and always negative</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
+                <p class=""></p>
             </footer>
             <!-- footer 영역 끝 -->
         </div>

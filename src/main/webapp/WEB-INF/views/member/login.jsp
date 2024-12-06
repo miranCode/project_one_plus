@@ -15,19 +15,19 @@
                         <h3>로그인</h3>
                         <form action="/member/login" method="post">
                             <div>
-                                <label for="userId">아이디</label>
+                                <label for="id">아이디</label>
                                 <div class="input-box">
-                                    <input type="text" id="userId" name="id" placeholder="아이디를 입력해주세요."  />
+                                    <input type="text" id="id" name="id" placeholder="아이디를 입력해주세요."  />
                                 </div>
                             </div>
                             <div>
-                                <label for="userPass">비밀번호</label>
+                                <label for="pw">비밀번호</label>
                                 <div class="input-box">
-                                    <input type="password" id="userPass" name="pass" placeholder="비밀번호를 입력해 주세요." />
+                                    <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력해 주세요." />
                                 </div>
                             </div>
                             <div class="btn-box">
-                                <button id="login_btn" type="button">로그인</button>
+                                <button id="login_btn" type="submit">로그인</button>
                             </div>
                             <div class="checkbox-area flex ju-between al-center">
                                 <div>

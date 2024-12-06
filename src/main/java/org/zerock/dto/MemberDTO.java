@@ -1,15 +1,15 @@
 package org.zerock.dto;
 
+import java.util.Date;
+
 public class MemberDTO {
 	private String id;
-	private String password; 
-	private String name;
-	private String joindate;
-	
-	// 게터 세터 제작 
-	// lombok.Date @Date 을 사용하면 게터&세터&toString를 만들어주지 않아도 된다. 
-	// lombok 어노테이션을 사용하면 버그가 많다. 
-	// 그게 아니라면 게터&세터&toString를 만든다. 
+	private String pw; 
+	private String email;
+	private String phone_num;
+	private String uname;
+	private Date birth;
+	private Date regidate;
 	
 	public String getId() {
 		return id;
@@ -17,27 +17,48 @@ public class MemberDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPassword() {
-		return password;
+	public String getPw() {
+		return pw;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
-	public String getName() {
-		return name;
+	public String getEmali() {
+		return email;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setEmali(String emali) {
+		this.email = emali;
 	}
-	public String getJoindate() {
-		return joindate;
+	public String getPhone_num() {
+		return phone_num;
 	}
-	public void setJoindate(String joindate) {
-		this.joindate = joindate;
+	public void setPhone_num(String phone_num) {
+		this.phone_num = phone_num;
 	}
-	// source > G toString()
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+	public Date getRegidate() {
+		return regidate;
+	}
+	public void setRegidate(Date regidate) {
+		this.regidate = regidate;
+	}
+	
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", joindate=" + joindate + "]";
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", emali=" + email + ", phone_num=" + phone_num + ", uname="
+				+ uname + ", birth=" + birth + ", regidate=" + regidate + "]";
 	}
+
+	
 }

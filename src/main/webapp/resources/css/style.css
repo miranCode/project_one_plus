@@ -68,6 +68,8 @@ button{border:0;}
 .txt-primary{color: rgb(73, 73, 238)}
 .txt-green{color: #0ac73e;}
 .txt-red{color: red;}
+.txt-yellow{color: yellow;}
+.txt-copy{font-size: 14px; color:#999}
 
 
 /*...출력*/
