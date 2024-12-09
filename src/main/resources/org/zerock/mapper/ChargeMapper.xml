@@ -5,7 +5,12 @@
   
 <mapper namespace="org.zerock.mapper.ChargeMapper">
 	<select id="getList" parameterType="org.zerock.dto.ChargeDTO" resultType="org.zerock.dto.ChargeDTO">
-		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
+	SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num}
+    LIMIT #{offset}, #{limit};
+	</select>
+	<select id="getTotalCount" parameterType="org.zerock.dto.ChargeDTO" resultType="int">
+    SELECT COUNT(*) FROM charge 
+    WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
 	
 	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">

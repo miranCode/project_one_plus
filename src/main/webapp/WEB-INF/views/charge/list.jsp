@@ -58,18 +58,21 @@
                             </li>
                         </ul>
                         <div class="pagination">
-                            <ul class="flex ju-center al-center">
-                                <li><a href="">맨처음</a></li>
-                                <li><a href="">처음</a></li>
-                                <li class="on"><a href="">1</a></li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                                <li><a href="">4</a></li>
-                                <li><a href="">5</a></li>
-                                <li><a href="">뒤로</a></li>
-                                <li><a href="">맨뒤로</a></li>
-                            </ul>
-                        </div>
+				            <ul class="flex ju-center al-center">
+				                <li><a href="?page=1">맨처음</a></li>
+				                <li><a href="?page=${currentPage - 1 > 0 ? currentPage - 1 : 1}">처음</a></li>
+				
+				                <!-- 현재 페이지 표시 -->
+				                <c:forEach begin="1" end="${totalPages}" var="i">
+				                    <li class="${i == currentPage ? 'on' : ''}">
+				                        <a href="?page=${i}">${i}</a>
+				                    </li>
+				                </c:forEach>
+				
+				                <li><a href="?page=${currentPage + 1 <= totalPages ? currentPage + 1 : totalPages}">뒤로</a></li>
+				                <li><a href="?page=${totalPages}">맨뒤로</a></li>
+				            </ul>
+			        	</div>
                     </div>
                 </div>
                 <!-- #content 영역 끝 -->
