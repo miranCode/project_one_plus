@@ -8,28 +8,24 @@
                     <a class="go_top">TOP</a>
                 </div>
                 <div class="footer-top flex ju-between al-center">
-                    <div class="right">
-                        <ul class="flex">
-                            <li class="on">
-                                <a href="">개인정보처리방침</a>
-                            </li>
-                            <li>
-                                <a href="">이용약관</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="flex">
+                        <li class="on">
+                            <a href="javascript:alert('준비중입니다.')">개인정보처리방침</a>
+                        </li>
+                        <li>
+                            <a href="javascript:alert('준비중입니다.')">이용약관</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="footer-info flex ju-between al-start">
-                    <div class="right">
+                <div class="footer-info">
+                    <div>
+                        <p>상담문의</p>
                         <div>
-                            <p>상담문의</p>
-                            <div>
-                                <a href="tel:">TEL : 010.0000.0000</a>
-                            </div>
+                            <a href="tel:">TEL : 010.0000.0000</a>
                         </div>
                     </div>
+                    <p class="copy">© 2024 에러김열단 All Rights Reserved.</p>
                 </div>
-                <p class=""></p>
             </footer>
             <!-- footer 영역 끝 -->
         </div>

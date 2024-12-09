@@ -39,7 +39,11 @@
                         scrollTop: $(document).height() - $(window).height()
                     }, 500);
                 });
-
+                // gnb
+                $("#more-gnb").click(function(){
+                    $(this).toggleClass("on");
+                    $("#gnb").toggleClass("open");
+                });
                 // 슬릭 슬라이더 
                 $('.main-visual').slick({
                     dots: true,
@@ -60,21 +64,15 @@
                 <div class="header-top">
                     <h1 class="logo">
                         <a href="/">
-                           에러검열단
+                            에러검열단
+                            <span>냉/난방 전력량 및 요금 조회</span>
                         </a>
                     </h1>
-                    <div class="utill">
-                        <ul>
-                            <li><a href="/">HOME</a></li>
-                            <c:if test="${empty name}">
-	                            <li><a href="/member/login">LOGIN</a></li>
-	                            <li><a href="/member/join">JOIN</a></li>
-                            </c:if>
-                            <c:if test="${not empty name}">
-                            	<li><a href="/member/logout">LOGOUT</a></li>
-                            </c:if>
-                        </ul>
-                    </div>
+                    <button id="more-gnb">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
                 <!-- 로고 및 유틸 영역 끝 -->
                 <!-- #gng 영역 시작 -->
