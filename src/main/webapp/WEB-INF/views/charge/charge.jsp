@@ -16,47 +16,27 @@
 					<div>
 						<h3><fmt:formatDate pattern="yy.MM" value="${Detail.use_start}"/>월 요금</h3>
 						<p>${Detail.already_paid}</p>
-						<p>${Detail.charge} 원</p>
+						<p class="txt sub bolder">${Detail.charge} 원</p>
 					</div>
 				</div>
 				<div id="block_B">
 					<h5>최근 사용요금</h5>
 					<div class="">
 						<div class="">
-							<div>
-								<p>10월 사용량 : </p>
-								<p></p>
-							</div>
-							<div>
-								<p>10월 요금 : </p>
-								<p></p>
-							</div>
-						</div>
-						<div class="">
-							<div>
-								<p>11월 사용량 : </p>
-								<p></p>
-							</div>
-									
-							<div>
-								<p>11월 요금 : </p>
-								<p></p>
-							</div>
-						</div>
-						<div class="">
-							<div>
-								<p>12월 사용량 : </p>
-								<p></p>
-							</div>
-							<div>
-								<p>12월 요금 : </p>
-								<p></p>
-							</div>
-						</div>
-						<div>
-							<p>3개월 평균요금 :  <!-- ${charge.charge / 3} --></p>
-						</div>
-					</div>
+                    <c:forEach var="charge" items="${chargeList}">
+                        <div class="">
+                            <div>
+                                <p><fmt:formatDate pattern="yy.MM" value="${charge.use_start}"/>월 사용량 : ${charge.use_quentity}</p>
+                            </div>
+                            <div>
+                                <p><fmt:formatDate pattern="yy.MM" value="${charge.use_start}"/>월 요금 : ${charge.charge} 원</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <div>
+                        <p>3개월 평균요금 : ${avgCharge} 원</p>
+                    </div>
+                </div>
 				</div>
 			</div>
 			<div id="block_C">
