@@ -15,4 +15,6 @@ public interface BoardService {
 	public boolean remove(Long idx);
 	
 	public List<BoardVO> getList();
+	
+	public boolean verifyPassword(String idx, String password);
 }

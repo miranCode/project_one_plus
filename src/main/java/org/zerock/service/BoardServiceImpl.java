@@ -44,4 +44,8 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println("getList.................");
 		return mapper.getList();
 	}
+	@Override
+    public boolean verifyPassword(String idx, String password) {
+        return mapper.verifyPassword(idx, password) > 0;
+    }
 }
