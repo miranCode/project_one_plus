@@ -12,7 +12,7 @@
                 <div id="content">        
                     <div class="list_board">
                         <div class="list-top flex ju-between al-end">
-                            <p class="total">Total <span>10</span> / 1 page</p>
+                            <p class="total">Total <span>${pageMaker.total}</span> / ${pageMaker.cri.pageNum} page</p>
                             <div class="search-input">
                                 <input type="" id="search" name="" value=""/>
                                 <button>
@@ -37,7 +37,7 @@
                                             <ul class="row">
                                                 <li><c:out value="${board.idx }"/></li>
                                                 <li class="ell">
-                                                <a href='/qna/view?idx=<c:out value="${board.idx }"/>'>
+                                                <a class='move' href='<c:out value="${board.idx }"/>'>
                                                 <c:out value="${ board.title }" /></a>
                                                 </li>
                                                 <li><c:out value="${ board.name }"/></li>
@@ -52,17 +52,22 @@
                         <div>
                         	<button id="regBtn" type="button">글쓰기</button>
                         </div>
+                        <form id="actionForm" action="/qna/List" method="get">
+                        	<input type="hidden" name="pageNum" value='${pageMaker.cri.pageNum}'>
+                       		<input type="hidden" name="amount" value='${pageMaker.cri.amount}'>
+                        </form>
                         <div class="pagination">
                             <ul class="flex ju-center al-center">
-                                <li><a href="">맨처음</a></li>
-                                <li><a href="">처음</a></li>
-                                <li class="on"><a href="">1</a></li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                                <li><a href="">4</a></li>
-                                <li><a href="">5</a></li>
-                                <li><a href="">뒤로</a></li>
-                                <li><a href="">맨뒤로</a></li>
+                             	<c:if test="${ pageMaker.prev }">
+                             		<li class="paginate_button previous">
+                             		<a href="${ pageMaker.startPage -1 }">이전</a></li>
+                             	</c:if>
+                             	<c:forEach var="num" begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }">
+                             		<li class = "paginate_button ${ pageMaker.cri.pageNum == num ? "active":"" }"><a href="${ num }">${ num }</a></li>
+                             	</c:forEach>
+                             	<c:if test="${ pageMaker.next }">
+                             		<li class="paginate_button next"><a href="${ pageMaker.endPage +1 }">다음</a></li>
+                             	</c:if>
                             </ul>
                         </div>
                     </div>
@@ -91,6 +96,26 @@ $(document).ready(function(){
 	$("#regBtn").on("click", function(){
 		self.location = "/qna/write";
 	})
+	
+	var actionForm = $("#actionForm");
+	
+	$(".paginate_button a").on("click",function(e){
+		
+		e.preventDefault();
+		
+		console.log('click');
+		
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+	
+	$(".move").on("click",function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='idx' value='"+$(this).attr("href")+"'>");
+		actionForm.attr("action","/qna/view");
+		actionForm.submit();
+	});
 });
 </script>
 <jsp:include page="../inc/footer.jsp" />

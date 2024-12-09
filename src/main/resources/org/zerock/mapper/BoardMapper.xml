@@ -41,6 +41,17 @@
      SELECT COUNT(*) 
      FROM board
      WHERE idx = #{idx} AND pass = #{pass}
-     </select>
+</select>
 
+<select id="getListWithPaging" resultType="org.zerock.dto.BoardVO">
+   <![CDATA[
+        SELECT idx, title, content, name, postdate, email, pass
+        FROM board
+        ORDER BY idx DESC
+        LIMIT #{amount} OFFSET #{offset}
+    ]]>
+</select>
+<select id="getTotalCount" resultType="int">
+	select count(*) from board where idx > 0
+</select>
 </mapper> 

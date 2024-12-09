@@ -10,8 +10,8 @@
             <p><c:out value="${ board.title }"/></p><!-- 제목 -->
             <ul class="flex">
                 <li><span>작성자</span> <c:out value="${board.name }"/></li>
-                <li><span>작성일</span> 00.00.00</li>
-                <li><span>조회수</span> 00</li>
+                <li><span>작성일</span> <c:out value="${board.postdate }"/></li>
+                <li><span>조회수</span> <c:out value="${board.visitcount }"/></li>
             </ul>
         </dt>
         <dd>
@@ -32,9 +32,15 @@
             </a>
         </div>
     </div>
+    <form id='operForm' action="/qna/modify" method="get">
+    	<input type='hidden' id='idx' name='idx' value='<c:out value="${ board.idx }"/>'>
+    	<input type='hidden' name='pageNum' value='<c:out value="${ cri.pageNum }"/>'>
+    	<input type='hidden' name='amount' value='<c:out value="${ cri.amount }"/>'>
+    </form>
     <div class="btn-area two">
         <button onclick="openModal('<c:out value="${ board.idx }"/>')" class="red-line">수정</button>
-        <a href="/qna/List" class="line">목록</a>
+        <button data-oper='list' onclick="location.href='/qna/List'" class="line">목록</button>
+        <!-- <a href="/qna/List" class="line">목록</a> -->
     </div>
     <div id="passwordModal" style="display: none;">
     <div class="modal-content">
@@ -88,5 +94,17 @@
             console.error('Error:', error);
         });
     }
+    
+    $(document).ready(function(){
+    	var operForm = $("#operForm");
+    	
+    	$("button[data-oper='list']").on("click", function(e){
+    		
+    		operForm.find("#idx").remove();
+    		operForm.attr("action","/qna/List");
+    		operForm.submit();
+    		
+    	})
+    })
 </script>
 <jsp:include page="../inc/footer.jsp" />
