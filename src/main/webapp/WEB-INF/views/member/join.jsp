@@ -114,5 +114,8 @@
                         </form>
                     </div>
                 </div>
+                <script>
+               
+                </script>
                 <!-- #content 영역 끝 -->
 <jsp:include page="../inc/footer.jsp" />
