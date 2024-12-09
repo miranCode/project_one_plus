@@ -25,4 +25,6 @@ public interface BoardMapper {
 	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	public int getTotalCount(Criteria cri);
+	
+	public void visitCount(Long idx);
 }
