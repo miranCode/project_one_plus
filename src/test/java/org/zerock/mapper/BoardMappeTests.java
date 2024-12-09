@@ -1,11 +1,14 @@
 package org.zerock.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.dto.BoardVO;
+import org.zerock.dto.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -13,11 +16,11 @@ public class BoardMappeTests {
 	@Autowired
 	private BoardMapper mapper;
 	
-	@Test
-	public void testGetList() {
-		mapper.getList().forEach(board -> System.out.println(board));
-	}
-//	
+//	@Test
+//	public void testGetList() {
+//		mapper.getList().forEach(board -> System.out.println(board));
+//	}
+////	
 //	@Test
 //	public void testInsert() {
 //		
@@ -59,19 +62,30 @@ public class BoardMappeTests {
 //		System.out.println("DELETE COUNT: " + mapper.delete(3L));
 //	}
 	
+//	@Test
+//	public void testUpdate() {
+//		
+//		BoardVO board = new BoardVO();
+//		
+//		board.setIdx(2L);
+//		board.setPass("1234");
+//		board.setTitle("수정된 제목");
+//		board.setContent("수정된 내용");
+//		board.setOfile("기존의 파일");
+//		board.setSfile("새로운 파일");
+//		
+//		int count = mapper.update(board);
+//		System.out.println("UPDATE COUNT : " + count);
+//	}
+	
 	@Test
-	public void testUpdate() {
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(3);
+		cri.setAmount(10);
 		
-		BoardVO board = new BoardVO();
+		List<BoardVO> list = mapper.getListWithPaging(cri);
 		
-		board.setIdx(2L);
-		board.setPass("1234");
-		board.setTitle("수정된 제목");
-		board.setContent("수정된 내용");
-		board.setOfile("기존의 파일");
-		board.setSfile("새로운 파일");
-		
-		int count = mapper.update(board);
-		System.out.println("UPDATE COUNT : " + count);
+		list.forEach(board -> System.out.println(board.getIdx()));
 	}
 }

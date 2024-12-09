@@ -5,6 +5,8 @@
 <jsp:include page="../inc/header.jsp" />
 <form role="form" action="/qna/modify" method="post">
 	<input type="hidden" name="idx" value="${ board.idx }">
+	<input type='hidden' name='pageNum' value='<c:out value="${ cri.pageNum }"/>'>
+    <input type='hidden' name='amount' value='<c:out value="${ cri.amount }"/>'>
 	<div>
 		<label>제목</label>
 		<input type="text" name="title" id="title" value='<c:out value="${ board.title }"/>'>
@@ -27,6 +29,7 @@ $(document).ready(function(){
 	var formObj = $("form");
 	
 	$('button').on("click", function(e){
+		
 		e.preventDefault();
 		
 		var operation = $(this).data("oper");
@@ -34,8 +37,13 @@ $(document).ready(function(){
 		if(operation === 'remove'){
 			formObj.attr("action","/qna/remove");
 		}else if(operation === 'list'){
-			self.location = "/qna/List";
-			return;
+			formObj.attr("action","/qna/List").attr("method","get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			
+			formObj.empty();
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
 		}
 		formObj.submit();
 	});

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.dto.BoardVO;
+import org.zerock.dto.Criteria;
 import org.zerock.mapper.BoardMapper;
 
 
@@ -40,12 +41,19 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(Criteria cri) {
 		System.out.println("getList.................");
-		return mapper.getList();
+		return mapper.getListWithPaging(cri);
 	}
+	
 	@Override
     public boolean verifyPassword(String idx, String password) {
         return mapper.verifyPassword(idx, password) > 0;
     }
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
+	
 }

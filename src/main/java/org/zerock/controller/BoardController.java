@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.dto.BoardVO;
+import org.zerock.dto.Criteria;
+import org.zerock.dto.PageDTO;
 import org.zerock.service.BoardService;
+
 
 @Controller
 @RequestMapping("/qna/*")
@@ -26,9 +30,11 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/List")
-	public void list(Model model) {
-		System.out.println("list");
-		model.addAttribute("list", service.getList());
+	public void list(Criteria cri, Model model) {
+		int total = service.getTotal(cri);
+		
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/write")
@@ -46,25 +52,33 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/view","/modify"})
-	public void view(@RequestParam("idx") Long idx, Model model) {
+	public void view(@RequestParam("idx") Long idx,@ModelAttribute("cri") Criteria cri, Model model) {
 		model.addAttribute("board", service.get(idx));
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr) {
+	public String modify(BoardVO board,@ModelAttribute("cri") Criteria cri , RedirectAttributes rttr) {
 		
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result","success");
 		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
 		return "redirect:/qna/List";
 	}
 	
 	@PostMapping("/remove")
-	public String remove(@RequestParam("idx") Long idx, RedirectAttributes rttr) {
+	public String remove(@RequestParam("idx") Long idx,@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		
 		if(service.remove(idx)) {
 			rttr.addFlashAttribute("result","success");
 		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
 		return "redirect:/qna/List";
 	}
 	
