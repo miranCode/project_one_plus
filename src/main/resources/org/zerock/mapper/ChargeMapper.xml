@@ -8,6 +8,7 @@
 <!--SELECT * FROM charge WHERE name=#{name} AND email=#{email} AND phone_num=#{phone_num};-->
 	SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
+	
 	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">
 	SELECT * FROM charge WHERE uname = #{name} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
