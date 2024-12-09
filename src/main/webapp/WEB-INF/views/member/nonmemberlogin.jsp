@@ -13,17 +13,17 @@
                         <form action="/member/nonmemberlogin" method="post">
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userName" name="name" placeholder="이름"  />
+                                    <input type="text" id="uname" name="uname" placeholder="이름"  />
                                 </div>
                             </div>
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userPhone" name="phone" placeholder="휴대폰 번호(- 없이 입력)" />
+                                    <input type="text" id="phone_num" name="phone_num" placeholder="휴대폰 번호(- 없이 입력)" />
                                 </div>
                             </div>
                             <div>
                                 <div class="input-box">
-                                    <input type="text" id="userEmail" name="email" placeholder="이메일" />
+                                    <input type="text" id="email" name="email" placeholder="이메일" />
                                 </div>
                             </div>
                             <div class="btn-box">

@@ -38,7 +38,9 @@ public class MemberController {
 		if(login != null) {
 			System.out.println("241206 "+login);
 			session.setAttribute("id", login.getId());
-			session.setAttribute("name", login.getUname());
+			session.setAttribute("uname", login.getUname());
+			session.setAttribute("email", login.getEmail());
+			session.setAttribute("phone_num", login.getPhone_num());
 			
 			return "redirect:/index";
 			// return "index";
@@ -73,14 +75,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("nonmemberlogin")
-	public String nonmemberPro(HttpSession session, @RequestParam String name, @RequestParam String phone, @RequestParam String email) {
-	    session.setAttribute("name", name);
+	public String nonmemberPro(HttpSession session, @RequestParam String uname, @RequestParam String phone_num, @RequestParam String email) {
+	    session.setAttribute("uname", uname);
 	    session.setAttribute("email", email);
-	    session.setAttribute("phone", phone);
+	    session.setAttribute("phone_num", phone_num);
 	    
-	    System.out.println("name: " + name);
+	    System.out.println("uname: " + uname);
 	    System.out.println("email: " + email);
-	    System.out.println("phone: " + phone);
+	    System.out.println("phone_num: " + phone_num);
 	    
 	    return "redirect:/index";  // 처리 후 인덱스로 리다이렉트
 	}

@@ -23,29 +23,35 @@ public class ChargeController {
 	@Autowired
 	private ChargeMapper Mapper;
 
-	  @GetMapping("list")
-	  public String list(HttpSession session, Model model) {
-	        // 세션에서 값 추출
-	        String uname = (String) session.getAttribute("name");
-	        System.out.println((String) session.getAttribute("name"));
-	        System.out.println(uname);
-	        String email = (String) session.getAttribute("email");
-	        String phone_num = (String) session.getAttribute("phone");
-
-	        // 세션 값이 null일 경우에 대비하여 예외 처리
-	        if (uname == null || email == null || phone_num == null) {
-	            // 세션에 값이 없으면 로그인 페이지로 리다이렉트하거나 에러 처리
-	            return "redirect:/login";  // 예시로 로그인 페이지로 리다이렉트
-	        }
-
-	        // Mapper에서 데이터 가져오기
-	        List<ChargeDTO> chargeList = Mapper.getList(uname, email, phone_num);
-	        
-	        // 결과를 모델에 추가하여 JSP로 전달
-	        model.addAttribute("list", chargeList);
-	        
-	        return "charge/list";
+	@GetMapping("list")
+	public String list(HttpSession session, Model model) {
+	    // 세션에서 값 추출
+	    String uname = (String) session.getAttribute("uname");
+	    String email = (String) session.getAttribute("email");
+	    String phone_num = (String) session.getAttribute("phone_num");
+	    System.out.println(uname + email + phone_num);
+	    // 세션 값이 null일 경우 예외 처리
+	    if (uname == null || email == null || phone_num == null) {
+	        // 세션이 없으면 로그인 페이지로 리다이렉트
+	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
+	        return "redirect:/member/login"; // 예시로 로그인 페이지로 리다이렉트
 	    }
+
+	    // ChargeDTO에 세션 값 설정
+	    ChargeDTO cdto = new ChargeDTO();
+	    cdto.setUname((String) session.getAttribute("uname"));
+	    cdto.setEmail((String) session.getAttribute("email"));
+	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
+	    System.out.println(cdto);
+	    // Mapper에서 데이터 가져오기
+	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
+	    
+	    // 결과를 모델에 추가하여 JSP로 전달
+	    model.addAttribute("list", chargeList);
+	    
+	    return "charge/list";
+	}
+
 	
 //	@GetMapping("list")
 //	public String list(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("phone_num") String phone_num, Model model) {

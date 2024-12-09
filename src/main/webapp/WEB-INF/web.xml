@@ -13,7 +13,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	<session-config>
+	    <session-timeout>30</session-timeout> <!-- 세션 타임아웃 30분 -->
+	</session-config>
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>

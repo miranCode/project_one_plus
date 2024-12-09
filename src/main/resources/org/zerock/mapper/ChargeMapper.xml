@@ -4,17 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="org.zerock.mapper.ChargeMapper">
-	<select id="getList" resultType="org.zerock.dto.ChargeDTO">
-<!--SELECT * FROM charge WHERE name=#{name} AND email=#{email} AND phone_num=#{phone_num};-->
-	SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
+	<select id="getList" parameterType="org.zerock.dto.ChargeDTO" resultType="org.zerock.dto.ChargeDTO">
+		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
 	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">
-	SELECT * FROM charge WHERE uname = #{name} AND email = #{email} AND phone_num = #{phone_num};
+		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
 	<select id="getPast" resultType="org.zerock.dto.ChargeDTO">
-	SELECT * FROM charge
-    WHERE uname = #{name} AND email = #{email} AND phone_num = #{phone_num}
-	ORDER BY use_start DESC
-	LIMIT 3;
+		SELECT * FROM charge
+	    WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num}
+		ORDER BY use_start DESC
+		LIMIT 3;
 	</select>
 </mapper>

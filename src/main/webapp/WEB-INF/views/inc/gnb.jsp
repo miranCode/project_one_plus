@@ -6,19 +6,19 @@
                     <div>
                         <div class="utill">
                             <ul>
-                                <c:if test="${empty name}">
+                                <c:if test="${empty uname}">
                                     <li><a href="/member/login">LOGIN</a></li>
-                                    <li><a href="/member/join">비회원조회</a></li>
+                                    <li><a href="/member/nonmemberlogin">비회원조회</a></li>
                                     <li><a href="/member/join">JOIN</a></li>
                                 </c:if>
-                                <c:if test="${not empty name}">
+                                <c:if test="${not empty uname}">
                                     <li><a href="/member/logout">LOGOUT</a></li>
                                 </c:if>
                             </ul>
                         </div>
                         <ul>
                             <li>
-                                <a href="/charge/charge">사용량 및 요금 조회</a>
+                                <a href="/charge/list">사용량 및 요금 조회</a>
                             </li>
                             <li>
                                 <a href="/qna/list">QNA</a>

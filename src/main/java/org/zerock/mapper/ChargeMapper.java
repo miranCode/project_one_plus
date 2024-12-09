@@ -5,7 +5,7 @@ import java.util.List;
 import org.zerock.dto.ChargeDTO;
 
 public interface ChargeMapper {
-	public List<ChargeDTO> getList(String uname, String email, String phone_num);
+	 List<ChargeDTO> getList(ChargeDTO cdto);
 	
 	public List<ChargeDTO> getDetail(String uname, String email, String phone_num);
 	
