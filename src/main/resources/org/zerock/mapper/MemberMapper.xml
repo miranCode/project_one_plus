@@ -14,12 +14,12 @@
     	<!--  -->
 	</select>
 	
-	<select id="join" resultType="org.zerock.dto.MemberDTO">
-		insert into member values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, now());
-		<!-- 
-		insert into member values(
-			"apple8486","apple8486!","apple8486@naver.com","01048728486","김미란","1991-08-12", now()
-		);
-		 -->
+	<insert id="join" parameterType="org.zerock.dto.MemberDTO">
+		insert into member (id, pw, email, phone_num, uname, birth, ag_privercy, ag_sevise, regidate) 
+		values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, #{ag_privercy}, #{ag_sevise}, now());
+	</insert>
+	
+	<select id="findById" resultType="org.zerock.dto.MemberDTO">
+		select count(*) from member WHERE id = #{id}
 	</select>
 </mapper>

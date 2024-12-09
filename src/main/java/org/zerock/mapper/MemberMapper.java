@@ -9,4 +9,5 @@ public interface MemberMapper {
 	public MemberDTO login(MemberDTO mdto);
 	
 	public int join(MemberDTO mdto);
+
 }

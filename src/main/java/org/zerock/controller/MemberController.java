@@ -4,16 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.dto.ChargeDTO;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.ChargeMapper;
 import org.zerock.mapper.MemberMapper;
-
 
 
 @Controller
@@ -21,7 +19,7 @@ import org.zerock.mapper.MemberMapper;
 public class MemberController {
 	
 	@Autowired
-	MemberMapper meper;
+	MemberMapper mapper;
 	
 	@Autowired
 	ChargeMapper cmapper;
@@ -36,7 +34,7 @@ public class MemberController {
 	public String loginPro(MemberDTO mdto, HttpSession session) {
 
 		System.out.println(mdto);
-		MemberDTO login = meper.login(mdto);
+		MemberDTO login = mapper.login(mdto);
 		if(login != null) {
 			System.out.println("241206 "+login);
 			session.setAttribute("id", login.getId());
@@ -55,18 +53,18 @@ public class MemberController {
 		return "member/join";
 	}
 	
-	
-	@PostMapping("join")
-	public String joinPro(MemberDTO mdto){
-		
-		return "member/login";
+	@PostMapping(value="join")
+	public String joinPro(MemberDTO mdto) {      
+		System.out.println("회원가입 요청이 들어옴: " + mdto); 
+		int result = 0;
+		if(mdto != null) {
+			result = mapper.join(mdto);
+			return "redirect:/member/login";
+		}
+	    return "member/join"; // 실패 시 가입 페이지로 리다이렉트
 	}
 	
-	// 아이디 중복확인 
-	@PostMapping("idcheck")
-	public void idcheck() {
-		
-	}
+
 	
 	// 비회원 인증 
 	@GetMapping(value = "nonmemberlogin")
