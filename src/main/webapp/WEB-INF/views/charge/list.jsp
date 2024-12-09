@@ -8,7 +8,7 @@
 %>
 <jsp:include page="../inc/header.jsp" />
 				<!-- #content 영역 시작 -->
-                <p class="page-tit">Data</p>
+                <p class="page-tit">${name} Data</p>
                 <div id="content">        
                     <div class="list_board">
                         <div class="list-top flex ju-between al-end">
@@ -36,19 +36,19 @@
                             <li class="list-body">
                                 <ul>
                                     <!-- 반복 -->
-                                    <c:forEach items="${list}" var="charge">
+                                    <c:forEach items="${list}" var="list">
 					                   	<li>
-					                   		<a href="/charge/charge?code=${charge.code}">
+					                   		<a href="/charge/list?name=${list.name}&email=${list.email}&phone_num=${list.phone_num}">
 		                                        <ul class="row">
-			                                        <li><c:out value="${charge.code}"/></li>
-			                                        <li><c:out value="${charge.uname}"/></li>
-							                   		<li><c:out value="${charge.use_quentity}"/></li>
-							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_start}"/>
-							                   		 ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${charge.use_end}"/></li>
-							                   		<li><c:out value="${charge.already_paid}"/></li>
-							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.paid_day}"/></li>
-							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${charge.paid_limit}"/></li>
-							                   		<li><c:out value="${charge.charge}"/></li>
+			                                        <li><c:out value="${list.code}"/></li>
+			                                        <li><c:out value="${list.uname}"/></li>
+							                   		<li><c:out value="${list.use_quentity}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${list.use_start}"/>
+							                   		 ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${list.use_end}"/></li>
+							                   		<li><c:out value="${list.already_paid}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${list.paid_day}"/></li>
+							                   		<li><fmt:formatDate pattern="yyyy-MM-dd" value="${list.paid_limit}"/></li>
+							                   		<li><c:out value="${list.charge}"/></li>
 		                                        </ul>
 	                                        </a>
 	                                    </li>
