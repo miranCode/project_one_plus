@@ -34,16 +34,17 @@
                                 <ul>
                                 	<c:forEach items="${list}" var="board">
                                     	<li>
-                                            <ul class="row">
-                                                <li><c:out value="${board.idx }"/></li>
-                                                <li class="ell">
-                                                <a class='move' href='<c:out value="${board.idx }"/>'>
-                                                <c:out value="${ board.title }" /></a>
-                                                </li>
-                                                <li><c:out value="${ board.name }"/></li>
-                            					<li><fmt:formatDate pattern="yyyy-MM-dd" value="${ board.postdate }"/></li>
-                            					<li><c:out value="${ board.visitcount }"/></li>
-                                            </ul>
+                                    		<a class='move' href='<c:out value="${board.idx }"/>'>
+	                                            <ul class="row">
+	                                                <li><c:out value="${board.idx }"/></li>
+	                                                <li class="ell">
+	                                                <c:out value="${ board.title }" />
+	                                                </li>
+	                                                <li><c:out value="${ board.name }"/></li>
+	                            					<li><fmt:formatDate pattern="yyyy-MM-dd" value="${ board.postdate }"/></li>
+	                            					<li><c:out value="${board.visitcount }"/></li>
+	                                            </ul>
+                                            </a>
                                     	</li>
                                     </c:forEach>
                                 </ul>

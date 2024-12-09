@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <% 
     request.setAttribute("bodyClass", "view"); 
 %>
@@ -10,7 +11,7 @@
             <p><c:out value="${ board.title }"/></p><!-- 제목 -->
             <ul class="flex">
                 <li><span>작성자</span> <c:out value="${board.name }"/></li>
-                <li><span>작성일</span> <c:out value="${board.postdate }"/></li>
+                <li><span>작성일</span> <fmt:formatDate value="${board.postdate}" pattern="yyyy-MM-dd HH:mm" /></li>
                 <li><span>조회수</span> <c:out value="${board.visitcount }"/></li>
             </ul>
         </dt>
