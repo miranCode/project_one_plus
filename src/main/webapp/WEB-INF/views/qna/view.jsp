@@ -33,25 +33,60 @@
         </div>
     </div>
     <div class="btn-area two">
-        <button type="submit" class="red-line">Modipy</button>
-        <a href="/qna/List" class="line">List</a>
+        <button onclick="openModal('<c:out value="${ board.idx }"/>')" class="red-line">수정</button>
+        <a href="/qna/List" class="line">목록</a>
     </div>
-	<!-- 
-	<div>
-		<label>제목</label>
-		<input type="text" name="title" id="title" value='<c:out value="${ board.title }"/>' readonly="readonly">
-	</div>
-	<div>
-		<label>내용</label>
-		<textarea id="content" name="content" readonly="readonly"><c:out value="${board.content }"/></textarea>
-	</div>
-	<div>
-		<label>작성자</label>
-		<input type="text" name="name" id="name" value='<c:out value="${board.name }"/>' readonly="readonly">
-	</div>
-	<button type="submit">수정</button>
-	<button type="">삭제</button>
-	<button type="button" onclick="location.href='/qna/List';">목록</button>
-	 -->
-	<!-- // -->
+    <div id="passwordModal" style="display: none;">
+    <div class="modal-content">
+        <h3>비밀번호를 입력하세요</h3>
+        <input type="password" id="pass" placeholder="비밀번호 입력" />
+        <button onclick="submitPassword()">확인</button>
+        <button onclick="closeModal()">취소</button>
+    </div>
+</div>
+<script>
+    // 모달 열기
+    function openModal() {
+        document.getElementById('passwordModal').style.display = 'block';
+    }
+
+    // 모달 닫기
+    function closeModal() {
+        document.getElementById('passwordModal').style.display = 'none';
+    }
+
+    // 비밀번호 제출
+    function submitPassword() {
+        const password = document.getElementById('pass').value;
+
+        if (!password) {
+            alert('비밀번호를 입력하세요.');
+            return;
+        }
+
+        // 비밀번호를 서버로 전송
+        fetch('/qna/verifyPassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idx: '<c:out value="${ board.idx }"/>',
+                password: password,
+            }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                // 비밀번호가 맞으면 수정 페이지로 이동
+                location.href = `/qna/modify?idx=${board.idx}`;
+            } else {
+                alert('비밀번호가 틀렸습니다.');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
 <jsp:include page="../inc/footer.jsp" />

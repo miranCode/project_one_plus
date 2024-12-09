@@ -1,9 +1,8 @@
 package org.zerock.mapper;
 
-import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.zerock.dto.BoardVO;
 
 public interface BoardMapper {
@@ -19,4 +18,6 @@ public interface BoardMapper {
 	public int delete(Long idx);
 	
 	public int update(BoardVO board);
+
+	public int verifyPassword(@Param("idx") String idx,@Param("pass") String password);
 }
