@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.zerock.mapper.BoardMapper">
 
-<select id="getList" resultType="org.zerock.dto.BoardVO">
+<select id="getList" resultType="org.zerock.dto.BoardVO" useCache="false">
 <![CDATA[
 	select * from board where idx > 0 order by idx DESC
 ]]>
@@ -45,7 +45,7 @@
 
 <select id="getListWithPaging" resultType="org.zerock.dto.BoardVO">
    <![CDATA[
-        SELECT idx, title, content, name, postdate, email, pass
+        SELECT idx, title, content, name, postdate, email, pass, visitcount
         FROM board
         ORDER BY idx DESC
         LIMIT #{amount} OFFSET #{offset}
@@ -54,4 +54,12 @@
 <select id="getTotalCount" resultType="int">
 	select count(*) from board where idx > 0
 </select>
+
+<update id="visitCount">
+    <![CDATA[
+        UPDATE board
+        SET visitcount = visitcount + 1
+        WHERE idx = #{idx}
+    ]]>
+</update>
 </mapper> 

@@ -56,4 +56,10 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.getTotalCount(cri);
 	}
 	
+	@Override
+	public void visitCount(Long idx) {
+		
+		mapper.visitCount(idx);
+	}
+	
 }

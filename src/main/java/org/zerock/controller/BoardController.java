@@ -1,6 +1,7 @@
 package org.zerock.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -30,11 +31,15 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/List")
-	public void list(Criteria cri, Model model) {
+	public String list(Criteria cri, Model model) {
 		int total = service.getTotal(cri);
 		
-		model.addAttribute("list", service.getList(cri));
+		List<BoardVO> list = service.getList(cri);
+		
+		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		
+		return "/qna/List";
 	}
 	
 	@GetMapping("/write")
@@ -53,6 +58,7 @@ public class BoardController {
 	
 	@GetMapping({"/view","/modify"})
 	public void view(@RequestParam("idx") Long idx,@ModelAttribute("cri") Criteria cri, Model model) {
+		service.visitCount(idx);
 		model.addAttribute("board", service.get(idx));
 	}
 	
