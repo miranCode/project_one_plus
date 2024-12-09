@@ -18,13 +18,10 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="javascript:alert('준비중입니다.')">골프 용품</a>
+                                <a href="/charge/charge">사용량 및 요금 조회</a>
                             </li>
                             <li>
-                                <a href="javascript:alert('준비중입니다.')">Company</a>
-                            </li>
-                            <li>
-                                <a href="./list.html">FAQ</a>
+                                <a href="/qna/list">QNA</a>
                             </li>
                         </ul>
                     </div>

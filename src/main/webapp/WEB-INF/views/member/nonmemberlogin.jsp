@@ -31,7 +31,7 @@
                             </div>
                  
                             <div class="go_home flex ju-center">
-                                <a href="./main.html">Home으로 돌아가기</a>
+                                <a href="/">Home으로 돌아가기</a>
                             </div>
                         </form>
                     </div>  

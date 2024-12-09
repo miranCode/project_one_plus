@@ -5,6 +5,7 @@
     request.setAttribute("bodyClass", "member login"); 
 %>
 <jsp:include page="../inc/header.jsp" />
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
   integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
@@ -23,7 +24,10 @@
                             <div>
                                 <label for="pw">비밀번호</label>
                                 <div class="input-box">
-                                    <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력해 주세요." />
+                                    <button class="passview" type="button">
+                                        <i class="xi-eye-off-o"></i>
+                                    </button>
+                                    <input type="password" id="pw" name="pw" value="" placeholder="비밀번호를 입력해주세요." title="비밀번호" autoComplete = "off" />
                                 </div>
                             </div>
                             <div class="btn-box">
