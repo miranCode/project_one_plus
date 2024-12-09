@@ -16,7 +16,7 @@
 					<div>
 						<h3><fmt:formatDate pattern="yy.MM" value="${Detail.use_start}"/>월 요금</h3>
 						<p>${Detail.already_paid}</p>
-						<p>${Detail.charge}</p>
+						<p>${Detail.charge} 원</p>
 					</div>
 				</div>
 				<div id="block_B">
@@ -24,38 +24,37 @@
 					<div class="">
 						<div class="">
 							<div>
-								<p>10월 사용량</p>
+								<p>10월 사용량 : </p>
 								<p></p>
 							</div>
 							<div>
-								<p>10월 요금</p>
+								<p>10월 요금 : </p>
 								<p></p>
 							</div>
 						</div>
 						<div class="">
 							<div>
-								<p>11월 사용량</p>
+								<p>11월 사용량 : </p>
 								<p></p>
 							</div>
 									
 							<div>
-								<p>11월 요금</p>
+								<p>11월 요금 : </p>
 								<p></p>
 							</div>
 						</div>
 						<div class="">
 							<div>
-								<p>12월 사용량</p>
+								<p>12월 사용량 : </p>
 								<p></p>
 							</div>
 							<div>
-								<p>12월 요금</p>
+								<p>12월 요금 : </p>
 								<p></p>
 							</div>
 						</div>
 						<div>
-							<p>3개월 평균요금: <!-- ${charge.charge / 3} --></p>
-							<div><!-- 그래프 --></div>
+							<p>3개월 평균요금 :  <!-- ${charge.charge / 3} --></p>
 						</div>
 					</div>
 				</div>
