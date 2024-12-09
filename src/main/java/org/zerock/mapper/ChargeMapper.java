@@ -9,7 +9,7 @@ public interface ChargeMapper {
 	 
 	public int getTotalCount(ChargeDTO cdto);
 
-	public List<ChargeDTO> getDetail(String uname, String email, String phone_num);
+	public List<ChargeDTO> getDetail(ChargeDTO cdto);
 	
 	public List<ChargeDTO> getPast(String uname);
 }

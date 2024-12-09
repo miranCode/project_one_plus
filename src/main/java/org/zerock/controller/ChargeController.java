@@ -47,7 +47,6 @@ public class ChargeController {
 	    cdto.setOffset(offset);
 
 	    System.out.println(cdto);
-	    
 	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
 	    
 	    int totalCount = Mapper.getTotalCount(cdto);
@@ -62,9 +61,21 @@ public class ChargeController {
 	}
 
 	@GetMapping(value = "charge")
-	public String Detail(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("phone_num") String phone_num, Model model) {
-		model.addAttribute("Detail", Mapper.getDetail(name, email, phone_num));
-
+	public String Detail(HttpSession session, Model model) {
+		String uname = (String) session.getAttribute("uname");
+	    String email = (String) session.getAttribute("email");
+	    String phone_num = (String) session.getAttribute("phone_num");
+	    if (uname == null || email == null || phone_num == null) {
+	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
+	        return "redirect:/member/login";
+	    }
+	    ChargeDTO cdto = new ChargeDTO();
+	    cdto.setUname((String) session.getAttribute("uname"));
+	    cdto.setEmail((String) session.getAttribute("email"));
+	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
+	    
+	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
+	    model.addAttribute("list", chargeList);
 	    return "charge/charge";
 	}
 }
