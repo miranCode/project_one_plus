@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-    request.setAttribute("bodyClass", "main"); 
+    request.setAttribute("bodyClass", "main");
 %>
 <jsp:include page="./inc/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,7 +14,7 @@
 			<p style="filter:${empty uname ? 'blur(5px)' : 'none'};">
 				안녕하세요! ${uname} 고객님
 				<br />
-				<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/> 청구 요금 안내입니다.
+				<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/>월 청구 요금 안내입니다.
 			</p>
 			<div style="filter:${empty uname ? 'blur(5px)' : 'none'};">
 				<dl>
@@ -30,11 +30,11 @@
 				</dl>
 				<dl>
 					<dt>청구일 / 청구 비용</dt>
-					<dd><fmt:formatDate pattern="MM-dd" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원</dd>
+					<dd><fmt:formatDate pattern="MM 월 dd 일" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원</dd>
 				</dl>
 				<dl>
 					<dt>납부기한 / 납부여부</dt>
-					<dd><fmt:formatDate pattern="yy-MM-dd" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}</dd>
+					<dd><fmt:formatDate pattern="yy 년 MM 월 dd 일" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}</dd>
 				</dl>
 				<div class="btn-box">
 					<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
@@ -51,7 +51,7 @@
 		</div>
 		<!-- // box  -->
 		<div class="section02">
-			<p>전력 수급 현황 <span>(00.00.00 요일)</span></p>
+			<p>전력 수급 현황 <span><fmt:formatDate value="<%= new java.util.Date() %>" pattern="yyyy-MM-dd EEEE" /></span></p>
 			<ul class="flex">
 				<li>
 					<i class="xi-lightning txt-yellow"></i>

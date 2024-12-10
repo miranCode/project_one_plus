@@ -25,7 +25,7 @@ public class ChargeDTO {
 	
 //	Method
 	
-    public int getCode() {
+	public int getCode() {
 		return code;
 	}
 	public void setCode(int code) {
@@ -145,6 +145,7 @@ public class ChargeDTO {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
+	
 	@Override
 	public String toString() {
 		return "ChargeDTO [code=" + code + ", uname=" + uname + ", email=" + email + ", phone_num=" + phone_num
