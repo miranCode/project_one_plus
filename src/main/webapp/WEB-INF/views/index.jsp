@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    pageEncoding="UTF-8"%>>
 <% 
     request.setAttribute("bodyClass", "main"); 
 %>
@@ -38,7 +37,7 @@
 					<dd><fmt:formatDate pattern="yy-MM-dd" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}</dd>
 				</dl>
 				<div class="btn-box">
-					<a href="localhost8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
+					<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
 				</div>
 			</div>
 			<c:if test="${ empty uname }">
