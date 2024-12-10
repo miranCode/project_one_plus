@@ -76,7 +76,7 @@ $(document).ready(function(){
                                 <p><span>SNS 간편 로그인</span></p>
                                 <ul class="">
                                     <li>
-                                        <button type="button" id="kakao-login-btn" onclick="loginWithKakao()" class="bg-kakao">
+                                        <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=558503d359c98d21606dc6d90c6795aa&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="bg-kakao">
                                             <div class="flex ju-between al-center">
                                                 <div class="icon kakao">
                                                     <i class="xi-kakaotalk"></i>
@@ -84,7 +84,7 @@ $(document).ready(function(){
                                                 <p>kakao Login</p>
                                                 <i class="xi-angle-right"></i>
                                             </div>
-                                        </button>
+                                        </a>
                                     </li>
                                     <li>
                                         <a href="/naver/login" target="_blank" class="bg-naver">

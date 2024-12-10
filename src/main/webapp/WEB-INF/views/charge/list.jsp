@@ -38,7 +38,7 @@
                                     <!-- 반복 -->
                                     <c:forEach items="${list}" var="list">
 					                   	<li>
-					                   		<a href="/charge/list?uname=${list.uname}&email=${list.email}&phone_num=${list.phone_num}">
+					                   		<a href="/charge/charge?uname=${list.uname}&email=${list.email}&phone_num=${list.phone_num}">
 		                                        <ul class="row">
 			                                        <li><c:out value="${list.code}"/></li>
 			                                        <li><c:out value="${list.uname}"/></li>

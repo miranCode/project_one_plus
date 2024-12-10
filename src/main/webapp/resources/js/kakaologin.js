@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     // 서버에 access token 전송
     function sendTokenToServer(accessToken) {
-        fetch('http://localhost:8080/auth/kakao/callback', {
+        fetch('https://kauth.kakao.com/oauth/authorize', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
