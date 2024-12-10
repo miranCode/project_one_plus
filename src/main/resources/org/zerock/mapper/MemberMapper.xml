@@ -19,7 +19,11 @@
 		values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, #{ag_privercy}, #{ag_sevise}, now());
 	</insert>
 	
-	<select id="findById" resultType="org.zerock.dto.MemberDTO">
-		select count(*) from member WHERE id = #{id}
-	</select>
+	<select id="idCheck" resultType="int">
+        SELECT COUNT(*) FROM member WHERE id = #{id}
+    </select>
+    
+    <select id="selectId" resultType="boolean">
+        SELECT COUNT(*) FROM member WHERE id = #{id}
+    </select>
 </mapper>

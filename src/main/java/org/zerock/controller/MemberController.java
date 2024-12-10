@@ -3,12 +3,17 @@ package org.zerock.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.dto.ChargeDTO;
 import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.ChargeMapper;
 import org.zerock.mapper.MemberMapper;
@@ -66,8 +71,26 @@ public class MemberController {
 	    return "member/join"; // 실패 시 가입 페이지로 리다이렉트
 	}
 	
-
 	
+	//Id 중복 확인
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public ResponseEntity<Boolean> confirmId(String id) {
+		System.out.println(id);
+		boolean result = true;
+		if(id.trim().isEmpty()) {
+			result = false;
+		} else {
+			if (mapper.selectId(id)) {
+				result = false;
+			} else {
+				result = true;
+			}
+		}
+		System.out.println("중복" + result);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
 	// 비회원 인증 
 	@GetMapping(value = "nonmemberlogin")
 	public String nonmemberlogin() {
