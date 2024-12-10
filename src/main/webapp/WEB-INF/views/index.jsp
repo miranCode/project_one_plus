@@ -5,6 +5,8 @@
     request.setAttribute("bodyClass", "main"); 
 %>
 <jsp:include page="./inc/header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 	<!-- #content 영역 시작 -->
 	<div id="content">  
@@ -13,30 +15,30 @@
 			<p style="filter:${empty uname ? 'blur(5px)' : 'none'};">
 				안녕하세요! ${uname} 고객님
 				<br />
-				(로그인시, 최신 발행 달 출력) 청구 요금 안내입니다.
+				<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/> 청구 요금 안내입니다.
 			</p>
 			<div style="filter:${empty uname ? 'blur(5px)' : 'none'};">
 				<dl>
 					<dt>요금 청구 기준일</dt>
-					<dd>00.00.00 - 00.00.00</dd>
+					<dd> <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/></dd>
 				</dl>
 				<dl>
 					<dt>당월 사용 전력량</dt>
 					<dd class="bar-area">
 						<span class="stic" style="display:block; width:80%; height:15px; background:yellow; "></span>
-						<span class="stic-txt" style="left:80%;  ">50w</span>
+						<span class="stic-txt" style="left:80%;  ">${TMCharge.use_quentity}W</span>
 					</dd>
 				</dl>
 				<dl>
 					<dt>청구일 / 청구 비용</dt>
-					<dd>00.00.00 / 000.000 원</dd>
+					<dd><fmt:formatDate pattern="MM-dd" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원</dd>
 				</dl>
 				<dl>
 					<dt>납부기한 / 납부여부</dt>
-					<dd>00.00.00 / 미납</dd>
+					<dd><fmt:formatDate pattern="yy-MM-dd" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}</dd>
 				</dl>
 				<div class="btn-box">
-					<a href="" class="btn btn-bagic line">자세히 보기</a>
+					<a href="localhost8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
 				</div>
 			</div>
 			<c:if test="${ empty uname }">

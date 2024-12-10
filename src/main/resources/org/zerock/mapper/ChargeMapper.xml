@@ -23,7 +23,7 @@
 		LIMIT 3;
 	</select>
 	<select id="getThisMonthCharge" resultType="org.zerock.dto.ChargeDTO">
-	    SELECT * FROM charge WHERE uname = "dummy" AND email = "dummy01@gmail.com" AND phone_num = "010-0000-0000" AND 
+	    SELECT * FROM charge WHERE uname = ${uname} AND email = ${email} AND phone_num = ${phone_num} AND 
 	    YEAR(DATE(use_end)) = YEAR(DATE(CURRENT_DATE())) AND MONTH(DATE(use_end)) = MONTH(DATE(CURRENT_DATE())) LIMIT 1;
-</select>
+	</select>
 </mapper>
