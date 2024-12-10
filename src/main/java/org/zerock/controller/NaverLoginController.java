@@ -16,7 +16,7 @@ import org.zerock.service.NaverLoginService;
 
 @Controller
 public class NaverLoginController {
-	
+	//수정
 	@Autowired
     private NaverLoginService naverLoginService;
 
