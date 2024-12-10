@@ -19,16 +19,14 @@ public class ChargeDTO {
 	private java.sql.Timestamp paid_limit;	// 납부기한
 	private String how_to_pay;				// 납부방식
 	private int charge;						// 요금
+	private int offset;      				// OFFSET 값
+    private int limit;       				// LIMIT 값 (한 페이지에 몇 개의 데이터 보여줄지 설정)
+    private int totalCount;  				// 전체 데이터 개수 (조회용)
 	
 //	Method
-	public int getCode() {
+	
+    public int getCode() {
 		return code;
-	}
-	public int getCharge() {
-		return charge;
-	}
-	public void setCharge(int charge) {
-		this.charge = charge;
 	}
 	public void setCode(int code) {
 		this.code = code;
@@ -123,7 +121,30 @@ public class ChargeDTO {
 	public void setHow_to_pay(String how_to_pay) {
 		this.how_to_pay = how_to_pay;
 	}
-	
+	public int getCharge() {
+		return charge;
+	}
+	public void setCharge(int charge) {
+		this.charge = charge;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	@Override
 	public String toString() {
 		return "ChargeDTO [code=" + code + ", uname=" + uname + ", email=" + email + ", phone_num=" + phone_num
@@ -131,7 +152,6 @@ public class ChargeDTO {
 				+ supply_voltage + ", use_quentity=" + use_quentity + ", rdpower_factor=" + rdpower_factor
 				+ ", use_start=" + use_start + ", use_end=" + use_end + ", already_paid=" + already_paid + ", paid_day="
 				+ paid_day + ", dill_date=" + dill_date + ", paid_limit=" + paid_limit + ", how_to_pay=" + how_to_pay
-				+ ", charge=" + charge + "]";
+				+ ", charge=" + charge + ", offset=" + offset + ", limit=" + limit + ", totalCount=" + totalCount + "]";
 	}
-	
 }

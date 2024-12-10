@@ -5,8 +5,14 @@
   
 <mapper namespace="org.zerock.mapper.ChargeMapper">
 	<select id="getList" parameterType="org.zerock.dto.ChargeDTO" resultType="org.zerock.dto.ChargeDTO">
-		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
+	SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num}
+    LIMIT #{offset}, #{limit};
 	</select>
+	<select id="getTotalCount" parameterType="org.zerock.dto.ChargeDTO" resultType="int">
+    SELECT COUNT(*) FROM charge 
+    WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
+	</select>
+	
 	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">
 		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
@@ -16,4 +22,8 @@
 		ORDER BY use_start DESC
 		LIMIT 3;
 	</select>
+	<select id="getThisMonthCharge" resultType="org.zerock.dto.ChargeDTO">
+	    SELECT * FROM charge WHERE uname = "dummy" AND email = "dummy01@gmail.com" AND phone_num = "010-0000-0000" AND 
+	    YEAR(DATE(use_end)) = YEAR(DATE(CURRENT_DATE())) AND MONTH(DATE(use_end)) = MONTH(DATE(CURRENT_DATE())) LIMIT 1;
+</select>
 </mapper>
