@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.dto.NaverLoginDTO;
+import org.zerock.mapper.NaverLoginMapper;
 import org.zerock.service.NaverLoginService;
 
 @Controller
 public class NaverLoginController {
-
-    @Autowired
+	
+	@Autowired
     private NaverLoginService naverLoginService;
 
     // 네이버 로그인 요청
@@ -39,7 +40,8 @@ public class NaverLoginController {
     }
 
     @PostMapping("/naver/loginfo")
-    public ResponseEntity<String> handleNaverLoginInfo(@RequestBody NaverLoginDTO loginfo) {
+    public ResponseEntity<String> handleNaverLoginInfo(@RequestBody NaverLoginDTO loginfo, HttpSession session) {
+    	int result = 0; 
         try {
             System.out.println("Raw loginfo object: " + loginfo);
 
@@ -48,9 +50,19 @@ public class NaverLoginController {
                 System.out.println("Error: loginfo is null");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("loginfo is null.");
             }
-
+            // 아이디 존재여부 검증 
+            //if() {
+            	
+            //}else {
+            	
+            //}
+            // 회원가입 
             if (loginfo.getId() == null || loginfo.getEmail() == null) {
                 System.out.println("Error: ID or Email is null. ID = " + loginfo.getId() + ", Email = " + loginfo.getEmail());
+                session.setAttribute("id", loginfo.getId());
+    			session.setAttribute("uname", loginfo.getName());
+    			session.setAttribute("email", loginfo.getEmail());
+    			session.setAttribute("phone_num", loginfo.getPhoneNum());
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID or Email is null.");
             }
 
