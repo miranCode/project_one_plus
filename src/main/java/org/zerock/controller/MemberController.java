@@ -36,7 +36,7 @@ public class MemberController {
 	}
 	
 	@PostMapping(value="login")
-	public String loginPro(MemberDTO mdto, HttpSession session) {
+	public String loginPro(MemberDTO mdto, HttpSession session, Model model) {
 
 		System.out.println(mdto);
 		MemberDTO login = mapper.login(mdto);
@@ -49,8 +49,11 @@ public class MemberController {
 			
 			return "redirect:/index";
 			// return "index";
+		}else {
+			model.addAttribute("loginError", "일치하는 정보가 없습니다."); // 로그인 실패 시 에러 메시지 추가
+			return "member/login";
 		}
-		return "member/login";
+		
 	}
 
 	

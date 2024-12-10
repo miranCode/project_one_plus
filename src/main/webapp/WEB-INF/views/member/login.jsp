@@ -5,20 +5,41 @@
     request.setAttribute("bodyClass", "member login"); 
 %>
 <jsp:include page="../inc/header.jsp" />
-<script type="text/javascript" src="/resources/js/join.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
   integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/login.js"></script>
+<script>
+//페이지가 로드되면 로그인 실패 메시지가 있는지 확인하고, 알림을 띄웁니다.
+window.onload = function() {
+    var loginError = '${loginError}';
+    if (loginError) {
+        alert(loginError); // "일치하는 정보가 없습니다"라는 메시지를 알림으로 표시
+    }
+};
+function validCheck(form){
+	if(!form.id.value){
+		alert("아이디를 입력하세요");
+		return false;
+	}
+	if(form.pw.value == ""){
+		alert("비밀번호를 입력하세요");
+		return false;
+	}
+};
+
+$(document).ready(function(){
+})
+</script>
                 <!-- #content 영역 시작 -->
                 <div id="content">  
                     <div id="login">    
                         <h3>로그인</h3>
-                        <form action="/member/login" method="post">
+                        <form action="/member/login" method="post" onsubmit="return validCheck(this);">
                             <div>
                                 <label for="id">아이디</label>
                                 <div class="input-box">
-                                    <input type="text" id="id" name="id" placeholder="아이디를 입력해주세요."  />
+                                    <input type="text" id="id" name="id" title="아이디" placeholder="아이디를 입력해주세요."  />
                                 </div>
                             </div>
                             <div>

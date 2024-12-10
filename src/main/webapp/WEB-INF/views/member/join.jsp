@@ -6,6 +6,96 @@
 %>
 <jsp:include page="../inc/header.jsp" />
 <script type="text/javascript" src="/resources/js/join.js"></script>
+<script>
+function validCheck(form) {
+	// 아이디 체크
+    if (!form.id.value.trim()) {
+        alert("아이디를 입력해주세요");
+        form.id.focus();
+        return false;
+    }else if(idResult === false){
+    	alert("아이디를 확인해주세요");
+    	form.id.focus();
+        return false;
+    }
+	// 비빌번호 체크 
+    if (form.pw.value.trim() == "") {
+        alert("비밀번호를 입력해주세요");
+        form.pw.focus();
+        return false;
+    }else if(pwResult === false){
+    	alert("비밀번호를 확인해주세요");
+    	form.pw.focus();
+        return false;
+    }
+    if (form["userpass-ok"].value.trim() == "") {  // 비밀번호 재입력 검증
+        alert("비밀번호 재입력을 입력해주세요");
+        form["userpass-ok"].focus();
+        return false;
+    }else if(passcheckResult === false){
+    	alert("비밀번호 재입력을 확인해주세요");
+    	form["userpass-ok"].focus();
+        return false;
+    }
+    // 이름 체크 
+    if (form.uname.value.trim() == "") {
+        alert("이름을 입력해주세요");
+        form.uname.focus();
+        return false;
+    }else if(nameResult === false){
+    	alert("이름을 확인해주세요");
+    	form.uname.focus();
+        return false;
+    }
+    // 생년월일 체크 
+    if (form.birth.value.trim() == "") {
+        alert("생년월일을 입력해주세요");
+        form.birth.focus();
+        return false;
+    }else if(birthResult === false){
+    	alert("생년월일을 확인해주세요");
+    	form.birth.focus();
+        return false;
+    }
+    // 이메일 체크 
+    if (form.email.value.trim() == "") {
+        alert("이메일을 입력해주세요");
+        form.email.focus();
+        return false;
+    }else if(emailResult === false){
+    	alert("이메일을 확인해주세요");
+    	form.email.focus();
+        return false;
+    }
+    // 전화번호 체크 
+    if (form.phone_num.value.trim() == "") {
+        alert("전화번호를 입력해주세요");
+        form.phone_num.focus();
+        return false;
+    }else if(phonResult === false){
+    	alert("전화번호를 확인해주세요");
+    	form.phone_num.focus();
+        return false;
+    }
+    // 동의01 체크
+    if (!form.ag_privercy[0].checked && !form.ag_privercy[1].checked) {
+        alert("개인정보 수집여부를 체크해주세요.");
+        return false;
+    }else if(agreed01Result === false){
+    	alert("개인정보 수집여부를 확인해주세요");
+        return false;
+    }
+    // 동의 02 체크
+    if (!form.ag_sevise[0].checked && !form.ag_sevise[1].checked) {
+        alert("광고수신 및 개인정보 활용여부를 체크해주세요.");
+        return false;
+    }else if(agreed02Result === false){
+    	alert("광고수신 및 개인정보 활용여부를 확인해주세요");
+        return false;
+    }
+    return true;
+}
+</script>
                 <!-- #content 영역 시작 -->
                 <div id="content">        
                     <h3>회원가입</h3>
@@ -59,7 +149,7 @@
                             <div>
                                 <label for="phone_num">휴대전화번호</label>
                                 <div class="input-box"> 
-                                    <input type="text" id="phone_num" name="phone_num" placeholder="01000000000"  title="휴대전화번호" />
+                                    <input type="text" id="phone_num" name="phone_num" placeholder="010-0000-0000"  title="휴대전화번호" />
                                     <!-- <button type="button" id="usernumber_check" class="check_btn">인증요청</button> -->
                                 </div>
                             </div>
