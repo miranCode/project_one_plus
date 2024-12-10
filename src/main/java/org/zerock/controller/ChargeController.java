@@ -75,7 +75,23 @@ public class ChargeController {
 	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
 	    
 	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
+	    List<ChargeDTO> pastCharges = Mapper.getPast(cdto);
+	    ChargeDTO TMCharge = Mapper.getThisMonthCharge(cdto);
+	    
+	    int totalCharge = 0;
+	    for (ChargeDTO charge : pastCharges) {
+	        totalCharge += charge.getCharge(); // ChargeDTOÀÇ charge ÇÊµå
+	    }
+
+	    int avgCharge = 0;
+	    if (!pastCharges.isEmpty()) {
+	        avgCharge = totalCharge / pastCharges.size();
+	    }
+
+	    model.addAttribute("pastCharges", pastCharges);
+	    model.addAttribute("avgCharge", avgCharge);
 	    model.addAttribute("list", chargeList);
+	    model.addAttribute("TMCharge", TMCharge);
 	    return "charge/charge";
 	}
 }

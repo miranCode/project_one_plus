@@ -11,5 +11,7 @@ public interface ChargeMapper {
 
 	public List<ChargeDTO> getDetail(ChargeDTO cdto);
 	
-	public List<ChargeDTO> getPast(String uname);
+	public List<ChargeDTO> getPast(ChargeDTO cdto);
+	
+	public ChargeDTO getThisMonthCharge(ChargeDTO cdto);
 }
