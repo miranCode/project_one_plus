@@ -20,3 +20,9 @@ body.charge #content > div{padding:20px; border-radius:9px; border:1px solid #dd
 #block_C p:last-child{margin-bottom: 15px;}
 #block_C > div{width: 100%; height: 100%; }
 #block_C > div:first-child{border-bottom: 1px solid #ddd;}
+
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: #aaa;      
+}
