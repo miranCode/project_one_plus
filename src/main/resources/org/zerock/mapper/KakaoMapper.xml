@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 해당 xml 파일을 mapper 로 활용 선언 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper namespace="패키지명과 인터페이스명"으로 연결  -->
+
+<mapper namespace="org.zerock.mapper.KakaoMapper">
+
+	<select id="klogin" resultType="java.lang.Integer">
+    	select count(*) from kakao_member where id=#{id}
+	</select>
+	
+	<insert id="kjoin" parameterType="org.zerock.dto.KakaoDTO">
+	    INSERT INTO kakao_member (id, email, nickname)
+	    VALUES (#{id}, #{email}, #{nickname})
+	</insert>
+	
+</mapper>
