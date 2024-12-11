@@ -141,8 +141,13 @@ public class GoogleServiceImpl implements GoogleService {
         String email = (String) userInfo.get("email");
 
         // DTO 생성
-        GoogleMemberDTO googledto = new GoogleMemberDTO(googleId, name, email);
+        //GoogleMemberDTO googledto = new GoogleMemberDTO(googleId, name, email);
         MemberDTO memberdto = new MemberDTO();
+        
+        memberdto.setId(googleId); // Google ID를 저장
+        memberdto.setUname(name); // 사용자 이름 저장
+        memberdto.setEmail(email); // 이메일 저장
+        memberdto.setKind("구글"); // 사용자 종류 (구글) 저장
         // Mapper를 통해 DB에서 google_id로 사용자 조회
         MemberDTO existingUser = mapper.findUserByGoogleId(googleId);
 
