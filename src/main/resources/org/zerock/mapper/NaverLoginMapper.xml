@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.NaverLoginMapper">
-
     <!-- 네이버 회원 정보 삽입 -->
-    <insert id="insertNaverMember" parameterType="org.zerock.dto.NaverLoginDTO">
+    <insert id="insertNaverMember" parameterType="org.zerock.dto.MemberDTO">
         INSERT INTO member (id, email, phone_num, uname, birth, kind)
-        VALUES (#{id}, #{email}, #{phoneNum}, #{uname}, #{birth}, "네이버")
+        VALUES (#{id}, #{email}, #{phone_num}, #{uname}, #{birth}, "네이버")
     </insert>
 
     <!-- 네이버 회원 정보 조회 -->
-    <select id="selectNaverMemberById" parameterType="String" resultType="org.zerock.dto.NaverLoginDTO">
+    <select id="selectNaverMemberById" parameterType="String" resultType="org.zerock.dto.MemberDTO">
         SELECT count(*) from member WHERE id = #{id}
     </select>
 
     <!-- 네이버 회원 정보 수정 -->
-    <update id="updateNaverMember" parameterType="org.zerock.dto.NaverLoginDTO">
+    <update id="updateNaverMember" parameterType="org.zerock.dto.MemberDTO">
         UPDATE member
         SET email = #{email},
-            phone_num = #{phoneNum},
+            phone_num = #{phone_num},
             uname = #{uname},
             birth = #{birth},
         WHERE id = #{id}
