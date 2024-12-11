@@ -45,7 +45,7 @@ public class NaverLoginController {
         session.setAttribute("phone_num", login.getPhone_num());
         session.setAttribute("level", login.getLevel());
     
-        return "/index";
+        return "redirect:/";
     }
 
     @PostMapping("/naver/loginfo")

@@ -17,6 +17,8 @@
 				<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/>월 청구 요금 안내입니다.
 			</p>
 			<div style="filter:${level >= 2 ? 'none' : 'blur(5px)'};">
+				<!-- 로그인 상태가 아닐 경우  -->
+				<!-- 로그인 상태 이지만 정보가 없을 경우 -->
 				<dl>
 					<dt>요금 청구 기준일</dt>
 					<dd> <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/></dd>
@@ -40,6 +42,7 @@
 					<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
 				</div>
 			</div>
+			
 			<c:if test="${empty level}">
 				<div class="blur">
 					<p>로그인이 필요합니다.</p>

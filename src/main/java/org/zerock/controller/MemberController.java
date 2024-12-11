@@ -102,14 +102,16 @@ public class MemberController {
 	}
 	
 	@PostMapping("nonmemberlogin")
-	public String nonmemberPro(HttpSession session, @RequestParam String uname, @RequestParam String phone_num, @RequestParam String email) {
+	public String nonmemberPro(HttpSession session, @RequestParam String uname, @RequestParam String phone_num, @RequestParam String email, @RequestParam String level) {
 	    session.setAttribute("uname", uname);
 	    session.setAttribute("email", email);
 	    session.setAttribute("phone_num", phone_num);
+	    session.setAttribute("level", level);
 	    
 	    System.out.println("uname: " + uname);
 	    System.out.println("email: " + email);
 	    System.out.println("phone_num: " + phone_num);
+	    System.out.println("level: " + level);
 	    
 	    return "redirect:/index";  // 처리 후 인덱스로 리다이렉트
 	}
