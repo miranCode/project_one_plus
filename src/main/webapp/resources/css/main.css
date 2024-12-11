@@ -3,7 +3,7 @@
 body.main{ max-width:700px; min-width: 700px}
 body.main #wrap{position: relative; background: rgba(255, 255, 255, 0.8);}
 
-body.main #content{padding:20px;}
+body.main #content{padding:20px 0;}
 
 body.main #footer .footer-info{padding:30px 20px;}
 

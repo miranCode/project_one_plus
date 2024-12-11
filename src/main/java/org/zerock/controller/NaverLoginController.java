@@ -20,6 +20,9 @@ public class NaverLoginController {
 
 	@Autowired
     private NaverLoginService naverLoginService;
+	
+	@Autowired
+	private NaverLoginMapper mapper;
 
     @GetMapping("/naver/login")
     public String loginWithNaver() {
@@ -34,13 +37,14 @@ public class NaverLoginController {
     public String callback(@RequestParam String code, @RequestParam String state, HttpSession session) {
         String accessToken = naverLoginService.getAccessToken(code, state);
         MemberDTO userInfo = naverLoginService.getUserInfo(accessToken);
-        session.setAttribute("uname", userInfo.getUname());
-        session.setAttribute("email", userInfo.getEmail());
-        session.setAttribute("phone_num", userInfo.getPhone_num());
-        session.setAttribute("level", userInfo.getLevel());
-        
-        System.out.println("##내 레벨" + userInfo);
-        System.out.println("##내 레벨" + userInfo.getLevel());
+        MemberDTO login = mapper.selectNaverMemberById(userInfo.getId());
+        System.out.println(userInfo.getId());
+        System.out.println(login);
+        session.setAttribute("uname", login.getUname());
+        session.setAttribute("email", login.getEmail());
+        session.setAttribute("phone_num", login.getPhone_num());
+        session.setAttribute("level", login.getLevel());
+    
         return "/index";
     }
 
