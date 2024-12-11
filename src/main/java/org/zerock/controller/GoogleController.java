@@ -74,9 +74,10 @@ public class GoogleController {
            session.setAttribute("level", user.getLevel());
 
            System.out.println("### User logged in: " + user.getUname());
+           System.out.println("### User level in: " + user.getLevel());
        }
 
        //push error
-       return "/index";
+       return "redirect:/";
     }
 }
