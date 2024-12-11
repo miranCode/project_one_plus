@@ -27,8 +27,9 @@ public class GoogleController {
     private final String googleAuthUrl = "https://accounts.google.com/o/oauth2/auth";
 
     // Google Login Redirect
-    @GetMapping("/login")
+    @GetMapping("/google/login")
     public String googleLoginRedirect(HttpServletRequest request) {
+    	
     	GoogleOAuthDTO credentials = mapper.getGoogleCredentials();
     	String clientId = credentials.getClientId();
     	String redirectUri = credentials.getRedirectUri();

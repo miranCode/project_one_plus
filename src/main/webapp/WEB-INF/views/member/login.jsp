@@ -98,7 +98,7 @@ $(document).ready(function(){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/login" target="_blank" class="bg-google">
+                                        <a href="/google/login" target="_blank" class="bg-google">
                                             <div class="flex ju-between al-center">
                                                 <div class="icon google">
                                                     <i class="xi-google"></i>
