@@ -6,15 +6,15 @@
   <mapper namespace="org.zerock.mapper.GoogleMapper">
   	
   	<!-- google_id로 사용자 조회 -->
-	<select id="findUserByGoogleId" resultType="org.zerock.dto.GoogleMemberDTO">
-    	SELECT * FROM google_member_test
-    	WHERE google_id = #{id}
+	<select id="findUserByGoogleId" resultType="org.zerock.dto.MemberDTO">
+    	SELECT * FROM member
+    	WHERE id = #{id}
 	</select>
 
 	<!-- 새 사용자 등록 -->
 	<insert id="insertUser">
-    	INSERT INTO google_member_test (google_id, name, email)
-    	VALUES (#{id}, #{name}, #{email})
+    	INSERT INTO member (id, uname, email, kind)
+    	VALUES (#{id}, #{uname}, #{email}, "구글")
 	</insert>
   	<!-- //push -->
   </mapper>

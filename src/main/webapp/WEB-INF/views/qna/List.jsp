@@ -7,8 +7,8 @@
     request.setAttribute("bodyClass", "main"); 
 %>
 <jsp:include page="../inc/header.jsp" />
-				<!-- #content 영역 시작 -->
-                <p class="page-tit">공지사항</p>
+				<!-- #content 영역 시작 // -->
+                <p class="page-tit">Q&A</p>
                 <div id="content">        
                     <div class="list_board">
                         <div class="list-top flex ju-between al-end">

@@ -3,16 +3,16 @@ package org.zerock.dto;
 //push
 public class GoogleMemberDTO {
 	private String id;
-	private String name;
+	private String uname;
 	private String email;
 	
 	public GoogleMemberDTO() {
 		
 	}
 	
-	public GoogleMemberDTO(String id, String name, String email) {
+	public GoogleMemberDTO(String id, String uname, String email) {
 		this.id = id;
-		this.name = name;
+		this.uname = uname;
 		this.email = email;
 	}
 
@@ -25,11 +25,11 @@ public class GoogleMemberDTO {
 	}
 
 	public String getName() {
-		return name;
+		return uname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String uname) {
+		this.uname = uname;
 	}
 
 	public String getEmail() {

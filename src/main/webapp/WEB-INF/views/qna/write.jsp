@@ -9,8 +9,8 @@
 <%-- <%@ include file="../../../resources/css/write.css" %> --%>
 <!-- <link href="../../../resources/css/write.css" type="text/css" rel="stylesheet" > -->
 
-<!-- #content 영역 시작 -->
-	<p class="page-tit">공지사항</p>
+<!-- #content 영역 시작// -->
+	<p class="page-tit">Q&A</p>
 	<div id="content">        
 	    <div class="">
 	        <form name="writeFrm" method="post" enctype="multipart/form-data" action="/qna/write">
