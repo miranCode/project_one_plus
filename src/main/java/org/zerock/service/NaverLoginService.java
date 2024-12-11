@@ -49,14 +49,15 @@ public class NaverLoginService {
     public MemberDTO getUserInfo(String accessToken) {
         String userInfoUrl = "https://openapi.naver.com/v1/nid/me";
         RestTemplate restTemplate = new RestTemplate();
-
+        int idcheck = 0;
+        
         try {
             String response = restTemplate.getForObject(userInfoUrl + "?access_token=" + accessToken, String.class);
             System.out.println("Naver API response: " + response);
 
             MemberDTO userInfo = parseNaverResponse(response);
             System.out.println("Parsed NaverLoginDTO: " + userInfo);
-
+            
             boolean result = processNaverLogin(userInfo);
             System.out.println("Process result: " + result);
 
@@ -112,9 +113,10 @@ public class NaverLoginService {
                 throw new RuntimeException("ID or Email is null. ID: " + loginfo.getId() + ", Email: " + loginfo.getEmail());
             }
 
-            MemberDTO existingUser = naverLoginMapper.selectNaverMemberById(loginfo.getId());
+            MemberDTO neverid = naverLoginMapper.selectNaverMemberById(loginfo.getId());
+            System.out.println("네이버 아이디" + neverid);
 
-            if (existingUser == null) {
+            if (neverid == null) {
                 naverLoginMapper.insertNaverMember(loginfo);
                 System.out.println("Inserted new user: " + loginfo);
             } else {

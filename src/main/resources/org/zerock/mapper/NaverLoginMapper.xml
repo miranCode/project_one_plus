@@ -6,20 +6,15 @@
         INSERT INTO member (id, email, phone_num, uname, birth, kind)
         VALUES (#{id}, #{email}, #{phone_num}, #{uname}, #{birth}, "네이버")
     </insert>
-
-    <!-- 네이버 회원 정보 조회 -->
-    <select id="selectNaverMemberById" parameterType="String" resultType="org.zerock.dto.MemberDTO">
-        SELECT count(*) from member WHERE id = #{id}
-    </select>
+	
+	<select id="selectNaverMemberById" resultType="org.zerock.dto.MemberDTO">
+    	select * from member where id=#{id}
+	</select>
 
     <!-- 네이버 회원 정보 수정 -->
+    <!-- 네이버 정보 수정 불필요 -->
     <update id="updateNaverMember" parameterType="org.zerock.dto.MemberDTO">
-        UPDATE member
-        SET email = #{email},
-            phone_num = #{phone_num},
-            uname = #{uname},
-            birth = #{birth},
-        WHERE id = #{id}
+        select * from member where id=#{id}
     </update>
 
     <!-- 네이버 회원 정보 삭제 -->

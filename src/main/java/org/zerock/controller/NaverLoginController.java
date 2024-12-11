@@ -34,42 +34,34 @@ public class NaverLoginController {
     public String callback(@RequestParam String code, @RequestParam String state, HttpSession session) {
         String accessToken = naverLoginService.getAccessToken(code, state);
         MemberDTO userInfo = naverLoginService.getUserInfo(accessToken);
-        session.setAttribute("userInfo", userInfo);
+        session.setAttribute("uname", userInfo.getUname());
+        session.setAttribute("email", userInfo.getEmail());
+        session.setAttribute("phone_num", userInfo.getPhone_num());
+        session.setAttribute("level", userInfo.getLevel());
         return "/index";
     }
 
     @PostMapping("/naver/loginfo")
     public ResponseEntity<String> handleNaverLoginInfo(@RequestBody MemberDTO loginfo, HttpSession session) {
-    	int result = 0; 
         try {
-            System.out.println("Raw loginfo object: " + loginfo);
-
-            boolean isSuccess = naverLoginService.processNaverLogin(loginfo);
-            
-            // null 
+            // loginfo가 null인 경우
             if (loginfo == null) {
                 System.out.println("Error: loginfo is null");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("loginfo is null.");
             }
-            //if() {
-            	
-            //}else {
-            	
-            //}
-            if (loginfo.getId() == null || loginfo.getEmail() == null) {
-                System.out.println("Error: ID or Email is null. ID = " + loginfo.getId() + ", Email = " + loginfo.getEmail());
-    			session.setAttribute("uname", loginfo.getUname());
-    			session.setAttribute("email", loginfo.getEmail());
-    			session.setAttribute("phone_num", loginfo.getPhone_num());
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID or Email is null.");
+
+            System.out.println("Raw loginfo object: " + loginfo);
+
+            // 로그인 처리
+            boolean isSuccess = naverLoginService.processNaverLogin(loginfo);
+
+            // 로그인 성공 여부에 따라 세션에 정보 저장
+            if (isSuccess) {
+                return ResponseEntity.status(HttpStatus.OK).body("Login successful");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Login failed");
             }
 
-
-            
-            
-            return isSuccess
-                    ? ResponseEntity.status(HttpStatus.OK).body("Login successful")
-                    : ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Login failed");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: " + e.getMessage());
