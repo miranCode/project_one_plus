@@ -15,8 +15,8 @@
 	</select>
 	
 	<insert id="join" parameterType="org.zerock.dto.MemberDTO">
-		insert into member (id, pw, email, phone_num, uname, birth, ag_privercy, ag_sevise, regidate) 
-		values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, #{ag_privercy}, #{ag_sevise}, now());
+		insert into member (id, pw, email, phone_num, uname, birth, ag_privercy, ag_sevise, kind) 
+		values(#{id}, #{pw}, #{email}, #{phone_num}, #{uname}, #{birth}, #{ag_privercy}, #{ag_sevise}, "일반회원");
 	</insert>
 	
 	<select id="idCheck" resultType="int">
