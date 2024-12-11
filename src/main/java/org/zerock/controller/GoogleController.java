@@ -7,10 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.dto.GoogleMemberDTO;
+import org.zerock.dto.GoogleOAuthDTO;
+import org.zerock.mapper.GoogleMapper;
 import org.zerock.service.GoogleService;
 
 @Controller
@@ -18,7 +21,26 @@ public class GoogleController {
     
     @Autowired
     private GoogleService service;
+    @Autowired
+	private GoogleMapper mapper;
+    
+    private final String googleAuthUrl = "https://accounts.google.com/o/oauth2/auth";
 
+    // Google Login Redirect
+    @GetMapping("/login")
+    public String googleLoginRedirect(HttpServletRequest request) {
+    	GoogleOAuthDTO credentials = mapper.getGoogleCredentials();
+    	String clientId = credentials.getClientId();
+    	String redirectUri = credentials.getRedirectUri();
+        String loginUrl = googleAuthUrl + 
+            "?client_id=" + clientId + 
+            "&redirect_uri=" + redirectUri + 
+            "&response_type=code" + 
+            "&scope=profile email";
+        System.out.println("################" + loginUrl);
+        return "redirect:" + loginUrl;
+    }
+    
     @RequestMapping(value = "/google/userinfo", method = RequestMethod.GET)
     public String googleLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request) throws Exception {
         System.out.println("######### Authorization Code: " + code);
