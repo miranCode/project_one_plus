@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.dto.GoogleMemberDTO;
 import org.zerock.dto.GoogleOAuthDTO;
+import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.GoogleMapper;
+import org.zerock.mapper.MemberMapper;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -24,6 +26,9 @@ public class GoogleServiceImpl implements GoogleService {
 
 	@Autowired
 	private GoogleMapper mapper;
+	
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	@Override
 	public String getAccessToken(String authorizeCode) {
@@ -137,17 +142,17 @@ public class GoogleServiceImpl implements GoogleService {
 
         // DTO 생성
         GoogleMemberDTO googledto = new GoogleMemberDTO(googleId, name, email);
-
+        MemberDTO memberdto = new MemberDTO();
         // Mapper를 통해 DB에서 google_id로 사용자 조회
-        GoogleMemberDTO existingUser = mapper.findUserByGoogleId(googleId);
+        MemberDTO existingUser = mapper.findUserByGoogleId(googleId);
 
         if (existingUser == null) {
             // google_id가 없으면 새 사용자 등록
-            mapper.insertUser(googledto);
+            mapper.insertUser(memberdto);
             return true; // 새 사용자 등록 완료
         } else {
             // google_id가 존재하면 이메일과 이름을 비교
-            if (existingUser.getEmail().equals(email) && existingUser.getName().equals(name)) {
+            if (existingUser.getEmail().equals(email) && existingUser.getUname().equals(name)) {
                 // 이름과 이메일이 일치하면 로그인 성공
                 return true; // 로그인 성공
             } else {
@@ -158,7 +163,7 @@ public class GoogleServiceImpl implements GoogleService {
     }
     
     @Override
-    public GoogleMemberDTO findUserByGoogleId(String googleId) {
+    public MemberDTO findUserByGoogleId(String googleId) {
         // DB에서 googleId로 사용자 조회
         return mapper.findUserByGoogleId(googleId);
     }

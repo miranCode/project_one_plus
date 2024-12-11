@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.dto.GoogleMemberDTO;
 import org.zerock.dto.GoogleOAuthDTO;
+import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.GoogleMapper;
 import org.zerock.service.GoogleService;
 
@@ -64,13 +64,16 @@ public class GoogleController {
        if (userExists) {
            // 사용자 정보가 저장되었거나, 이미 존재하는 경우 세션에 저장
            String googleId = (String) userInfo.get("id");
-           GoogleMemberDTO user = service.findUserByGoogleId(googleId);
+           MemberDTO user = service.findUserByGoogleId(googleId);
 
            // 세션에 사용자 정보 저장
            HttpSession session = request.getSession();
-           session.setAttribute("uname", user.getName()); // 세션에 사용자 정보 저장
+           session.setAttribute("uname", user.getUname()); // 세션에 사용자 정보 저장
+           session.setAttribute("email", user.getEmail());
+           session.setAttribute("phone_num", user.getPhone_num());
+           session.setAttribute("level", user.getLevel());
 
-           System.out.println("### User logged in: " + user.getName());
+           System.out.println("### User logged in: " + user.getUname());
        }
 
        //push error
