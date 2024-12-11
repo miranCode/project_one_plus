@@ -58,29 +58,28 @@
                             </li>
                         </ul>
                         <div class="pagination">
-				            <ul class="flex ju-center al-center">
-				                <li style="${currentPage == 1 ? 'display:none;' : ''}">
-            						<a href="${totalPages == 0 || currentPage == 1 ? 'javascript:void(0)' : '?page=1'}" class="${totalPages == 0 || currentPage == 1 ? 'disabled' : ''}">맨처음</a>
-            					</li>
-				                <li style="${currentPage == 1 ? 'display:none;' : ''}">
-            						<a href="${currentPage - 1 > 0 ? '?page=' + (currentPage - 1) : 'javascript:void(0)'}" class="${totalPages == 0 || currentPage == 1 ? 'disabled' : ''}">처음</a>
-        						</li>
-				
-				                <!-- 현재 페이지 표시 -->
-				                 <c:forEach begin="1" end="${totalPages}" var="i">
-            						<li class="${i == currentPage ? 'on' : ''}" style="${currentPage == 1 && i != currentPage ? 'display:none;' : ''}">
+						    <ul class="flex ju-center al-center">
+						        <li style="${currentPage == 1 ? 'display:none;' : ''}">
+						            <a href="?page=1" class="${currentPage == 1 ? 'disabled' : ''}">맨처음</a>
+						        </li>
+						        <li style="${currentPage == 1 ? 'display:none;' : ''}">
+						            <a href="?page=${currentPage - 1}" class="${currentPage == 1 ? 'disabled' : ''}">처음</a>
+						        </li>
+						        <c:forEach begin="1" end="${totalPages}" var="i">
+						            <li class="${i == currentPage ? 'on' : ''}">
 						                <a href="?page=${i}" class="${totalPages == 0 ? 'disabled' : ''}">${i}</a>
 						            </li>
-        						</c:forEach>
-				
-				                <li style="${currentPage == 1 ? 'display:none;' : ''}">
-            						<a href="${currentPage + 1 <= totalPages ? '?page=' + (currentPage + 1) : 'javascript:void(0)'}" class="${totalPages == 0 || currentPage == totalPages ? 'disabled' : ''}">뒤로</a>
-        						</li>
-				                <li style="${currentPage == 1 ? 'display:none;' : ''}">
-            						<a href="${totalPages == 0 || currentPage == totalPages ? 'javascript:void(0)' : '?page=' + totalPages}" class="${totalPages == 0 || currentPage == totalPages ? 'disabled' : ''}">맨뒤로</a>
-        						</li>
-				            </ul>
-			        	</div>
+						        </c:forEach>
+						        <li style="${currentPage == totalPages || totalPages == 0 ? 'display:none;' : ''}">
+						            <a href="?page=${currentPage + 1 <= totalPages ? currentPage + 1 : currentPage}" class="${currentPage == totalPages || totalPages == 0 ? 'disabled' : ''}">
+						                다음
+						            </a>
+						        </li>
+						        <li style="${currentPage == totalPages || totalPages == 0 ? 'display:none;' : ''}">
+						            <a href="?page=${totalPages}" class="${currentPage == totalPages || totalPages == 0 ? 'disabled' : ''}">맨뒤로</a>
+						        </li>
+						    </ul>
+						</div>
                     </div>
                 </div>
                 <!-- #content 영역 끝 -->

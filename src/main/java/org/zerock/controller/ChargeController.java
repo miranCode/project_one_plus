@@ -45,17 +45,23 @@ public class ChargeController {
 	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
 	    cdto.setLimit(pageSize);
 	    cdto.setOffset(offset);
-
-	    System.out.println(cdto);
+	    
+	    System.out.println("Mapper 호출 전에 cdto: " + cdto);
 	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
 	    
 	    int totalCount = Mapper.getTotalCount(cdto);
 	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-
+	    if (totalPages == 0) totalPages = 1;
 	    
 	    model.addAttribute("list", chargeList);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
+	    
+	    System.out.println("currentPage: " + page);
+	    System.out.println("totalPages: " + totalPages);
+	    System.out.println("chargeList: " + chargeList);
+	    System.out.println("Total Count: " + totalCount);
+	    System.out.println("Total Pages: " + totalPages);
 	    
 	    return "charge/list";
 	}
