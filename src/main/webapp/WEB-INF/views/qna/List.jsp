@@ -50,7 +50,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div>
+                        <div class="btn-area three flex ju-end">
                         	<button id="regBtn" type="button">글쓰기</button>
                         </div>
                         <form id="actionForm" action="/qna/List" method="get">
