@@ -32,6 +32,7 @@ public class GoogleServiceImpl implements GoogleService {
 	
 	@Override
 	public String getAccessToken(String authorizeCode) {
+		System.out.println("돌아감?");
 	    String accessToken = null;
 	    String refreshToken = null;
 	    String reqURL = "https://oauth2.googleapis.com/token";
@@ -47,14 +48,14 @@ public class GoogleServiceImpl implements GoogleService {
 	        conn.setDoOutput(true);
 	        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-	        // 요청 파라미터 설정
+	        // �슂泥� �뙆�씪誘명꽣 �꽕�젙
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	        StringBuilder sb = new StringBuilder();
 	        sb.append("grant_type=authorization_code");
-	        sb.append("&client_id=").append(clientId); // 클라이언트 ID
-	        sb.append("&client_secret=").append(clientSecret); // 클라이언트 Secret
-	        sb.append("&redirect_uri=http://localhost:8080/google/userinfo"); // 리다이렉트 URI
-	        sb.append("&code=").append(authorizeCode); // 사용자 인증 코드
+	        sb.append("&client_id=").append(clientId); // �겢�씪�씠�뼵�듃 ID
+	        sb.append("&client_secret=").append(clientSecret); // �겢�씪�씠�뼵�듃 Secret
+	        sb.append("&redirect_uri=http://localhost:8080/google/userinfo"); // 由щ떎�씠�젆�듃 URI
+	        sb.append("&code=").append(authorizeCode); // �궗�슜�옄 �씤利� 肄붾뱶
 	        bw.write(sb.toString());
 	        bw.flush();
 
@@ -70,7 +71,7 @@ public class GoogleServiceImpl implements GoogleService {
 	            }
 	            System.out.println("Response Body: " + result);
 
-	            // JSON 파싱
+	            // JSON �뙆�떛
 	            JsonElement element = JsonParser.parseString(result);
 	            if (element.getAsJsonObject().has("access_token")) {
 	                accessToken = element.getAsJsonObject().get("access_token").getAsString();
@@ -119,11 +120,11 @@ public class GoogleServiceImpl implements GoogleService {
             }
             System.out.println("response body : " + result);
 
-            // JSON 파싱
+            // JSON �뙆�떛
             JsonElement element = JsonParser.parseString(result);
             JsonObject jsonObject = element.getAsJsonObject();
 
-            // 사용자 정보 저장
+            // �궗�슜�옄 �젙蹂� ���옣
             userInfo.put("id", jsonObject.has("id") ? jsonObject.get("id").getAsString() : "Unknown");
             userInfo.put("email", jsonObject.has("email") ? jsonObject.get("email").getAsString() : "Not Provided");
             userInfo.put("name", jsonObject.has("name") ? jsonObject.get("name").getAsString() : "Unknown");
@@ -140,36 +141,36 @@ public class GoogleServiceImpl implements GoogleService {
         String name = (String) userInfo.get("name");
         String email = (String) userInfo.get("email");
 
-        // DTO 생성
+        // DTO �깮�꽦
         //GoogleMemberDTO googledto = new GoogleMemberDTO(googleId, name, email);
         MemberDTO memberdto = new MemberDTO();
         
-        memberdto.setId(googleId); // Google ID를 저장
-        memberdto.setUname(name); // 사용자 이름 저장
-        memberdto.setEmail(email); // 이메일 저장
-        memberdto.setKind("구글"); // 사용자 종류 (구글) 저장
-        // Mapper를 통해 DB에서 google_id로 사용자 조회
+        memberdto.setId(googleId); // Google ID瑜� ���옣
+        memberdto.setUname(name); // �궗�슜�옄 �씠由� ���옣
+        memberdto.setEmail(email); // �씠硫붿씪 ���옣
+        memberdto.setKind("援ш�"); // �궗�슜�옄 醫낅쪟 (援ш�) ���옣
+        // Mapper瑜� �넻�빐 DB�뿉�꽌 google_id濡� �궗�슜�옄 議고쉶
         MemberDTO existingUser = mapper.findUserByGoogleId(googleId);
 
         if (existingUser == null) {
-            // google_id가 없으면 새 사용자 등록
+            // google_id媛� �뾾�쑝硫� �깉 �궗�슜�옄 �벑濡�
             mapper.insertUser(memberdto);
-            return true; // 새 사용자 등록 완료
+            return true; // �깉 �궗�슜�옄 �벑濡� �셿猷�
         } else {
-            // google_id가 존재하면 이메일과 이름을 비교
+            // google_id媛� 議댁옱�븯硫� �씠硫붿씪怨� �씠由꾩쓣 鍮꾧탳
             if (existingUser.getEmail().equals(email) && existingUser.getUname().equals(name)) {
-                // 이름과 이메일이 일치하면 로그인 성공
-                return true; // 로그인 성공
+                // �씠由꾧낵 �씠硫붿씪�씠 �씪移섑븯硫� 濡쒓렇�씤 �꽦怨�
+                return true; // 濡쒓렇�씤 �꽦怨�
             } else {
-                // 이메일이나 이름이 일치하지 않으면 로그인 실패
-                return false; // 로그인 실패
+                // �씠硫붿씪�씠�굹 �씠由꾩씠 �씪移섑븯吏� �븡�쑝硫� 濡쒓렇�씤 �떎�뙣
+                return false; // 濡쒓렇�씤 �떎�뙣
             }
         }
     }
     
     @Override
     public MemberDTO findUserByGoogleId(String googleId) {
-        // DB에서 googleId로 사용자 조회
+        // DB�뿉�꽌 googleId濡� �궗�슜�옄 議고쉶
         return mapper.findUserByGoogleId(googleId);
     }
 }
