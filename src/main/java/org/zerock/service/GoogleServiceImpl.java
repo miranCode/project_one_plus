@@ -32,7 +32,7 @@ public class GoogleServiceImpl implements GoogleService {
 	
 	@Override
 	public String getAccessToken(String authorizeCode) {
-		System.out.println("돌아감?");
+		System.out.println("�룎�븘媛�?");
 	    String accessToken = null;
 	    String refreshToken = null;
 	    String reqURL = "https://oauth2.googleapis.com/token";
@@ -48,14 +48,14 @@ public class GoogleServiceImpl implements GoogleService {
 	        conn.setDoOutput(true);
 	        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-	        // �슂泥� �뙆�씪誘명꽣 �꽕�젙
+	        // 占쎌뒄筌ｏ옙 占쎈솁占쎌뵬沃섎챸苑� 占쎄퐬占쎌젟
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	        StringBuilder sb = new StringBuilder();
 	        sb.append("grant_type=authorization_code");
-	        sb.append("&client_id=").append(clientId); // �겢�씪�씠�뼵�듃 ID
-	        sb.append("&client_secret=").append(clientSecret); // �겢�씪�씠�뼵�듃 Secret
-	        sb.append("&redirect_uri=http://localhost:8080/google/userinfo"); // 由щ떎�씠�젆�듃 URI
-	        sb.append("&code=").append(authorizeCode); // �궗�슜�옄 �씤利� 肄붾뱶
+	        sb.append("&client_id=").append(clientId); // 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 ID
+	        sb.append("&client_secret=").append(clientSecret); // 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 Secret
+	        sb.append("&redirect_uri=http://localhost:8080/google/userinfo"); // �뵳�됰뼄占쎌뵠占쎌젂占쎈뱜 URI
+	        sb.append("&code=").append(authorizeCode); // 占쎄텢占쎌뒠占쎌쁽 占쎌뵥筌앾옙 �굜遺얜굡
 	        bw.write(sb.toString());
 	        bw.flush();
 
@@ -71,7 +71,7 @@ public class GoogleServiceImpl implements GoogleService {
 	            }
 	            System.out.println("Response Body: " + result);
 
-	            // JSON �뙆�떛
+	            // JSON 占쎈솁占쎈뼓
 	            JsonElement element = JsonParser.parseString(result);
 	            if (element.getAsJsonObject().has("access_token")) {
 	                accessToken = element.getAsJsonObject().get("access_token").getAsString();
@@ -120,11 +120,11 @@ public class GoogleServiceImpl implements GoogleService {
             }
             System.out.println("response body : " + result);
 
-            // JSON �뙆�떛
+            // JSON 占쎈솁占쎈뼓
             JsonElement element = JsonParser.parseString(result);
             JsonObject jsonObject = element.getAsJsonObject();
 
-            // �궗�슜�옄 �젙蹂� ���옣
+            // 占쎄텢占쎌뒠占쎌쁽 占쎌젟癰귨옙 占쏙옙占쎌삢
             userInfo.put("id", jsonObject.has("id") ? jsonObject.get("id").getAsString() : "Unknown");
             userInfo.put("email", jsonObject.has("email") ? jsonObject.get("email").getAsString() : "Not Provided");
             userInfo.put("name", jsonObject.has("name") ? jsonObject.get("name").getAsString() : "Unknown");
@@ -141,36 +141,36 @@ public class GoogleServiceImpl implements GoogleService {
         String name = (String) userInfo.get("name");
         String email = (String) userInfo.get("email");
 
-        // DTO �깮�꽦
+        // DTO 占쎄문占쎄쉐
         //GoogleMemberDTO googledto = new GoogleMemberDTO(googleId, name, email);
         MemberDTO memberdto = new MemberDTO();
         
-        memberdto.setId(googleId); // Google ID瑜� ���옣
-        memberdto.setUname(name); // �궗�슜�옄 �씠由� ���옣
-        memberdto.setEmail(email); // �씠硫붿씪 ���옣
-        memberdto.setKind("援ш�"); // �궗�슜�옄 醫낅쪟 (援ш�) ���옣
-        // Mapper瑜� �넻�빐 DB�뿉�꽌 google_id濡� �궗�슜�옄 議고쉶
+        memberdto.setId(googleId); // Google ID�몴占� 占쏙옙占쎌삢
+        memberdto.setUname(name); // 占쎄텢占쎌뒠占쎌쁽 占쎌뵠�뵳占� 占쏙옙占쎌삢
+        memberdto.setEmail(email); // 占쎌뵠筌롫뗄�뵬 占쏙옙占쎌삢
+        memberdto.setKind("구글"); // 占쎄텢占쎌뒠占쎌쁽 �넫�굝履� (�뤃�덌옙) 占쏙옙占쎌삢
+        // Mapper�몴占� 占쎈꽰占쎈퉸 DB占쎈퓠占쎄퐣 google_id嚥∽옙 占쎄텢占쎌뒠占쎌쁽 鈺곌퀬�돳
         MemberDTO existingUser = mapper.findUserByGoogleId(googleId);
 
         if (existingUser == null) {
-            // google_id媛� �뾾�쑝硫� �깉 �궗�슜�옄 �벑濡�
+            // google_id揶쏉옙 占쎈씨占쎌몵筌롳옙 占쎄퉱 占쎄텢占쎌뒠占쎌쁽 占쎈쾻嚥∽옙
             mapper.insertUser(memberdto);
-            return true; // �깉 �궗�슜�옄 �벑濡� �셿猷�
+            return true; // 占쎄퉱 占쎄텢占쎌뒠占쎌쁽 占쎈쾻嚥∽옙 占쎌끏�뙴占�
         } else {
-            // google_id媛� 議댁옱�븯硫� �씠硫붿씪怨� �씠由꾩쓣 鍮꾧탳
-            if (existingUser.getEmail().equals(email) && existingUser.getUname().equals(name)) {
-                // �씠由꾧낵 �씠硫붿씪�씠 �씪移섑븯硫� 濡쒓렇�씤 �꽦怨�
-                return true; // 濡쒓렇�씤 �꽦怨�
+            // google_id揶쏉옙 鈺곕똻�삺占쎈릭筌롳옙 占쎌뵠筌롫뗄�뵬�⑨옙 占쎌뵠�뵳袁⑹뱽 �뜮袁㏉꺍
+            if (existingUser.getId().equals(googleId)) {
+                // 占쎌뵠�뵳袁㏓궢 占쎌뵠筌롫뗄�뵬占쎌뵠 占쎌뵬燁살꼹釉�筌롳옙 嚥≪뮄�젃占쎌뵥 占쎄쉐�⑨옙
+                return true; // 嚥≪뮄�젃占쎌뵥 占쎄쉐�⑨옙
             } else {
-                // �씠硫붿씪�씠�굹 �씠由꾩씠 �씪移섑븯吏� �븡�쑝硫� 濡쒓렇�씤 �떎�뙣
-                return false; // 濡쒓렇�씤 �떎�뙣
+                // 占쎌뵠筌롫뗄�뵬占쎌뵠占쎄돌 占쎌뵠�뵳袁⑹뵠 占쎌뵬燁살꼹釉�筌욑옙 占쎈륫占쎌몵筌롳옙 嚥≪뮄�젃占쎌뵥 占쎈뼄占쎈솭
+                return false; // 嚥≪뮄�젃占쎌뵥 占쎈뼄占쎈솭
             }
         }
     }
     
     @Override
     public MemberDTO findUserByGoogleId(String googleId) {
-        // DB�뿉�꽌 googleId濡� �궗�슜�옄 議고쉶
+        // DB占쎈퓠占쎄퐣 googleId嚥∽옙 占쎄텢占쎌뒠占쎌쁽 鈺곌퀬�돳
         return mapper.findUserByGoogleId(googleId);
     }
 }
