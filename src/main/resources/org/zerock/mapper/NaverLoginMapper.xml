@@ -13,7 +13,7 @@
 
     <!-- 네이버 회원 정보 수정 -->
     <!-- 네이버 정보 수정 불필요 -->
-    <select id="updateNaverMember" parameterType="org.zerock.dto.MemberDTO">
+    <select id="updateNaverMember" resultType="org.zerock.dto.MemberDTO">
         select * from member where id=#{id}
     </select>
 
