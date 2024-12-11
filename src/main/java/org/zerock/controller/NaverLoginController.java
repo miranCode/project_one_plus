@@ -38,6 +38,9 @@ public class NaverLoginController {
         session.setAttribute("email", userInfo.getEmail());
         session.setAttribute("phone_num", userInfo.getPhone_num());
         session.setAttribute("level", userInfo.getLevel());
+        
+        System.out.println("##내 레벨" + userInfo);
+        System.out.println("##내 레벨" + userInfo.getLevel());
         return "/index";
     }
 

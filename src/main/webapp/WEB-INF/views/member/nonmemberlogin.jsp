@@ -53,6 +53,7 @@ $(document).ready(function(){
                         <h3>비회원 조회</h3>
                         <!-- 비회원 조회 -->
                         <form action="/member/nonmemberlogin" method="post"  onsubmit="return validCheck(this);">
+                        	<input type="hidden" name="level" id="level" value="2" title="비회원 레벨 2" />
                             <div>
                                 <div class="input-box">
                                     <input type="text" id="uname" name="uname" title="이름"  placeholder="이름"  />
@@ -71,7 +72,6 @@ $(document).ready(function(){
                             <div class="btn-box">
                                 <button id="login_btn" type="submit">조회</button>
                             </div>
-                 
                             <div class="go_home flex ju-center">
                                 <a href="/">Home으로 돌아가기</a>
                             </div>

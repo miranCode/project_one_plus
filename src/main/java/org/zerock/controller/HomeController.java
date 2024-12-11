@@ -28,12 +28,9 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	 
-	@GetMapping(value="/") 
-	public String home() {
-		return "index";
-	}	
-	@GetMapping(value="/index") 
+	@GetMapping(value = {"/", "/index"})
 	public String afterLogin(HttpSession session, Model model) {
+		System.out.println("/ or /index");
 		String uname = (String) session.getAttribute("uname");
 	    String email = (String) session.getAttribute("email");
 	    String phone_num = (String) session.getAttribute("phone_num");
@@ -41,8 +38,8 @@ public class HomeController {
 	    System.out.println(email);
 	    System.out.println(phone_num);
 	    if (uname == null || email == null || phone_num == null) {
-	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
-	        return "redirect:/member/login";
+	        // model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
+	        return "/index";
 	    }
 	    if(uname != null) {
 	    	ChargeDTO cdto = new ChargeDTO();

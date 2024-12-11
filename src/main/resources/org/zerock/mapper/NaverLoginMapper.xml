@@ -13,9 +13,9 @@
 
     <!-- 네이버 회원 정보 수정 -->
     <!-- 네이버 정보 수정 불필요 -->
-    <update id="updateNaverMember" parameterType="org.zerock.dto.MemberDTO">
+    <select id="updateNaverMember" parameterType="org.zerock.dto.MemberDTO">
         select * from member where id=#{id}
-    </update>
+    </select>
 
     <!-- 네이버 회원 정보 삭제 -->
     <delete id="deleteNaverMember" parameterType="String">

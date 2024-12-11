@@ -6,12 +6,12 @@
                     <div>
                         <div class="utill">
                             <ul>
-                                <c:if test="${empty uname}">
+                                <c:if test="${empty level}">
                                     <li><a href="/member/login">LOGIN</a></li>
                                     <li><a href="/member/nonmemberlogin">비회원조회</a></li>
                                     <li><a href="/member/join">JOIN</a></li>
                                 </c:if>
-                                <c:if test="${not empty uname}">
+                                <c:if test="${not empty level}">
                                     <li><a href="/member/logout">LOGOUT</a></li>
                                 </c:if>
                             </ul>

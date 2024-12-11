@@ -11,12 +11,12 @@
 	<div id="content">  
 		<!-- box  -->
 		<div class="box section01">
-			<p style="filter:${empty uname ? 'blur(5px)' : 'none'};">
+			<p style="filter:${level >= 2 ? 'none' : 'blur(5px)'};">
 				안녕하세요! ${uname} 고객님
 				<br />
 				<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/>월 청구 요금 안내입니다.
 			</p>
-			<div style="filter:${empty uname ? 'blur(5px)' : 'none'};">
+			<div style="filter:${level >= 2 ? 'none' : 'blur(5px)'};">
 				<dl>
 					<dt>요금 청구 기준일</dt>
 					<dd> <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/></dd>
@@ -40,7 +40,7 @@
 					<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
 				</div>
 			</div>
-			<c:if test="${ empty uname }">
+			<c:if test="${empty level}">
 				<div class="blur">
 					<p>로그인이 필요합니다.</p>
 					<div class="btn-box">

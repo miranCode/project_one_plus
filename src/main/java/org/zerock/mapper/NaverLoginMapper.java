@@ -10,7 +10,7 @@ public interface NaverLoginMapper {
 
 	public MemberDTO selectNaverMemberById(String id);
 
-	public void updateNaverMember(MemberDTO mdto);
+	public MemberDTO updateNaverMember(MemberDTO mdto);
 
 	public void deleteNaverMember(String id);
 }
