@@ -1,9 +1,12 @@
 package org.zerock.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.zerock.dto.NaverLoginDTO;
+import org.zerock.dto.MemberDTO;
 import org.zerock.mapper.NaverLoginMapper;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,7 +22,6 @@ public class NaverLoginService {
     @Autowired
     private NaverLoginMapper naverLoginMapper;
 
-    // ë„¤ì´ë²„ ë¡œê·¸ì¸ URL ìƒì„±
     public String getAuthorizationUrl() {
         return String.format(
                 "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=%s&redirect_uri=%s&state=%s",
@@ -27,7 +29,6 @@ public class NaverLoginService {
         );
     }
 
-    // ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰
     public String getAccessToken(String code, String state) {
         String tokenUrl = String.format(
                 "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=%s&client_secret=%s&code=%s&state=%s",
@@ -44,8 +45,8 @@ public class NaverLoginService {
         }
     }
 
-    // ì‚¬ìš©ì ì •ë³´ ì¡°íšŒ
-    public NaverLoginDTO getUserInfo(String accessToken) {
+
+    public MemberDTO getUserInfo(String accessToken) {
         String userInfoUrl = "https://openapi.naver.com/v1/nid/me";
         RestTemplate restTemplate = new RestTemplate();
 
@@ -53,11 +54,9 @@ public class NaverLoginService {
             String response = restTemplate.getForObject(userInfoUrl + "?access_token=" + accessToken, String.class);
             System.out.println("Naver API response: " + response);
 
-            // ì‘ë‹µì„ íŒŒì‹±í•˜ì—¬ DTO ìƒì„±
-            NaverLoginDTO userInfo = parseNaverResponse(response);
+            MemberDTO userInfo = parseNaverResponse(response);
             System.out.println("Parsed NaverLoginDTO: " + userInfo);
 
-            // DTOë¥¼ ì´ìš©í•´ ë¡œê·¸ì¸ í”„ë¡œì„¸ìŠ¤ ì²˜ë¦¬
             boolean result = processNaverLogin(userInfo);
             System.out.println("Process result: " + result);
 
@@ -67,8 +66,7 @@ public class NaverLoginService {
         }
     }
 
-    // ë„¤ì´ë²„ API ì‘ë‹µ íŒŒì‹±
-    private NaverLoginDTO parseNaverResponse(String jsonResponse) {
+    public MemberDTO parseNaverResponse(String jsonResponse) {
         try {
             JsonNode rootNode = new ObjectMapper().readTree(jsonResponse);
             JsonNode responseNode = rootNode.get("response");
@@ -77,28 +75,44 @@ public class NaverLoginService {
                 throw new RuntimeException("Invalid response: 'response' node is missing.");
             }
 
-            NaverLoginDTO dto = new NaverLoginDTO();
-            dto.setId(responseNode.path("id").asText(null));
-            dto.setEmail(responseNode.path("email").asText(null));
-            dto.setPhoneNum(responseNode.path("mobile").asText(null));
-            dto.setName(responseNode.path("name").asText(null));
-            dto.setBirthday(responseNode.path("birthday").asText(null));
-            dto.setBirthyear(responseNode.path("birthyear").asText(null));
-            dto.setRegidate(responseNode.path("regidate").asText(null));
+            String birthYear = responseNode.path("birthyear").asText(null);
+            String birthDay = responseNode.path("birthday").asText(null);
+            
+            if (birthYear != null && birthDay != null) {
+                // ³¯Â¥ Çü½ÄÀ¸·Î ¹®ÀÚ¿­ °áÇÕ (¿¹: "1990-12-15")
+                String birthDateStr = birthYear + "-" + birthDay;
 
-            return dto;
+                try {
+                    // SimpleDateFormatÀ» »ç¿ëÇÏ¿© ¹®ÀÚ¿­À» Date·Î º¯È¯
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date birthDate = dateFormat.parse(birthDateStr);
+                    
+                    MemberDTO dto = new MemberDTO();
+                    
+                    dto.setId(responseNode.path("id").asText(null));
+                    dto.setEmail(responseNode.path("email").asText(null));
+                    dto.setPhone_num(responseNode.path("mobile").asText(null));
+                    dto.setUname(responseNode.path("name").asText(null));
+                    return dto;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+           
         } catch (Exception e) {
             throw new RuntimeException("Error parsing Naver API response", e);
         }
+		return null;
     }
 
-    public boolean processNaverLogin(NaverLoginDTO loginfo) {
+    // ±âÁ¸ »ç¿ëÀÚ°¡ ÀÖ´ÂÁö È®ÀÎ
+    public boolean processNaverLogin(MemberDTO loginfo) {
         try {
             if (loginfo.getId() == null || loginfo.getEmail() == null) {
                 throw new RuntimeException("ID or Email is null. ID: " + loginfo.getId() + ", Email: " + loginfo.getEmail());
             }
 
-            NaverLoginDTO existingUser = naverLoginMapper.selectNaverMemberById(loginfo.getId());
+            MemberDTO existingUser = naverLoginMapper.selectNaverMemberById(loginfo.getId());
 
             if (existingUser == null) {
                 naverLoginMapper.insertNaverMember(loginfo);

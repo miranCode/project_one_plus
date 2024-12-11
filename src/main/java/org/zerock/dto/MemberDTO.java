@@ -14,6 +14,8 @@ public class MemberDTO {
 	private Date birth;
 	private String ag_privercy;
 	private String ag_sevise;
+	private String kind;
+	private int level;
 	private Date regidate;
 	
 	public String getId() {
@@ -64,17 +66,30 @@ public class MemberDTO {
 	public void setAg_sevise(String ag_sevise) {
 		this.ag_sevise = ag_sevise;
 	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public Date getRegidate() {
 		return regidate;
 	}
 	public void setRegidate(Date regidate) {
 		this.regidate = regidate;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pw=" + pw + ", email=" + email + ", phone_num=" + phone_num + ", uname="
-				+ uname + ", birth=" + birth + ", ag_privercy=" + ag_privercy + ", ag_sevise=" + ag_sevise
-				+ ", regidate=" + regidate + "]";
+				+ uname + ", birth=" + birth + ", ag_privercy=" + ag_privercy + ", ag_sevise=" + ag_sevise + ", kind="
+				+ kind + ", level=" + level + ", regidate=" + regidate + "]";
 	}
+	
 }

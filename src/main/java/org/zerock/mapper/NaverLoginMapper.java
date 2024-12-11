@@ -1,20 +1,16 @@
 package org.zerock.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.zerock.dto.NaverLoginDTO;
+import org.zerock.dto.MemberDTO;
 
 @Mapper
 public interface NaverLoginMapper {
 
-    // 네이버 회원 정보를 DB에 삽입
-    void insertNaverMember(NaverLoginDTO naverLoginDTO);
+	public void insertNaverMember(MemberDTO mdto);
 
-    // 네이버 회원 정보 조회
-    NaverLoginDTO selectNaverMemberById(String id);
+	public MemberDTO selectNaverMemberById(String id);
 
-    // 네이버 회원 정보 수정
-    void updateNaverMember(NaverLoginDTO naverLoginDTO);
+	public void updateNaverMember(MemberDTO mdto);
 
-    // 네이버 회원 정보 삭제
-    void deleteNaverMember(String id);
+	public void deleteNaverMember(String id);
 }

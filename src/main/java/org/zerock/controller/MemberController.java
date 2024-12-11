@@ -46,6 +46,7 @@ public class MemberController {
 			session.setAttribute("uname", login.getUname());
 			session.setAttribute("email", login.getEmail());
 			session.setAttribute("phone_num", login.getPhone_num());
+			session.setAttribute("level", login.getLevel());
 			
 			return "redirect:/index";
 			// return "index";
@@ -119,6 +120,19 @@ public class MemberController {
 	    session.invalidate();
 	    return "redirect:/index";
 	}
+	
+	
+	// 마이페이지 
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "member/mypage";
+	}
+	
+	// 회원정보 수정 
+	
+	
+	// 회원 탈퇴 
+	
 	
 	
 

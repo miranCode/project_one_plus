@@ -4,18 +4,18 @@
 
     <!-- 네이버 회원 정보 삽입 -->
     <insert id="insertNaverMember" parameterType="org.zerock.dto.NaverLoginDTO">
-        INSERT INTO naver_member (id, email, phone_num, name, birth)
-        VALUES (#{id}, #{email}, #{phoneNum}, #{name}, #{birth})
+        INSERT INTO member (id, email, phone_num, name, birth, kind)
+        VALUES (#{id}, #{email}, #{phoneNum}, #{name}, #{birth}, "네이버")
     </insert>
 
     <!-- 네이버 회원 정보 조회 -->
     <select id="selectNaverMemberById" parameterType="String" resultType="org.zerock.dto.NaverLoginDTO">
-        SELECT count(*) from naver_member WHERE id = #{id}
+        SELECT count(*) from member WHERE id = #{id}
     </select>
 
     <!-- 네이버 회원 정보 수정 -->
     <update id="updateNaverMember" parameterType="org.zerock.dto.NaverLoginDTO">
-        UPDATE naver_member
+        UPDATE member
         SET email = #{email},
             phone_num = #{phoneNum},
             name = #{name},
@@ -25,7 +25,7 @@
 
     <!-- 네이버 회원 정보 삭제 -->
     <delete id="deleteNaverMember" parameterType="String">
-        DELETE FROM naver_member WHERE id = #{id}
+        DELETE FROM member WHERE id = #{id}
     </delete>
 
 </mapper>
