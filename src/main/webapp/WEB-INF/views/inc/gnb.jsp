@@ -21,7 +21,7 @@
                                 <a href="/charge/list">사용량 및 요금 조회</a>
                             </li>
                             <li>
-                                <a href="/qna/list">QNA</a>
+                                <a href="/qna/List">QNA</a>
                             </li>
                         </ul>
                     </div>

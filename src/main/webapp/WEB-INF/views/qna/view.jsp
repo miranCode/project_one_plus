@@ -38,17 +38,20 @@
     	<input type='hidden' name='pageNum' value='<c:out value="${ cri.pageNum }"/>'>
     	<input type='hidden' name='amount' value='<c:out value="${ cri.amount }"/>'>
     </form>
-    <div class="btn-area two">
+    <div class="btn-area four">
         <button onclick="openModal('<c:out value="${ board.idx }"/>')" class="red-line">수정</button>
         <button data-oper='list' onclick="location.href='/qna/List'" class="line">목록</button>
         <!-- <a href="/qna/List" class="line">목록</a> -->
     </div>
     <div id="passwordModal" style="display: none;">
     <div class="modal-content">
+    	<button onclick="closeModal()" class="close-btn"><i class="xi-close"></i></button>
         <h3>비밀번호를 입력하세요</h3>
         <input type="password" id="pass" placeholder="비밀번호 입력" />
-        <button onclick="submitPassword()">확인</button>
-        <button onclick="closeModal()">취소</button>
+        <div class="btn-area four">
+	        <button onclick="closeModal()" class="red-line">취소</button>
+        	<button onclick="submitPassword()">확인</button>
+        </div>
     </div>
 </div>
 <script>
