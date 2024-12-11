@@ -58,7 +58,6 @@ public class NaverLoginController {
             //}
             if (loginfo.getId() == null || loginfo.getEmail() == null) {
                 System.out.println("Error: ID or Email is null. ID = " + loginfo.getId() + ", Email = " + loginfo.getEmail());
-                session.setAttribute("id", loginfo.getId());
     			session.setAttribute("uname", loginfo.getUname());
     			session.setAttribute("email", loginfo.getEmail());
     			session.setAttribute("phone_num", loginfo.getPhone_num());

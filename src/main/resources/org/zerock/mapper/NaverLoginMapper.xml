@@ -4,8 +4,8 @@
 
     <!-- 네이버 회원 정보 삽입 -->
     <insert id="insertNaverMember" parameterType="org.zerock.dto.NaverLoginDTO">
-        INSERT INTO member (id, email, phone_num, name, birth, kind)
-        VALUES (#{id}, #{email}, #{phoneNum}, #{name}, #{birth}, "네이버")
+        INSERT INTO member (id, email, phone_num, uname, birth, kind)
+        VALUES (#{id}, #{email}, #{phoneNum}, #{uname}, #{birth}, "네이버")
     </insert>
 
     <!-- 네이버 회원 정보 조회 -->
@@ -18,7 +18,7 @@
         UPDATE member
         SET email = #{email},
             phone_num = #{phoneNum},
-            name = #{name},
+            uname = #{uname},
             birth = #{birth},
         WHERE id = #{id}
     </update>

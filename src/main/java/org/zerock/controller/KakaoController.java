@@ -53,6 +53,7 @@ public class KakaoController {
 	        session.setAttribute("uname", login.getUname());  // 카카오에서 가져온 nickname을 uname에 저장
 	        session.setAttribute("email", login.getEmail());
 	        session.setAttribute("phone_num", login.getPhone_num());
+	        session.setAttribute("level", login.getLevel());
 
 	        // 리디렉션 경로 수정
 	        return "redirect:/";  // 상대 경로 대신 redirect:/index 사용
