@@ -61,18 +61,21 @@ public class ChargeController {
 	}
 
 	@GetMapping(value = "charge")
-	public String Detail(HttpSession session, Model model) {
+	public String Detail(HttpSession session, Model model,ChargeDTO cdto) {
 		String uname = (String) session.getAttribute("uname");
 	    String email = (String) session.getAttribute("email");
 	    String phone_num = (String) session.getAttribute("phone_num");
-	    
+	    System.out.println(cdto);
+	    System.out.println(uname);
+	    System.out.println(email);
+	    System.out.println(phone_num);
 	    
 	    if (uname == null || email == null || phone_num == null) {
 	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
 	        return "redirect:/member/login";
 	    }
 	    
-	    ChargeDTO cdto = new ChargeDTO();
+	    //ChargeDTO cdto = new ChargeDTO();
 	    cdto.setUname((String) session.getAttribute("uname"));
 	    cdto.setEmail((String) session.getAttribute("email"));
 	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
