@@ -14,7 +14,7 @@
                         <div class="list-top flex ju-between al-end">
                             <p class="total">
                             	${uname}님 청구 요금입니다. <br />
-                            	Total <span>10</span> / 1 page
+                            	Total <span>${totalCount}</span> / ${currentPage} page
                             </p>
                             <div class="search-input">
                                 <input type="" id="search" name="" value=""/>

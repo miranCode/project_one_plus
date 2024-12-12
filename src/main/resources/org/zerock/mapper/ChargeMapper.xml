@@ -4,26 +4,37 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="org.zerock.mapper.ChargeMapper">
+	<!-- 리스트 페이지네이션 -->
 	<select id="getList" parameterType="org.zerock.dto.ChargeDTO" resultType="org.zerock.dto.ChargeDTO">
 	SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num}
     ORDER BY dill_date desc LIMIT #{offset}, #{limit};
 	</select>
+	
+	<!-- 해당 회원꺼 수량 -->
 	<select id="getTotalCount" parameterType="org.zerock.dto.ChargeDTO" resultType="int">
     SELECT COUNT(*) FROM charge 
     WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
 	
+	<!--  -->
 	<select id="getDetail" resultType="org.zerock.dto.ChargeDTO">
 		SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num};
 	</select>
+	
+	<!-- 3개월 평균 -->
 	<select id="getPast" resultType="org.zerock.dto.ChargeDTO">
 		SELECT * FROM charge
 	    WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num}
 		ORDER BY use_start DESC
 		LIMIT 3;
 	</select>
+	
+	<!--  -->
 	<select id="getThisMonthCharge" resultType="org.zerock.dto.ChargeDTO">
-	    SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num} AND 
+	    
+	    SELECT * FROM charge WHERE code = #{code};
+	    <!-- SELECT * FROM charge WHERE uname = #{uname} AND email = #{email} AND phone_num = #{phone_num} AND 
 	    YEAR(DATE(use_end)) = YEAR(DATE(CURRENT_DATE())) AND MONTH(DATE(use_end)) = MONTH(DATE(CURRENT_DATE())) LIMIT 1;
+	     -->
 	</select>
 </mapper>
