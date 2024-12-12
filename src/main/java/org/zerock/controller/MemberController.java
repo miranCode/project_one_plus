@@ -29,7 +29,7 @@ public class MemberController {
 	@Autowired
 	ChargeMapper cmapper;
 	
-	// ·Î±×ÀÎ
+	// ï¿½Î±ï¿½ï¿½ï¿½
 	@GetMapping(value="login")
 	public String loginGo() {
 		return "member/login";
@@ -51,14 +51,14 @@ public class MemberController {
 			return "redirect:/index";
 			// return "index";
 		}else {
-			model.addAttribute("loginError", "ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾ø½À´Ï´Ù."); // ·Î±×ÀÎ ½ÇÆĞ ½Ã ¿¡·¯ ¸Ş½ÃÁö Ãß°¡
+			model.addAttribute("loginError", "ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤"); // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 			return "member/login";
 		}
 		
 	}
 
 	
-	// È¸¿ø°¡ÀÔ 
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	@GetMapping(value="join")
 	public String join() {
 		return "member/join";
@@ -66,17 +66,17 @@ public class MemberController {
 	
 	@PostMapping(value="join")
 	public String joinPro(MemberDTO mdto) {      
-		System.out.println("È¸¿ø°¡ÀÔ ¿äÃ»ÀÌ µé¾î¿È: " + mdto); 
+		System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + mdto); 
 		int result = 0;
 		if(mdto != null) {
 			result = mapper.join(mdto);
 			return "redirect:/member/login";
 		}
-	    return "member/join"; // ½ÇÆĞ ½Ã °¡ÀÔ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
+	    return "member/join"; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½Æ®
 	}
 	
 	
-	//Id Áßº¹ È®ÀÎ
+	//Id ï¿½ßºï¿½ È®ï¿½ï¿½
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public ResponseEntity<Boolean> confirmId(String id) {
@@ -91,11 +91,11 @@ public class MemberController {
 				result = true;
 			}
 		}
-		System.out.println("Áßº¹" + result);
+		System.out.println("ï¿½ßºï¿½" + result);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	// ºñÈ¸¿ø ÀÎÁõ 
+	// ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	@GetMapping(value = "nonmemberlogin")
 	public String nonmemberlogin() {
 		return "member/nonmemberlogin";
@@ -113,10 +113,10 @@ public class MemberController {
 	    System.out.println("phone_num: " + phone_num);
 	    System.out.println("level: " + level);
 	    
-	    return "redirect:/index";  // Ã³¸® ÈÄ ÀÎµ¦½º·Î ¸®´ÙÀÌ·ºÆ®
+	    return "redirect:/index";  // Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½Æ®
 	}
 	
-	// ·Î±×¾Æ¿ô, ¼¼¼Ç ³¯¸®±â 
+	// ï¿½Î±×¾Æ¿ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 	    session.invalidate();
@@ -124,16 +124,16 @@ public class MemberController {
 	}
 	
 	
-	// ¸¶ÀÌÆäÀÌÁö 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	@GetMapping("/mypage")
 	public String mypage() {
 		return "member/mypage";
 	}
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤ 
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	
 	
-	// È¸¿ø Å»Åğ 
+	// È¸ï¿½ï¿½ Å»ï¿½ï¿½ 
 	
 	
 	
