@@ -80,7 +80,6 @@ public class ChargeController {
 	    cdto.setEmail((String) session.getAttribute("email"));
 	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
 	    
-	    
 	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
 	    List<ChargeDTO> pastCharges = Mapper.getPast(cdto);
 	    
