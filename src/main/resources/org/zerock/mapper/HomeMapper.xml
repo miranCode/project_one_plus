@@ -6,7 +6,10 @@
 	<select id="getThisMonthCharge" resultType="org.zerock.dto.ChargeDTO">
 	    SELECT * FROM charge WHERE uname = #{uname} 
 	    AND email = #{email} AND phone_num = #{phone_num}
+	    ORDER BY dill_date desc limit 1
+	    <!-- 
 	    AND YEAR(DATE(use_end)) = YEAR(DATE(CURRENT_DATE()))
 	    AND MONTH(DATE(use_end)) = MONTH(DATE(CURRENT_DATE())) LIMIT 1;
+	     -->
 	</select>
 </mapper>
