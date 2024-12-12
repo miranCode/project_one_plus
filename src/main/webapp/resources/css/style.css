@@ -11,8 +11,9 @@ a,
 select{cursor: pointer;}
 
 button,
-textarea{border:0;}
+textarea{border:0; background:none;}
 
+input,
 input[type=text],
 input[type=password],
 input[type=date]{border:0;}
@@ -64,12 +65,14 @@ input[type=date]{border:0;}
 /* 텍스트 공통 스타일 */
 .txt{}
 .txt.tit{font-size: 40px;}
+.txt.titsub{font-size: 30px;}
 .txt.sub{font-size: 20px;}
+.txt.small{font-size: 14px;}
 .txt-center{text-align: center;}
 .txt.bold{font-weight: 600;}
 .txt.bolder{font-weight: 800;}
 .cancle-txt{font-size: 12px; color: #999; text-decoration: line-through red;}
-.txt-info{font-size: 12px;}
+.txt-info{font-size: 14px;}
 .txt-primary{color: rgb(73, 73, 238)}
 .txt-green{color: #0ac73e;}
 .txt-red{color: red;}

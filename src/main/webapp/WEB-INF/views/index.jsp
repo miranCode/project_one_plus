@@ -120,7 +120,7 @@
 		</div>
 		<!-- // box  -->
 		<div class="section02">
-			<p>전력 수급 현황 <span><fmt:formatDate value="<%= new java.util.Date() %>" pattern="yyyy-MM-dd EEEE" /></span></p>
+			<p>전력 수급 현황 <span><fmt:formatDate value="<%= new java.util.Date() %>" pattern="yyyy.MM.dd EEEE" /></span></p>
 			<ul class="flex">
 				<li>
 					<i class="xi-lightning txt-yellow"></i>
@@ -148,7 +148,7 @@
 					<i class="xi-percent"></i>
 					<p>
 						예비율
-						<span>44.71%</span>
+						<span>44.71 %</span>
 					</p>
 				</li>
 			</ul>
