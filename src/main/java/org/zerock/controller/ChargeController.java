@@ -29,6 +29,7 @@ public class ChargeController {
 	    String uname = (String) session.getAttribute("uname");
 	    String email = (String) session.getAttribute("email");
 	    String phone_num = (String) session.getAttribute("phone_num");
+	    System.out.println(uname + email + phone_num);
 	    
 	    if (uname == null || email == null || phone_num == null) {
 	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
@@ -55,7 +56,12 @@ public class ChargeController {
 	    model.addAttribute("list", chargeList);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("totalPages", totalPages);
-	    model.addAttribute("totalCount", totalCount);	    
+	    
+	    System.out.println("currentPage: " + page);
+	    System.out.println("totalPages: " + totalPages);
+	    System.out.println("chargeList: " + chargeList);
+	    System.out.println("Total Count: " + totalCount);
+	    System.out.println("Total Pages: " + totalPages);
 	    
 	    return "charge/list";
 	}
@@ -65,28 +71,18 @@ public class ChargeController {
 		String uname = (String) session.getAttribute("uname");
 	    String email = (String) session.getAttribute("email");
 	    String phone_num = (String) session.getAttribute("phone_num");
-	    
-	    
 	    if (uname == null || email == null || phone_num == null) {
 	        model.addAttribute("message", "세션이 만료되었습니다. 다시 로그인 해주세요.");
 	        return "redirect:/member/login";
 	    }
-	    
 	    ChargeDTO cdto = new ChargeDTO();
 	    cdto.setUname((String) session.getAttribute("uname"));
 	    cdto.setEmail((String) session.getAttribute("email"));
 	    cdto.setPhone_num((String) session.getAttribute("phone_num"));
 	    
-	    
 	    List<ChargeDTO> chargeList = Mapper.getList(cdto);
 	    List<ChargeDTO> pastCharges = Mapper.getPast(cdto);
-	    
 	    ChargeDTO TMCharge = Mapper.getThisMonthCharge(cdto);
-
-	    System.out.println(">>>>>>>>>>>" + chargeList);
-	    System.out.println(">>>>>>>>>>>" + pastCharges);
-	    System.out.println(">>>>>>>>>>>" + TMCharge);
-	    
 	    
 	    int totalCharge = 0;
 	    for (ChargeDTO charge : pastCharges) {
@@ -102,7 +98,6 @@ public class ChargeController {
 	    model.addAttribute("avgCharge", avgCharge);
 	    model.addAttribute("list", chargeList);
 	    model.addAttribute("TMCharge", TMCharge);
-	    
 	    return "charge/charge";
 	}
 }
