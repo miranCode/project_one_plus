@@ -43,7 +43,7 @@
 								<dt>당월 전력 사용률</dt>
 								<dd class="bar-area" style="background: #f5f5f5; border: 1px solid transparent;">
 									<span class="stic" style="display:block;  border-right: 1px solid transparent; width:${TMCharge.use_quentity/(TMCharge.billing_power/100)}%; height:20px;"></span>
-									<span class="stic-txt" style="left:${(TMCharge.use_quentity/(TMCharge.billing_power/100))-8}%;  ">60%</span>
+									<span class="stic-txt" style="left:${(TMCharge.use_quentity/(TMCharge.billing_power/100))-8}%;  ">${TMCharge.use_quentity/(TMCharge.billing_power/100)}%</span>
 								</dd>
 							</dl>
 							<dl>
