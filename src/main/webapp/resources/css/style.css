@@ -73,9 +73,12 @@ input[type=date]{border:0;}
 .txt-primary{color: rgb(73, 73, 238)}
 .txt-green{color: #0ac73e;}
 .txt-red{color: red;}
+.txt-gray{color: #999;}
 .txt-yellow{color: yellow;}
 .copy{font-size: 14px; color:#999}
 
+.bg-line{position:relative; padding:0 10px}
+.bg-line:before{content:""; display:block; position:absolute; left:0; bottom:0; width:100%; height:5px; background:rgba(73, 73, 238, 0.2);}
 
 /*...출력*/
 .ell {display:inline-block; max-width:97%; height: auto; overflow:hidden; text-overflow:ellipsis; vertical-align:middle; white-space:nowrap; word-wrap: break-word;  word-break: break-all;}

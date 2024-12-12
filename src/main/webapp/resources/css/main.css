@@ -12,10 +12,10 @@ body.main div.box{position:relative; padding: 40px 30px; border-radius:9px; bord
 body.main div.box > p{font-size:18px; font-weight:800; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid #ddd;}
 body.main div.box dl{display:flex; align-items: center; margin-bottom:10px; font-size:14px}
 body.main div.box dl:last-of-type{margin-bottom:20px;}
-body.main div.box dl > dt{width:180px; padding-right:20px; box-sizing:border-box;}
+body.main div.box dl > dt{width:200px; padding-right:20px; box-sizing:border-box;}
 body.main div.box dl > dd{position:relative; width:500px;}
 
-body.main div.box dl > dd span.stic{position: relative; overflow: hidden; }
+body.main div.box dl > dd span.stic{position: relative; overflow: hidden; background: rgb(73, 73, 238)}
 body.main div.box dl > dd span.stic:after{
     position: absolute;
     content: '';
@@ -38,6 +38,8 @@ body.main div.box dl > dd span.stic-txt{
     top: 50%;
     font-size: 12px;
     padding-left: 1%;
+    font-weight:600;
+    color: #fff;
     transform: translateY(-50%);
 }
 

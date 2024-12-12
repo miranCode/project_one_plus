@@ -14,77 +14,98 @@
 			<p style="filter:${level >= 2 ? 'none' : 'blur(5px)'};">
 				안녕하세요! ${uname} 님
 				<br />
-				${empty TMCharge ? '등록된 정보가 없습니다.' : '<fmt:formatDate pattern="MM" value="${TMCharge.use_start}"/>월 청구 요금 안내입니다.'} 
+				<c:choose>
+					<c:when test="${empty TMCharge}">
+						등록된 정보가 없습니다.
+					</c:when>
+					<c:otherwise>
+						<fmt:formatDate pattern="yy년 MM월" value="${TMCharge.use_start}"/> 청구 요금 안내입니다.
+					</c:otherwise>
+				</c:choose>
 			</p>
 			<div style="filter:${level >= 2 ? 'none' : 'blur(5px)'};">
 				<!-- 로그인 상태가 아닐 경우 처리 완료 -->
-			<c:if test="${not empty TMCharge}" var="data">
-			<!-- 로그인 상태이고 정보가 있을 경우 -->
-				<dl>
-					<dt>요금 청구 기준일</dt>
-					<dd> <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/></dd>
-				</dl>
-				<dl>
-					<dt>당월 사용 전력량</dt>
-					<dd class="bar-area">
-						<span class="stic" style="display:block; width:80%; height:15px; background:yellow; "></span>
-						<span class="stic-txt" style="left:80%;  ">${TMCharge.use_quentity}W</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>청구일 / 청구 비용</dt>
-					<dd><fmt:formatDate pattern="MM 월 dd 일" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원</dd>
-				</dl>
-				<dl>
-					<dt>납부기한 / 납부여부</dt>
-					<dd><fmt:formatDate pattern="yy 년 MM 월 dd 일" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}</dd>
-				</dl>
-				<div class="btn-box">
-					<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
-				</div>
-			<!-- // 로그인 상태이고 정보가 있을 경우 -->
-			</c:if>
-			
-			<!-- 로그인 상태 이지만 정보가 없을 경우 -->
-			<c:if test="${empty TMCharge}">
 				<c:choose>
-				    <c:when test="${empty level}">
-				        <dl>
-				            <dt>요금 청구 기준일</dt>
-				            <dd>
-				                <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - 
-				                <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/>
-				            </dd>
-				        </dl>
-				        <dl>
-				            <dt>당월 사용 전력량</dt>
-				            <dd class="bar-area">
-				                <span class="stic" style="display:block; width:80%; height:15px; background:yellow;"></span>
-				                <span class="stic-txt" style="left:80%;">${TMCharge.use_quentity}W</span>
-				            </dd>
-				        </dl>
-				        <dl>
-				            <dt>청구일 / 청구 비용</dt>
-				            <dd>
-				                <fmt:formatDate pattern="MM 월 dd 일" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원
-				            </dd>
-				        </dl>
-				        <dl>
-				            <dt>납부기한 / 납부여부</dt>
-				            <dd>
-				                <fmt:formatDate pattern="yy 년 MM 월 dd 일" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}
-				            </dd>
-				        </dl>
-				        <div class="btn-box">
-				            <a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
-				        </div>
-				    </c:when>
-				    <c:otherwise>
-				        <div class="no-data">등록된 정보가 없습니다.</div>
-				    </c:otherwise>
-				</c:choose>
-			</c:if>
-			<!-- // 로그인 상태 이지만 정보가 없을 경우 -->
+					<c:when test="${not empty TMCharge}">
+						<!-- 로그인 상태이고 정보가 있을 경우 -->
+							<dl>
+								<dt>요금 청구 기준일</dt>
+								<dd class="txt bold"> 
+									<fmt:formatDate pattern="yy.MM.dd" value="${TMCharge.use_start}"/> ~
+									<fmt:formatDate pattern="yy.MM.dd" value="${TMCharge.use_end}"/>
+								</dd>
+							</dl>
+							<dl>
+								<dt>당월 제공/사용 전력량</dt>
+								<dd class="txt bold"><span class="txt-gray">${TMCharge.billing_power}kWh</span> / ${TMCharge.use_quentity}kWh</dd>
+							</dl>
+							<dl>
+								<dt>당월 전력 사용률</dt>
+								<dd class="bar-area" style="background: #f5f5f5; border: 1px solid transparent;">
+									<span class="stic" style="display:block;  border-right: 1px solid transparent; width:${TMCharge.use_quentity/(TMCharge.billing_power/100)}%; height:20px;"></span>
+									<span class="stic-txt" style="left:${(TMCharge.use_quentity/(TMCharge.billing_power/100))-8}%;  ">60%</span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>청구일 / 납부기한</dt>
+								<dd class="txt bold">
+									<fmt:formatDate pattern="MM 월 dd 일" value="${TMCharge.dill_date}"/> / 
+									<span class="bg-line"><fmt:formatDate pattern="yy 년 MM 월 dd 일" value="${TMCharge.paid_limit}"/></span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>청구 비용 (납부여부)</dt>
+								<dd class="txt bold">${TMCharge.charge} 원 
+									<span class="bg-line">${TMCharge.already_paid}</span>
+								</dd>
+							</dl>
+							<div class="btn-box">
+								<a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
+							</div>
+						<!-- // 로그인 상태이고 정보가 있을 경우 -->
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+						    <c:when test="${empty level}">
+						    
+						        <dl>
+						            <dt>요금 청구 기준일</dt>
+						            <dd>
+						                <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_start}"/> - 
+						                <fmt:formatDate pattern="yyyy-MM-dd" value="${TMCharge.use_end}"/>
+						            </dd>
+						        </dl>
+						        <dl>
+						            <dt>당월 사용 전력량</dt>
+						            <dd class="bar-area">
+						                <span class="stic" style="display:block; width:70%; height:20px;"></span>
+						                <span class="stic-txt" style="left:80%;">${TMCharge.use_quentity}W</span>
+						            </dd>
+						        </dl>
+						        <dl>
+						            <dt>청구일 / 청구 비용</dt>
+						            <dd>
+						                <fmt:formatDate pattern="MM 월 dd 일" value="${TMCharge.dill_date}"/> / ${TMCharge.charge} 원
+						            </dd>
+						        </dl>
+						        <dl>
+						            <dt>납부기한 / 납부여부</dt>
+						            <dd>
+						                <fmt:formatDate pattern="yy 년 MM 월 dd 일" value="${TMCharge.paid_limit}"/> / ${TMCharge.already_paid}
+						            </dd>
+						        </dl>
+						        <div class="btn-box">
+						            <a href="http://localhost:8080/charge/charge" class="btn btn-bagic line">자세히 보기</a>
+						        </div>
+						    </c:when>
+						    <c:otherwise>
+							    <!-- 로그인 상태 이지만 정보가 없을 경우 -->
+						        <div class="no-data">등록된 정보가 없습니다.</div>
+						        <!-- // 로그인 상태 이지만 정보가 없을 경우 -->
+						    </c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>		
 			</div>
 			<!-- 로그인 상태가 아닐 경우 -->
 			<c:if test="${empty level}">
