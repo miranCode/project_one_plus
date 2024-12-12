@@ -47,15 +47,12 @@ public class BoardController {
 		
 	}
 	@PostMapping("/write")
-	public String write(BoardVO board,@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+	public String write(BoardVO board, RedirectAttributes rttr) {
 		
 		service.register(board);
 		
 		rttr.addFlashAttribute("result", board.getIdx());
-		// 페이지 정보 전달
-	    rttr.addAttribute("pageNum", cri.getPageNum());
-	    rttr.addAttribute("amount", cri.getAmount());
-	    
+		
 		return "redirect:/qna/List";
 	}
 	
@@ -63,7 +60,6 @@ public class BoardController {
 	public void view(@RequestParam("idx") Long idx,@ModelAttribute("cri") Criteria cri, Model model) {
 		service.visitCount(idx);
 		model.addAttribute("board", service.get(idx));
-		model.addAttribute("cri", cri);
 	}
 	
 	@PostMapping("/modify")

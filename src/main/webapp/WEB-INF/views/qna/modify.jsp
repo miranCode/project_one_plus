@@ -39,7 +39,7 @@
 					</dl>
 					<div class="btn-area three">
 	                    <button type="submit" class="red-line" data-oper='remove'>삭제</button>
-	                    <a href="/qna/List?pageNum=${cri.pageNum}&amount=${cri.amount}" class="line">List</a>
+	                    <a href="/qna/List" class="line">List</a>
 	                    <button type="submit" data-oper='modify'>Write</button>
 				</fieldset>
 			</form>

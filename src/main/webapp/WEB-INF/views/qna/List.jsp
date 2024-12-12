@@ -34,7 +34,7 @@
                                 <ul>
                                 	<c:forEach items="${list}" var="board">
                                     	<li>
-                                    		<a class='move' href='/qna/view?idx=${board.idx}'>
+                                    		<a class='move' href='<c:out value="${board.idx }"/>'>
 	                                            <ul class="row">
 	                                                <li><c:out value="${board.idx }"/></li>
 	                                                <li class="ell">
@@ -110,21 +110,12 @@ $(document).ready(function(){
 		actionForm.submit();
 	});
 	
-	$(".move").on("click", function (e) {
-	    e.preventDefault(); // 기본 동작 방지
-
-	    // href에서 idx 값 추출
-	    const url = new URL($(this).attr("href"), window.location.origin);
-	    const idx = url.searchParams.get("idx");
-
-	    // idx 값 확인 후 폼에 추가
-	    if (idx) {
-	        actionForm.append("<input type='hidden' name='idx' value='" + idx + "'>");
-	        actionForm.attr("action", "/qna/view");
-	        actionForm.submit();
-	    } else {
-	        alert("올바른 게시글 번호를 찾을 수 없습니다.");
-	    }
+	$(".move").on("click",function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='idx' value='"+$(this).attr("href")+"'>");
+		actionForm.attr("action","/qna/view");
+		actionForm.submit();
 	});
 });
 </script>
