@@ -87,6 +87,7 @@ public class ChargeController {
 	    System.out.println(">>>>>>>>>>>" + pastCharges);
 	    System.out.println(">>>>>>>>>>>" + TMCharge);
 	    
+	    
 	    int totalCharge = 0;
 	    for (ChargeDTO charge : pastCharges) {
 	        totalCharge += charge.getCharge(); // ChargeDTOÀÇ charge ÇÊµå
