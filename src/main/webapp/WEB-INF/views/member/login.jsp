@@ -45,10 +45,10 @@ $(document).ready(function(){
                             <div>
                                 <label for="pw">비밀번호</label>
                                 <div class="input-box">
+                                    <input type="password" id="pw" name="pw" value="" placeholder="비밀번호를 입력해주세요." title="비밀번호" autoComplete = "off" />
                                     <button class="passview" type="button">
                                         <i class="xi-eye-off-o"></i>
                                     </button>
-                                    <input type="password" id="pw" name="pw" value="" placeholder="비밀번호를 입력해주세요." title="비밀번호" autoComplete = "off" />
                                 </div>
                             </div>
                             <div class="btn-box">
