@@ -227,24 +227,33 @@ $(document).ready(function(){
         }
     });
 
-    // 전체 동의 체크
+    
+    // 전체 동의체크 
+    let agreedBox;
     let agreedAll = document.getElementById("agreed_all");
-    let agreed01 = document.getElementsByName("ag_privercy");
-    let agreed02 = document.getElementsByName("ag_sevise");
-
+    let agreed01 = document.getElementsByName("ag_privercy");// 동의 1
+    let agreed01R;
+    let agreed02 = document.getElementsByName("ag_sevise");// 동의 2
+    let agreed02R;
+    
+    // 전체동의에 체크가 되면 동의는 전부 체크 되어야 한다. 
     agreedAll.addEventListener("change", function() {
         if(this.checked === true){
             agreed01[0].checked = true;
             agreed02[0].checked = true;
-            agreed01Result = true;
-            agreed02Result = true;
-        } else {
+        }else if(this.checked == false){
             agreed01[0].checked = false;
             agreed02[0].checked = false;
-            agreed01Result = false;
-            agreed02Result = false;
         }                    
     });
+    
+    // 개별 체크박스 상태가 둘다 체크이면 전체 동의 체크, 아니면 전체 동의 해제
+    function updateAgreedAll() {
+    	const allCheck = agreed01[0].checked && agreed02[0].checked;
+    	agreedAll.checked = allCheck;
+    }
+    agreed01.forEach(radio =>radio.addEventListener("change", updateAgreedAll));
+    agreed02.forEach(radio =>radio.addEventListener("change", updateAgreedAll));
     
     
     // 각 인풋에 대한 검증 상태
